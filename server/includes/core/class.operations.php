@@ -2737,11 +2737,22 @@ class Operations {
 			}
 		}
 
-		// Check if replying then set PR_INTERNET_REFERENCES and PR_IN_REPLY_TO_ID properties in props.
-		// flag is probably used wrong here but the same flag indicates if this is reply or replyall
-		if ($copyInlineAttachmentsOnly) {
-			$origMsgProps = mapi_getprops($copyFromMessage, [PR_INTERNET_MESSAGE_ID, PR_INTERNET_REFERENCES]);
-			if (isset($origMsgProps[PR_INTERNET_MESSAGE_ID])) {
+		// A reply or forward continues the conversation of the original message
+		// (MS-OXOMSG): inherit its conversation index with a child block appended
+		// and keep the conversation topic. Without this the response would start
+		// a new conversation id and the thread falls apart, both here and for
+		// counterparts that thread by the exported Thread-Index header.
+		if ($copyFromMessage) {
+			$origMsgProps = mapi_getprops($copyFromMessage, [
+				PR_CONVERSATION_INDEX,
+				PR_CONVERSATION_TOPIC,
+				PR_NORMALIZED_SUBJECT,
+				PR_INTERNET_MESSAGE_ID,
+				PR_INTERNET_REFERENCES
+			]);
+			// Check if replying then set PR_INTERNET_REFERENCES and PR_IN_REPLY_TO_ID properties in props.
+			// flag is probably used wrong here but the same flag indicates if this is reply or replyall
+			if ($copyInlineAttachmentsOnly && isset($origMsgProps[PR_INTERNET_MESSAGE_ID])) {
 				// The references header should indicate the message-id of the original
 				// header plus any of the references which were set on the previous mail.
 				$props[PR_INTERNET_REFERENCES] = $origMsgProps[PR_INTERNET_MESSAGE_ID];
@@ -2750,25 +2761,16 @@ class Operations {
 				}
 				$props[PR_IN_REPLY_TO_ID] = $origMsgProps[PR_INTERNET_MESSAGE_ID];
 			}
-		}
-
-		// A reply or forward continues the conversation of the original message
-		// (MS-OXOMSG): inherit its conversation index with a child block appended
-		// and keep the conversation topic. Without this the response would start
-		// a new conversation id and the thread falls apart, both here and for
-		// counterparts that thread by the exported Thread-Index header.
-		if ($copyFromMessage) {
-			$origConvProps = mapi_getprops($copyFromMessage, [PR_CONVERSATION_INDEX, PR_CONVERSATION_TOPIC, PR_NORMALIZED_SUBJECT]);
 			if (empty($props[PR_CONVERSATION_INDEX]) &&
-				isset($origConvProps[PR_CONVERSATION_INDEX]) &&
-				strlen((string) $origConvProps[PR_CONVERSATION_INDEX]) >= 22) {
+				isset($origMsgProps[PR_CONVERSATION_INDEX]) &&
+				strlen((string) $origMsgProps[PR_CONVERSATION_INDEX]) >= 22) {
 				// The child block only conveys response ordering; the conversation
 				// id is derived from the (unchanged) header block.
-				$props[PR_CONVERSATION_INDEX] = $origConvProps[PR_CONVERSATION_INDEX] .
+				$props[PR_CONVERSATION_INDEX] = $origMsgProps[PR_CONVERSATION_INDEX] .
 					pack('NC', time() & 0x7FFFFFFF, random_int(0, 255));
 			}
 			if (empty($props[PR_CONVERSATION_TOPIC])) {
-				$topic = $origConvProps[PR_CONVERSATION_TOPIC] ?? $origConvProps[PR_NORMALIZED_SUBJECT] ?? null;
+				$topic = $origMsgProps[PR_CONVERSATION_TOPIC] ?? $origMsgProps[PR_NORMALIZED_SUBJECT] ?? null;
 				if ($topic !== null && $topic !== '') {
 					$props[PR_CONVERSATION_TOPIC] = $topic;
 				}

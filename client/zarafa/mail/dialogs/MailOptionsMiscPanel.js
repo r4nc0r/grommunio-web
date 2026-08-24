@@ -8,21 +8,6 @@ Ext.namespace('Zarafa.mail.dialogs');
  * Panel for users to set miscellaneous options on a given {@link Zarafa.mail.MailRecord record},
  * like the categories.
  */
-var ensureRecordObjectId = function(record)
-{
-	if (!record) {
-		return;
-	}
-
-	var objectIdText = record.get('x_midtext');
-	if (!objectIdText) {
-		objectIdText = Zarafa.core.EntryId.formatObjectId(record.get('entryid'));
-		if (objectIdText && record.get('x_midtext') !== objectIdText) {
-			record.set('x_midtext', objectIdText);
-		}
-	}
-};
-
 Zarafa.mail.dialogs.MailOptionsMiscPanel = Ext.extend(Ext.form.FormPanel, {
 
 	/**
@@ -75,7 +60,7 @@ Zarafa.mail.dialogs.MailOptionsMiscPanel = Ext.extend(Ext.form.FormPanel, {
 		this.record = record;
 
 		if (record) {
-			ensureRecordObjectId(record);
+			Zarafa.common.dialogs.ensureRecordObjectId(record);
 			this.getForm().loadRecord(record);
 		} else {
 			this.headersTextArea.setValue('');
@@ -128,7 +113,7 @@ Zarafa.mail.dialogs.MailOptionsMsgidPanel = Ext.extend(Ext.form.FormPanel, {
 		this.record = record;
 
 		if (record) {
-			ensureRecordObjectId(record);
+			Zarafa.common.dialogs.ensureRecordObjectId(record);
 			this.getForm().loadRecord(record);
 		} else {
 			var objectIdField = this.getForm().findField('x_midtext');

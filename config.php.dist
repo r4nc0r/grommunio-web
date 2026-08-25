@@ -216,6 +216,8 @@
 	define("LANGUAGE_DIR", "server/language/");
 
 	// Defines the default interface language. This can be overridden by the user.
+	// The required syntax is an XPG locale identifier.
+	// The charset does not matter. g-web will switch to UTF-8 internally.
 	if (isset($_ENV['LANG']) && $_ENV['LANG']!="C") {
 		define('LANG', $_ENV["LANG"]); // This means the server environment language determines the web client language.
 	} else {

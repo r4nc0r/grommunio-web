@@ -106,7 +106,11 @@ require_once BASE_PATH . 'server/includes/logger/class.baselogger.php';
 require_once BASE_PATH . 'server/includes/logger/class.filelog.php';
 
 ob_start();
-setlocale(LC_CTYPE, Language::resolveLanguage(LANG));
+{
+	$p = new xpg_locale(LANG);
+	$p->codeset = "UTF-8";
+	setlocale(LC_CTYPE, (string) $p);
+}
 
 // Start a new session
 $webappSession = WebAppSession::getInstance();

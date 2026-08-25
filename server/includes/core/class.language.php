@@ -1,6 +1,48 @@
 <?php
 
 /**
+ * Class for a broken-down representation of an XPG locale identifier.
+ * Stolen from /gromox/lib/string.cpp.
+ */
+class xpg_locale {
+	public string $language = "", $territory = "", $codeset = "", $modifier = "";
+
+	public function __construct(string $locale)
+	{
+		$pos = strpos($remainder, '@');
+		if ($pos !== false) {
+			$this->modifier = substr($locale, $pos + 1);
+			$locale = substr($locale, 0, $pos);
+		}
+		$pos = strpos($locale, '.');
+		if ($pos !== false) {
+			$this->codeset = substr($locale, $pos + 1);
+			$locale = substr($locale, 0, $pos);
+		}
+		$pos = strpos($locale, '_');
+		if ($pos !== false) {
+			$this->territory = substr($locale, $pos + 1);
+			$locale = substr($locale, 0, $pos);
+		}
+		$this->language = $locale;
+	}
+
+	public function __toString(): string
+	{
+		$o = $this->language;
+		if (strlen($o) == 0)
+			return $o;
+		if (strlen($this->territory) > 0)
+			$o .= '_'.$this->territory;
+		if (strlen($this->codeset) > 0)
+			$o .= '.'.$this->codeset;
+		if (strlen($this->modifier) > 0)
+			$o .= '@'.$this->modifier;
+		return $o;
+	}
+}
+
+/**
  * Language handling class.
  */
 class Language {
@@ -8,7 +50,7 @@ class Language {
 	private const CACHE_KEY = 0x950412DE;
 	private const CACHE_SIZE = 16 * 1024 * 1024;
 
-	private $languages = ["en_US.UTF-8" => "English"];
+	private $languages = ["en_US" => "English"];
 	private $lang;
 	private $loaded = false;
 
@@ -80,19 +122,15 @@ class Language {
 		}
 		$lang = (empty($lang) || str_starts_with($lang, '.') || $lang == "C") ? LANG : $lang; // default language fix
 
-		$available = $this->findLanguage($lang);
-		if ($available === false) {
-			error_log(sprintf("Unknown language: '%s'", $lang));
+		$selected = $this->findLanguage($lang);
+		if ($selected === false) {
+			error_log(sprintf("setLanguage: no translations present for \"%s\"", $lang));
 			$this->resetLocale();
 
 			return;
 		}
-		if ($available !== $lang) {
-			error_log(sprintf("Unknown language: '%s', falling back to '%s'", $lang, $available));
-		}
-
-		$this->lang = $available;
-		$this->bindTextDomain($available);
+		$this->lang = $selected;
+		$this->bindTextDomain($selected);
 		$tmp_translations = $this->getTranslations();
 		$translations = [];
 		foreach ($tmp_translations as $program => $resources) {
@@ -110,76 +148,42 @@ class Language {
 	}
 
 	/**
-	 * Find an installed language directory for the requested language.
+	 * Match a locale identifier request to files on disk.
 	 *
-	 * The requested language does not always name a directory in LANGUAGE_DIR. gromox
-	 * hands out PR_EC_USER_LANGUAGE as the `users.lang` column with ".UTF-8" appended,
-	 * so a bare language code stored there - "de" rather than "de_DE" - arrives here as
-	 * "de.UTF-8", for which no directory exists. Dropping such a value means serving a
-	 * client with an empty translation set, i.e. an entirely English interface, and
-	 * PR_EC_USER_LANGUAGE re-imposes the value on every login until the user explicitly
-	 * re-picks a language in Settings, which writes the choice back to it. Prefer a
-	 * territory variant of the same language over that.
+	 * @lang: XPG locale identifier ([language[_territory][.codeset][@modifier]])
 	 *
-	 * @param string $lang Language code (eg nl_NL.UTF-8)
-	 *
-	 * @return bool|string the language to use, or false if none is installed
+	 * Returns the xpg_locale object (which coincides with the directory
+	 * name on disk), or %false if the search did not turn up something.
 	 */
 	private function findLanguage($lang) {
-		if ($this->is_language($lang)) {
-			return $lang;
-		}
+		$p = new xpg_locale($lang);
 
-		$resolved = self::resolveLanguage($lang);
-		if ($resolved !== $lang && $this->is_language($resolved)) {
-			return $resolved;
-		}
+		// Directory names are never supposed to contain a codeset fragment
+		$p->codeset = "";
+		if (is_dir(LANGUAGE_DIR."/$p"))
+			return $p;
 
-		// Any variant of the same language beats English. Try the territory that
-		// repeats the language code first ("de" -> "de_DE"), which is the usual
-		// spelling, and settle for the first one installed otherwise.
-		$base = strstr($lang, '_', true);
-		if ($base === false) {
-			$base = stristr($lang, '.', true);
-		}
-		if ($base === false) {
-			$base = $lang;
-		}
-		if (preg_match('/^[a-z]{2,3}$/i', $base)) {
-			$base = strtolower($base);
-			// Legacy ISO 639 codes; the directories use the modern spelling.
-			$aliases = ['no' => 'nb', 'in' => 'id', 'iw' => 'he', 'tl' => 'fil'];
-			$base = $aliases[$base] ?? $base;
-			// The language configured by the administrator wins when it is a variant
-			// of the same language, so its territory is not silently overruled.
-			if (strcasecmp($base, (string) strstr(LANG, '_', true)) == 0 && $this->is_language(LANG)) {
-				return LANG;
-			}
-			$candidates = glob(LANGUAGE_DIR . $base . '_' . strtoupper($base) . '.UTF-8') ?: [];
-			if (empty($candidates)) {
-				$candidates = glob(LANGUAGE_DIR . $base . '_*.UTF-8') ?: [];
-				sort($candidates);
-			}
-			if (!empty($candidates)) {
-				return basename($candidates[0]);
-			}
-		}
+		// Try from most specific to least specific
+		$p->modifier = "";
+		if (is_dir(LANGUAGE_DIR."/$p"))
+			return $p;
+		$p->territory = "";
+		if (is_dir(LANGUAGE_DIR."/$p"))
+			return $p;
 
-		return $this->is_language(LANG) ? LANG : false;
+		return false;
 	}
 
 	/**
 	 * Bind the gettext text domain for the given language.
 	 *
-	 * The JavaScript client receives its strings from getTranslations().
-	 * The PHP side however calls the gettext function _() directly. This
-	 * concerns templates, modules and plugins. gettext only returns a
-	 * translation once LC_MESSAGES names an actual locale and the text
-	 * domain is bound to the directory holding the .mo files. Without
-	 * either, it hands back the msgid, so every server-rendered string
-	 * stays English no matter which language the user selected.
+	 * @lang: an xpg_locale object
 	 *
-	 * @param string $lang Language code (e.g. nl_NL.UTF-8)
+	 * The JavaScript client receives its translation table from
+	 * getTranslations(), and those generally only apply to the
+	 * strings for the JS parts. g-web templates, modules and plugins
+	 * can independently output strings, for which we need
+	 * bindtextdomain.
 	 */
 	private function bindTextDomain($lang) {
 		if (!function_exists('bindtextdomain') || !defined('LC_MESSAGES')) {
@@ -195,10 +199,10 @@ class Language {
 			return;
 		}
 
-		// Only the exact spelling can work. glibc normalizes codeset spellings by
-		// itself, but composes the catalog path from the locale name, so only a
-		// locale named like the directory in LANGUAGE_DIR loads a catalog.
-		// On failure, LC_MESSAGES stays "C" and gettext hands back the msgid.
+		// LC_CTYPE is set elsewhere!
+
+		$lang = clone $lang;
+		$lang->codeset = "UTF-8";
 		if (setlocale(LC_MESSAGES, $lang) === false) {
 			return;
 		}
@@ -264,54 +268,21 @@ class Language {
 	}
 
 	/**
-	 * Returns the ID of the currently selected language.
-	 *
-	 * @return string ID of selected language
+	 * Returns the xpg_locale object of the currently selected language.
 	 */
 	public function getSelected() {
 		return $this->lang;
 	}
 
 	/**
-	 * Returns if the specified language is valid or not.
+	 * Populate the shared memory segment with all translations and yield
+	 * the JSON representation for the currently-selected language.
 	 *
-	 * @param string $lang
-	 *
-	 * @return bool TRUE if the language is valid
+	 * @selected_lang: an xpg_locale object emitted by findLanguage
+	 *                 (i.e. one that maps to a verified directory)
 	 */
-	public function is_language($lang) {
-		return $lang == "en_GB.UTF-8" || is_dir(LANGUAGE_DIR . "/" . $lang);
-	}
-
-	/**
-	 * Returns the resolved language code, i.e. ending on UTF-8.
-	 * Examples:
-	 *  - en_GB => en.GB.UTF-8
-	 *  - en_GB.utf8 => en_GB.UTF-8
-	 *  - en_GB.UTF-8 => en_GB.UTF-8 (no changes).
-	 *
-	 * @param string $lang language code to resolve
-	 *
-	 * @return string resolved language name (i.e. language code ending on .UTF-8).
-	 */
-	public static function resolveLanguage($lang) {
-		$normalizedLang = stristr($lang, '.utf-8', true);
-		if (!empty($normalizedLang) && $normalizedLang !== $lang) {
-			// Make sure we will use the format UTF-8 (capitals and hyphen)
-			return $normalizedLang .= '.UTF-8';
-		}
-
-		$normalizedLang = stristr($lang, '.utf8', true);
-		if (!empty($normalizedLang) && $normalizedLang !== $lang) {
-			// Make sure we will use the format UTF-8 (capitals and hyphen)
-			return $normalizedLang . '.UTF-8';
-		}
-
-		return $lang . '.UTF-8';
-	}
-
 	public function getTranslations() {
-		$selected_lang = $this->getSelected();
+		$selected_lang = (string) $this->getSelected();
 		$memid = @shm_attach(self::CACHE_KEY, self::CACHE_SIZE, 0644);
 		if ($memid && @shm_has_var($memid, 0)) {
 			$cache_table = @shm_get_var($memid, 0);

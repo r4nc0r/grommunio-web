@@ -29,11 +29,19 @@ class xpg_locale {
 
 	public function __toString(): string
 	{
+		return $this->to_string('_');
+	}
+
+	/**
+	 * @tsep: use special territory separator
+	 */
+	public function to_string($tsep): string
+	{
 		$o = $this->language;
 		if (strlen($o) == 0)
 			return $o;
 		if (strlen($this->territory) > 0)
-			$o .= '_'.$this->territory;
+			$o .= $tsep.$this->territory;
 		if (strlen($this->codeset) > 0)
 			$o .= '.'.$this->codeset;
 		if (strlen($this->modifier) > 0)
@@ -272,6 +280,15 @@ class Language {
 	 */
 	public function getSelected() {
 		return $this->lang;
+	}
+
+	/**
+	 * Output the selected language, but in RFC 5646 notation
+	 */
+	public function getSelected_ietf() {
+		$l = clone $this->lang;
+		$l->codeset = $l->modifiers = "";
+		return $l->to_string('-');
 	}
 
 	/**

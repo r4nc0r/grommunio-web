@@ -65,7 +65,7 @@ if ($GLOBALS['settings']->get('zarafa/v1/contexts/mail/attachment_reminder_enabl
 }
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo substr((string) $Language->getSelected(), 0, 2); ?>">
+<html lang="<?php echo $Language->getSelected_ietf(); ?>">
 
 	<head>
 		<meta name="Generator" content="grommunio-web v<?php echo $loader->getVersion(); ?>">

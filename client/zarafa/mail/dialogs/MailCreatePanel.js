@@ -432,6 +432,13 @@ Zarafa.mail.dialogs.MailCreatePanel = Ext.extend(Ext.form.FormPanel, {
 		record.beginEdit();
 		this.getForm().updateRecord(record);
 
+		// A keyboard save may duplicate subject here because the subject field only
+		// fires its change event when it loses focus (before onChange has a chance
+		// to keep normalized_subject in sync).
+		if (record.isModified('subject')) {
+			record.set('normalized_subject', record.get('subject'));
+		}
+
 		record.setBody(this.editorField.getValue(), this.editorField.isHtmlEditor());
 
 		record.endEdit();

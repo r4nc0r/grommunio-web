@@ -368,6 +368,27 @@ Zarafa.core.BrowserWindowMgr = Ext.extend(Ext.util.Observable, {
 	},
 
 	/**
+	 * Makes the browser window a component is rendered in the active one, so
+	 * dialogs raised from that component open next to it. Use this when acting
+	 * on an event which does not focus its window, such as a drop coming from
+	 * outside the browser.
+	 *
+	 * @param {Ext.Component/Ext.Element} component The component whose window must become active.
+	 * @return {Object} The browser window object owning the component.
+	 */
+	activateOwnerWindow: function(component)
+	{
+		var ownerWindow = this.getOwnerWindow(component) || window;
+		var windowName = ownerWindow.name;
+
+		if (windowName && windowName !== this.activeBrowserWindow && this.browserWindows.get(windowName)) {
+			this.setActive(windowName);
+		}
+
+		return ownerWindow;
+	},
+
+	/**
 	 * Event handler which is raised when browser window receives user focus.
 	 * This will make respective browser window active into {@link Zarafa.core.BrowserWindowMgr BrowserWindowMgr}.
 	 *

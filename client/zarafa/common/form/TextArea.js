@@ -80,6 +80,10 @@ Zarafa.common.form.TextArea = Ext.extend(Ext.form.TextArea, {
 		var self = this;
 		var filesSnapshot = files; // keep a reference before the event is recycled
 
+		// A drop does not focus its window, so activate the one this field is
+		// rendered in or the confirmation opens in the main window.
+		Zarafa.core.BrowserWindowMgr.activateOwnerWindow(this.el);
+
 		Ext.MessageBox.confirm(
 			_('Add as attachment?'),
 			_('The following files cannot be embedded in the message body. Add them as attachments instead?') +

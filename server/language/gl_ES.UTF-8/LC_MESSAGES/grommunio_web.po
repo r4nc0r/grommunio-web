@@ -138,3 +138,12 @@ msgstr "Cartafol descoñecido"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Non hai ningún cartafol seleccionado, polo que non se mostra ningunha notificación de correo novo."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Amosar os favoritos só na lista de cartafoles de correo"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Amosar os favoritos do mesmo tipo en todas as listas de cartafoles"
+
+msgid "Show all favorites in every folder list"
+msgstr "Amosar todos os favoritos en todas as listas de cartafoles"

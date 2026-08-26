@@ -138,3 +138,12 @@ msgstr "Neznámy priečinok"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Nie sú vybrané žiadne priečinky, nezobrazí sa žiadne upozornenie na novú poštu."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Zobrazovať obľúbené len v zozname poštových priečinkov"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Zobrazovať obľúbené rovnakého typu v každom zozname priečinkov"
+
+msgid "Show all favorites in every folder list"
+msgstr "Zobrazovať všetky obľúbené v každom zozname priečinkov"

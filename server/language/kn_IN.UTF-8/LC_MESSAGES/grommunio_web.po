@@ -138,3 +138,12 @@ msgstr "ಅಜ್ಞಾತ ಫೋಲ್ಡರ್"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "ಯಾವುದೇ ಫೋಲ್ಡರ್‌ಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿಲ್ಲ, ಯಾವುದೇ ಹೊಸ ಮೇಲ್ ಅಧಿಸೂಚನೆಯನ್ನು ತೋರಿಸಲಾಗುವುದಿಲ್ಲ."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "ಮೆಚ್ಚಿನವುಗಳನ್ನು ಮೇಲ್ ಫೋಲ್ಡರ್ ಪಟ್ಟಿಯಲ್ಲಿ ಮಾತ್ರ ತೋರಿಸು"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "ಅದೇ ಬಗೆಯ ಮೆಚ್ಚಿನವುಗಳನ್ನು ಪ್ರತಿ ಫೋಲ್ಡರ್ ಪಟ್ಟಿಯಲ್ಲಿ ತೋರಿಸು"
+
+msgid "Show all favorites in every folder list"
+msgstr "ಎಲ್ಲಾ ಮೆಚ್ಚಿನವುಗಳನ್ನು ಪ್ರತಿ ಫೋಲ್ಡರ್ ಪಟ್ಟಿಯಲ್ಲಿ ತೋರಿಸು"

@@ -138,3 +138,12 @@ msgstr "Неизвестна папка"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Няма избрани папки, няма да се показва известие за нова поща."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Показване на любимите само в списъка с пощенски папки"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Показване на любимите от същия тип във всеки списък с папки"
+
+msgid "Show all favorites in every folder list"
+msgstr "Показване на всички любими във всеки списък с папки"

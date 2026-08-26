@@ -8369,3 +8369,12 @@ msgstr "Neznámá složka"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Nejsou vybrány žádné složky, nezobrazí se žádné oznámení o nové poště."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Zobrazovat oblíbené jen v seznamu poštovních složek"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Zobrazovat oblíbené stejného typu v každém seznamu složek"
+
+msgid "Show all favorites in every folder list"
+msgstr "Zobrazovat všechny oblíbené v každém seznamu složek"

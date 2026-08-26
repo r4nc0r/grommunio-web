@@ -8243,3 +8243,12 @@ msgstr "未知的資料夾"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "未選擇任何資料夾，將不會顯示新郵件通知。"
+
+msgid "Show favorites in the mail folder list only"
+msgstr "僅在郵件資料夾清單中顯示我的最愛"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "在每個資料夾清單中顯示相同類型的我的最愛"
+
+msgid "Show all favorites in every folder list"
+msgstr "在每個資料夾清單中顯示所有我的最愛"

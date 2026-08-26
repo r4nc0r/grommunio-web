@@ -138,3 +138,12 @@ msgstr "မသိသော ဖိုင်တွဲ"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "ဖိုင်တွဲ မရွေးချယ်ထားသဖြင့် မေးလ်အသစ် အကြောင်းကြားချက် ပြသမည် မဟုတ်ပါ။"
+
+msgid "Show favorites in the mail folder list only"
+msgstr "အကြိုက်ဆုံးများကို မေးလ်ဖိုင်တွဲစာရင်းတွင်သာ ပြပါ"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "အမျိုးအစားတူ အကြိုက်ဆုံးများကို ဖိုင်တွဲစာရင်းတိုင်းတွင် ပြပါ"
+
+msgid "Show all favorites in every folder list"
+msgstr "အကြိုက်ဆုံးအားလုံးကို ဖိုင်တွဲစာရင်းတိုင်းတွင် ပြပါ"

@@ -8334,3 +8334,12 @@ msgstr "Ukendt mappe"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Ingen mapper er valgt, der vises ingen notifikation om ny mail."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Vis kun favoritter i mappelisten for mail"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Vis favoritter af samme type i alle mappelister"
+
+msgid "Show all favorites in every folder list"
+msgstr "Vis alle favoritter i alle mappelister"

@@ -138,3 +138,12 @@ msgstr "โฟลเดอร์ที่ไม่รู้จัก"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "ไม่ได้เลือกโฟลเดอร์ใด จะไม่มีการแสดงการแจ้งเตือนอีเมลใหม่"
+
+msgid "Show favorites in the mail folder list only"
+msgstr "แสดงรายการโปรดในรายการโฟลเดอร์จดหมายเท่านั้น"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "แสดงรายการโปรดชนิดเดียวกันในทุกรายการโฟลเดอร์"
+
+msgid "Show all favorites in every folder list"
+msgstr "แสดงรายการโปรดทั้งหมดในทุกรายการโฟลเดอร์"

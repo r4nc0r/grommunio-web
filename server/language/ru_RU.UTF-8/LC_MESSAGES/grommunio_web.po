@@ -8345,3 +8345,12 @@ msgstr "Неизвестная папка"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Папки не выбраны, уведомления о новой почте не отображаются."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Показывать избранное только в списке папок почты"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Показывать избранное того же типа в каждом списке папок"
+
+msgid "Show all favorites in every folder list"
+msgstr "Показывать всё избранное в каждом списке папок"

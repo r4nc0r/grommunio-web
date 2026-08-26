@@ -138,3 +138,12 @@ msgstr "Ffolder anhysbys"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Ni ddewiswyd unrhyw ffolderi, ni ddangosir unrhyw hysbysiad post newydd."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Dangos ffefrynnau yn rhestr ffolderi e-bost yn unig"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Dangos ffefrynnau o'r un math yn mhob rhestr ffolderi"
+
+msgid "Show all favorites in every folder list"
+msgstr "Dangos pob ffefryn yn mhob rhestr ffolderi"

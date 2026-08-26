@@ -138,3 +138,12 @@ msgstr "Белгисиз папка"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Папкалар тандалган жок, жаңы кат жөнүндө билдирме көрсөтүлбөйт."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Тандалмаларды почта папкалары тизмесинде гана көрсөтүү"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Ошол эле түрдөгү тандалмаларды ар бир папка тизмесинде көрсөтүү"
+
+msgid "Show all favorites in every folder list"
+msgstr "Бардык тандалмаларды ар бир папка тизмесинде көрсөтүү"

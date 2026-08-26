@@ -8270,3 +8270,12 @@ msgstr "Pasta desconhecida"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Nenhuma pasta selecionada, nenhuma notificação de nova mensagem será exibida."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Mostrar os favoritos apenas na lista de pastas de e-mail"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Mostrar os favoritos do mesmo tipo em todas as listas de pastas"
+
+msgid "Show all favorites in every folder list"
+msgstr "Mostrar todos os favoritos em todas as listas de pastas"

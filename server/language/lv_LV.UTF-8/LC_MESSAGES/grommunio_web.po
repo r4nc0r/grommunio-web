@@ -138,3 +138,12 @@ msgstr "Nezināma mape"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Nav izvēlēta neviena mape, tāpēc netiek rādīts neviens paziņojums par jaunu pastu."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Rādīt izlasi tikai pasta mapju sarakstā"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Rādīt tā paša veida izlasi katrā mapju sarakstā"
+
+msgid "Show all favorites in every folder list"
+msgstr "Rādīt visu izlasi katrā mapju sarakstā"

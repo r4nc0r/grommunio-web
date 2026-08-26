@@ -8354,3 +8354,12 @@ msgstr "Tuntematon kansio"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Kansioita ei ole valittu, joten uuden postin ilmoitusta ei näytetä."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Näytä suosikit vain sähköpostin kansioluettelossa"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Näytä samantyyppiset suosikit kaikissa kansioluetteloissa"
+
+msgid "Show all favorites in every folder list"
+msgstr "Näytä kaikki suosikit kaikissa kansioluetteloissa"

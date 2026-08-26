@@ -8271,3 +8271,12 @@ msgstr "תיקיה לא ידועה"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "לא נבחרו תיקיות, ולכן לא תוצג התראה על דואר חדש."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "הצג מועדפים ברשימת תיקיות הדואר בלבד"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "הצג מועדפים מאותו סוג בכל רשימת תיקיות"
+
+msgid "Show all favorites in every folder list"
+msgstr "הצג את כל המועדפים בכל רשימת תיקיות"

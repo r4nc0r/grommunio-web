@@ -138,3 +138,12 @@ msgstr "Nomaʼlum jild"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Hech qanday jild tanlanmagan, yangi xat haqida bildirishnoma koʻrsatilmaydi."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Sevimlilarni faqat pochta jild ro'yxatida ko'rsatish"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Bir xil turdagi sevimlilarni har bir jild ro'yxatida ko'rsatish"
+
+msgid "Show all favorites in every folder list"
+msgstr "Barcha sevimlilarni har bir jild ro'yxatida ko'rsatish"

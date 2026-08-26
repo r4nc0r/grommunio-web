@@ -138,3 +138,12 @@ msgstr "უცნობი საქაღალდე"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "საქაღალდეები არჩეული არ არის, ახალი ფოსტის შეტყობინება არ გამოჩნდება."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "რჩეულების ჩვენება მხოლოდ ფოსტის საქაღალდეების სიაში"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "იმავე ტიპის რჩეულების ჩვენება ყველა საქაღალდის სიაში"
+
+msgid "Show all favorites in every folder list"
+msgstr "ყველა რჩეულის ჩვენება ყველა საქაღალდის სიაში"

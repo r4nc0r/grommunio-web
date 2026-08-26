@@ -8306,3 +8306,12 @@ msgstr "Dossier inconnu"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Aucun dossier sélectionné, aucune notification de nouveau courriel n'est affichée."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Afficher les favoris uniquement dans la liste des dossiers de courrier"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Afficher les favoris du même type dans chaque liste de dossiers"
+
+msgid "Show all favorites in every folder list"
+msgstr "Afficher tous les favoris dans chaque liste de dossiers"

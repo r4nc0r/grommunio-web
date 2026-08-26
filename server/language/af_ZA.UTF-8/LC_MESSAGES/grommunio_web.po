@@ -138,3 +138,12 @@ msgstr "Onbekende vouer"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Geen vouers gekies nie, geen kennisgewing van nuwe pos word gewys nie."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Wys gunstelinge net in die e-posvouerlys"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Wys gunstelinge van dieselfde tipe in elke vouerlys"
+
+msgid "Show all favorites in every folder list"
+msgstr "Wys alle gunstelinge in elke vouerlys"

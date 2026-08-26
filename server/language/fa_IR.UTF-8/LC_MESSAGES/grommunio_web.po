@@ -8257,3 +8257,12 @@ msgstr "پوشه ناشناخته"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "هیچ پوشه‌ای انتخاب نشده است، بنابراین هیچ اعلان ایمیل جدیدی نمایش داده نمی‌شود."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "نمایش موارد دلخواه فقط در فهرست پوشه‌های ایمیل"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "نمایش موارد دلخواه همان نوع در هر فهرست پوشه"
+
+msgid "Show all favorites in every folder list"
+msgstr "نمایش همه موارد دلخواه در هر فهرست پوشه"

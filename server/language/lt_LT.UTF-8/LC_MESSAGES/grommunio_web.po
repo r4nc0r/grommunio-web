@@ -138,3 +138,12 @@ msgstr "Nežinomas aplankas"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Nepasirinktas nė vienas aplankas, todėl joks pranešimas apie naujus laiškus nerodomas."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Rodyti mėgstamus tik pašto aplankų sąraše"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Rodyti to paties tipo mėgstamus kiekviename aplankų sąraše"
+
+msgid "Show all favorites in every folder list"
+msgstr "Rodyti visus mėgstamus kiekviename aplankų sąraše"

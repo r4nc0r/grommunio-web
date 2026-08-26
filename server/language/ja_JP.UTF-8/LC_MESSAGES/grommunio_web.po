@@ -8307,3 +8307,12 @@ msgstr "不明なフォルダ"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "フォルダが選択されていないため、新着メールの通知は表示されません。"
+
+msgid "Show favorites in the mail folder list only"
+msgstr "お気に入りをメールのフォルダー一覧にのみ表示する"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "同じ種類のお気に入りをすべてのフォルダー一覧に表示する"
+
+msgid "Show all favorites in every folder list"
+msgstr "すべてのお気に入りをすべてのフォルダー一覧に表示する"

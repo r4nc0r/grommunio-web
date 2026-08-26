@@ -138,3 +138,12 @@ msgstr "Folder necunoscut"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Niciun folder selectat, nu va fi afișată nicio notificare de mesaj nou."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Afișează favoritele numai în lista de dosare de e-mail"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Afișează favoritele de același tip în fiecare listă de dosare"
+
+msgid "Show all favorites in every folder list"
+msgstr "Afișează toate favoritele în fiecare listă de dosare"

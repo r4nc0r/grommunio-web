@@ -138,3 +138,12 @@ msgstr "ໂຟນເດີທີ່ບໍ່ຮູ້ຈັກ"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "ບໍ່ໄດ້ເລືອກໂຟນເດີໃດເລີຍ, ຈຶ່ງບໍ່ສະແດງການແຈ້ງເຕືອນອີເມວໃໝ່."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "ສະແດງລາຍການທີ່ຊື່ນຊອບໃນລາຍຊື່ໂຟນເດີອີເມວເທົ່ານັ້ນ"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "ສະແດງລາຍການທີ່ຊື່ນຊອບປະເພດດຽວກັນໃນທຸກລາຍຊື່ໂຟນເດີ"
+
+msgid "Show all favorites in every folder list"
+msgstr "ສະແດງລາຍການທີ່ຊື່ນຊອບທັງໝົດໃນທຸກລາຍຊື່ໂຟນເດີ"

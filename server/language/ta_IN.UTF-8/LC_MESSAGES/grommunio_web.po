@@ -138,3 +138,12 @@ msgstr "தெரியாத கோப்புறை"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "கோப்புறைகள் எதுவும் தேர்ந்தெடுக்கப்படவில்லை, புதிய அஞ்சல் அறிவிப்பு எதுவும் காட்டப்படாது."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "பிடித்தவைகளை அஞ்சல் கோப்புறை பட்டியலில் மட்டும் காட்டு"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "ஒரே வகையான பிடித்தவைகளை ஒவ்வொரு கோப்புறை பட்டியலிலும் காட்டு"
+
+msgid "Show all favorites in every folder list"
+msgstr "அனைத்து பிடித்தவைகளையும் ஒவ்வொரு கோப்புறை பட்டியலிலும் காட்டு"

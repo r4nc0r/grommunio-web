@@ -546,6 +546,14 @@ Zarafa.settings.data.SettingsDefaultValue = function(){
 								'scroll_favorites': false,
 
 								/**
+								 * zarafa/v1/contexts/hierarchy/show_favorites_in_context
+								 * One of 'none', 'same_type' or 'all_types'.
+								 * @property
+								 * @type String
+								 */
+								'show_favorites_in_context': 'none',
+
+								/**
 								 * zarafa/v1/contexts/hierarchy/store_order
 								 * The order in which the shared mailboxes are shown in the
 								 * hierarchy, as a list of user names. Empty means the shared

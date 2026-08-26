@@ -8354,3 +8354,12 @@ msgstr "Ismeretlen mappa"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Nincs kiválasztva mappa, így nem jelenik meg értesítés új levelekről."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "A kedvencek megjelenítése csak a levelezési mappalistában"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Az azonos típusú kedvencek megjelenítése minden mappalistában"
+
+msgid "Show all favorites in every folder list"
+msgstr "Az összes kedvenc megjelenítése minden mappalistában"

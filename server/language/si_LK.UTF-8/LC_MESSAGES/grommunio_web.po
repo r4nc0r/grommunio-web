@@ -138,3 +138,12 @@ msgstr "නොදන්නා ෆෝල්ඩරය"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "ෆෝල්ඩර කිසිවක් තෝරා නොමැත, නව තැපැල් දැනුම්දීමක් නොපෙන්වේ."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "ප්‍රියතමයන් තැපැල් ෆෝල්ඩර ලැයිස්තුවේ පමණක් පෙන්වන්න"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "එකම වර්ගයේ ප්‍රියතමයන් සෑම ෆෝල්ඩර ලැයිස්තුවේම පෙන්වන්න"
+
+msgid "Show all favorites in every folder list"
+msgstr "සියලු ප්‍රියතමයන් සෑම ෆෝල්ඩර ලැයිස්තුවේම පෙන්වන්න"

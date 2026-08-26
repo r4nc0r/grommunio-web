@@ -138,3 +138,12 @@ msgstr "ਅਣਜਾਣ ਫੋਲਡਰ"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "ਕੋਈ ਫੋਲਡਰ ਨਹੀਂ ਚੁਣਿਆ ਗਿਆ, ਨਵੀਂ ਮੇਲ ਦੀ ਕੋਈ ਸੂਚਨਾ ਨਹੀਂ ਦਿਖਾਈ ਜਾਵੇਗੀ।"
+
+msgid "Show favorites in the mail folder list only"
+msgstr "ਪਸੰਦਾਂ ਸਿਰਫ਼ ਮੇਲ ਫੋਲਡਰ ਸੂਚੀ ਵਿੱਚ ਵਿਖਾਓ"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "ਇੱਕੋ ਕਿਸਮ ਦੀਆਂ ਪਸੰਦਾਂ ਹਰ ਫੋਲਡਰ ਸੂਚੀ ਵਿੱਚ ਵਿਖਾਓ"
+
+msgid "Show all favorites in every folder list"
+msgstr "ਸਾਰੀਆਂ ਪਸੰਦਾਂ ਹਰ ਫੋਲਡਰ ਸੂਚੀ ਵਿੱਚ ਵਿਖਾਓ"

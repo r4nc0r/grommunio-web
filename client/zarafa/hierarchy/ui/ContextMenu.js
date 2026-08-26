@@ -841,6 +841,7 @@ Zarafa.hierarchy.ui.ContextMenu = Ext.extend(Zarafa.core.ui.menu.ConditionalMenu
 		this.setSvgIconColor(allFoldersTree, folderEntryid, colorSchemeBase);
 		this.setSvgIconColor(allFoldersTree, "favorites-" + folderEntryid, colorSchemeBase);
 		this.setSvgIconColor(multiSelectTree, folderEntryid, colorSchemeBase);
+		this.setSvgIconColor(multiSelectTree, "favorites-" + folderEntryid, colorSchemeBase);
 	},
 
 	/**

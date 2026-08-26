@@ -8332,3 +8332,12 @@ msgstr "Nieznany folder"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Nie wybrano żadnych folderów, powiadomienia o nowej poczcie nie będą wyświetlane."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Pokazuj ulubione tylko na liście folderów poczty"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Pokazuj ulubione tego samego typu na każdej liście folderów"
+
+msgid "Show all favorites in every folder list"
+msgstr "Pokazuj wszystkie ulubione na każdej liście folderów"

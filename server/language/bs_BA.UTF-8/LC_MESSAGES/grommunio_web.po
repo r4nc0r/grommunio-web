@@ -138,3 +138,12 @@ msgstr "Nepoznat folder"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Nijedan folder nije odabran, ne prikazuje se nikakva obavijest o novoj pošti."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Prikaži favorite samo u listi foldera pošte"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Prikaži favorite istog tipa u svakoj listi foldera"
+
+msgid "Show all favorites in every folder list"
+msgstr "Prikaži sve favorite u svakoj listi foldera"

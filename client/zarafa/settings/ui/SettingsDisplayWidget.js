@@ -90,7 +90,7 @@ Zarafa.settings.ui.SettingsDisplayWidget = Ext.extend(Zarafa.settings.ui.Setting
 				boxLabel: _('Hide favorites'),
 				hideLabel: true,
 				listeners: {
-					change: this.onFieldChange,
+					change: this.onHideFavoritesChange,
 					scope: this
 				}
 			},{
@@ -101,6 +101,32 @@ Zarafa.settings.ui.SettingsDisplayWidget = Ext.extend(Zarafa.settings.ui.Setting
 				hideLabel: true,
 				listeners: {
 					change: this.onFieldChange,
+					scope: this
+				}
+			},{
+				xtype: 'radiogroup',
+				name: 'zarafa/v1/contexts/hierarchy/show_favorites_in_context',
+				ref: 'contextFavorites',
+				hideLabel: true,
+				columns: 1,
+				items: [{
+					xtype: 'radio',
+					name: 'contextFavorites',
+					inputValue: 'none',
+					boxLabel: _('Show favorites in the mail folder list only')
+				},{
+					xtype: 'radio',
+					name: 'contextFavorites',
+					inputValue: 'same_type',
+					boxLabel: _('Show favorites of the same type in every folder list')
+				},{
+					xtype: 'radio',
+					name: 'contextFavorites',
+					inputValue: 'all_types',
+					boxLabel: _('Show all favorites in every folder list')
+				}],
+				listeners: {
+					change: this.onContextFavoritesChange,
 					scope: this
 				}
 			},{
@@ -179,6 +205,12 @@ Zarafa.settings.ui.SettingsDisplayWidget = Ext.extend(Zarafa.settings.ui.Setting
 		this.datetimeTimeformat.setValue(settingsModel.get(this.datetimeTimeformat.name));
 		this.hideFavorites.setValue(settingsModel.get(this.hideFavorites.name));
 		this.scrollFavorites.setValue(settingsModel.get(this.scrollFavorites.name));
+		var favoritesMode = settingsModel.get(this.contextFavorites.name);
+		if ([ 'same_type', 'all_types' ].indexOf(favoritesMode) < 0) {
+			favoritesMode = 'none';
+		}
+		this.contextFavorites.setValue(favoritesMode);
+		this.contextFavorites.setDisabled(this.hideFavorites.getValue() === true);
 		this.unreadBorders.setValue(settingsModel.get(this.unreadBorders.name));
 		this.hideWidgetpanel.setValue(settingsModel.get(this.hideWidgetpanel.name));
 		// Check if help manual plugin's settings available else check main settings.
@@ -206,6 +238,10 @@ Zarafa.settings.ui.SettingsDisplayWidget = Ext.extend(Zarafa.settings.ui.Setting
 		settingsModel.set(this.datetimeTimeformat.name, datetimeTimeFormat);
 		settingsModel.set(this.hideFavorites.name, this.hideFavorites.getValue());
 		settingsModel.set(this.scrollFavorites.name, this.scrollFavorites.getValue());
+		var contextFavorites = this.contextFavorites.getValue();
+		if (contextFavorites) {
+			settingsModel.set(this.contextFavorites.name, contextFavorites.inputValue);
+		}
 		settingsModel.set(this.unreadBorders.name, this.unreadBorders.getValue());
 		settingsModel.set(this.hideWidgetpanel.name, this.hideWidgetpanel.getValue());
 
@@ -276,6 +312,34 @@ Zarafa.settings.ui.SettingsDisplayWidget = Ext.extend(Zarafa.settings.ui.Setting
 					this.model.set(this.datetimeTimeformat.name, Zarafa.common.data.TimeFormat.TWELVEHOUR);
 				}
 			}
+		}
+	},
+
+	/**
+	 * Event handler for the 'Hide favorites' checkbox, which leaves the radio group below it
+	 * nothing to decide about.
+	 * @param {Ext.form.Field} field The field which has fired the event
+	 * @param {Boolean} value The new value
+	 * @private
+	 */
+	onHideFavoritesChange: function(field, value)
+	{
+		this.onFieldChange(field, value);
+		this.contextFavorites.setDisabled(value === true);
+	},
+
+	/**
+	 * Event handler which is fired when the favorites visibility radio group has been changed.
+	 * A hierarchy is built once at startup, so the new value only shows after a reload.
+	 * @param {Ext.form.Field} field The field which has fired the event
+	 * @param {Ext.form.Radio} radio The radio which was enabled
+	 * @private
+	 */
+	onContextFavoritesChange: function(field, radio)
+	{
+		if (radio && this.model && this.model.get(field.name) !== radio.inputValue) {
+			this.model.set(field.name, radio.inputValue);
+			this.model.requiresReload = true;
 		}
 	},
 

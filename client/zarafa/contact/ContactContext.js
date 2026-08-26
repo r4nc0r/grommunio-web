@@ -317,6 +317,7 @@ Zarafa.contact.ContactContext = Ext.extend(Zarafa.core.Context, {
 					id: 'zarafa-navigationpanel-contacts-navigation-tree',
 					model: this.getModel(),
 					IPMFilter: 'IPF.Contact',
+					contextFavorites: true,
 					hideDeletedFolders: true,
 					enableDD: true,
 					enableItemDrop: true,

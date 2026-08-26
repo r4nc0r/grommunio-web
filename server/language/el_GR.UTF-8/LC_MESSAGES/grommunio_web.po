@@ -8421,3 +8421,12 @@ msgstr "Άγνωστος φάκελος"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Δεν έχουν επιλεγεί φάκελοι, δεν εμφανίζεται καμία ειδοποίηση νέου ταχυδρομείου."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Εμφάνιση αγαπημένων μόνο στη λίστα φακέλων αλληλογραφίας"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Εμφάνιση αγαπημένων του ίδιου τύπου σε κάθε λίστα φακέλων"
+
+msgid "Show all favorites in every folder list"
+msgstr "Εμφάνιση όλων των αγαπημένων σε κάθε λίστα φακέλων"

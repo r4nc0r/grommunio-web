@@ -138,3 +138,12 @@ msgstr "ថតមិនស្គាល់"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "មិនបានជ្រើសរើសថតណាមួយទេ ដូច្នេះគ្មានការជូនដំណឹងអំពីសំបុត្រថ្មីត្រូវបានបង្ហាញឡើយ។"
+
+msgid "Show favorites in the mail folder list only"
+msgstr "បង្ហាញចំណូលចិត្តតែក្នុងបញ្ជីថតអ៊ីមែលប៉ុណ្ណោះ"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "បង្ហាញចំណូលចិត្តប្រភេទដូចគ្នាក្នុងបញ្ជីថតទាំងអស់"
+
+msgid "Show all favorites in every folder list"
+msgstr "បង្ហាញចំណូលចិត្តទាំងអស់ក្នុងបញ្ជីថតទាំងអស់"

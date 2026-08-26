@@ -8262,3 +8262,12 @@ msgstr "Unbekannter Ordner"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Keine Ordner ausgewählt, es wird keine Benachrichtigung über neue E-Mails angezeigt."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Favoriten nur in der E-Mail-Ordnerliste anzeigen"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Favoriten desselben Typs in jeder Ordnerliste anzeigen"
+
+msgid "Show all favorites in every folder list"
+msgstr "Alle Favoriten in jeder Ordnerliste anzeigen"

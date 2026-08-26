@@ -138,3 +138,12 @@ msgstr "Naməlum qovluq"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Heç bir qovluq seçilməyib, yeni məktub bildirişi göstərilməyəcək."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Sevimliləri yalnız poçt qovluq siyahısında göstər"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Eyni növ sevimliləri hər qovluq siyahısında göstər"
+
+msgid "Show all favorites in every folder list"
+msgstr "Bütün sevimliləri hər qovluq siyahısında göstər"

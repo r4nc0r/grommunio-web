@@ -138,3 +138,12 @@ msgstr "અજ્ઞાત ફોલ્ડર"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "કોઈ ફોલ્ડર પસંદ કરેલ નથી, નવા મેઇલની કોઈ સૂચના બતાવવામાં આવશે નહીં."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "મનપસંદ ફક્ત મેલ ફોલ્ડર સૂચિમાં બતાવો"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "સમાન પ્રકારના મનપસંદ દરેક ફોલ્ડર સૂચિમાં બતાવો"
+
+msgid "Show all favorites in every folder list"
+msgstr "બધા મનપસંદ દરેક ફોલ્ડર સૂચિમાં બતાવો"

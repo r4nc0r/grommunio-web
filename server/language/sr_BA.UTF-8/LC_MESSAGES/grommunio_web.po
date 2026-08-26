@@ -138,3 +138,12 @@ msgstr "Nepoznata fascikla"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Nije izabrana nijedna fascikla, ne prikazuje se nijedno obavještenje o novoj pošti."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Прикажи фаворите само на списку фасцикли поште"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Прикажи фаворите истог типа на сваком списку фасцикли"
+
+msgid "Show all favorites in every folder list"
+msgstr "Прикажи све фаворите на сваком списку фасцикли"

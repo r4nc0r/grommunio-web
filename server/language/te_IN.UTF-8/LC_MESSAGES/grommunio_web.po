@@ -138,3 +138,12 @@ msgstr "తెలియని ఫోల్డర్"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "ఏ ఫోల్డర్‌లూ ఎంపిక కాలేదు, కొత్త మెయిల్ నోటిఫికేషన్ ఏదీ చూపబడదు."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "ఇష్టమైనవి మెయిల్ ఫోల్డర్ జాబితాలో మాత్రమే చూపు"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "అదే రకమైన ఇష్టమైనవి ప్రతి ఫోల్డర్ జాబితాలో చూపు"
+
+msgid "Show all favorites in every folder list"
+msgstr "అన్ని ఇష్టమైనవి ప్రతి ఫోల్డర్ జాబితాలో చూపు"

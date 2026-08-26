@@ -365,6 +365,7 @@ Zarafa.calendar.CalendarContext = Ext.extend(Zarafa.core.Context, {
 					ref: '../../multiSelectHierarchyTree',
 					model: this.getModel(),
 					IPMFilter: 'IPF.Appointment',
+					contextFavorites: true,
 					hideDeletedFolders: true,
 					multiSelect: true,
 					enableDD: true,

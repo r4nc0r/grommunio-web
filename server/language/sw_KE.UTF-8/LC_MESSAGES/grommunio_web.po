@@ -138,3 +138,12 @@ msgstr "Folda isiyojulikana"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Hakuna folda zilizochaguliwa, hakuna arifa ya barua pepe mpya itakayoonyeshwa."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Onyesha vipendwa katika orodha ya folda za barua pekee"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Onyesha vipendwa vya aina moja katika kila orodha ya folda"
+
+msgid "Show all favorites in every folder list"
+msgstr "Onyesha vipendwa vyote katika kila orodha ya folda"

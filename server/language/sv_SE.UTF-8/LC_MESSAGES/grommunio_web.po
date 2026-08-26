@@ -8259,3 +8259,12 @@ msgstr "Okänd mapp"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Inga mappar valda, ingen avisering om ny e-post visas."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Visa favoriter endast i mapplistan för e-post"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Visa favoriter av samma typ i alla mapplistor"
+
+msgid "Show all favorites in every folder list"
+msgstr "Visa alla favoriter i alla mapplistor"

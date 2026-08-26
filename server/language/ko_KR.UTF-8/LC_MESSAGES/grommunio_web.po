@@ -8232,3 +8232,12 @@ msgstr "알 수 없는 폴더"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "선택된 폴더가 없어 새 메일 알림이 표시되지 않습니다."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "즐겨찾기를 메일 폴더 목록에만 표시"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "같은 종류의 즐겨찾기를 모든 폴더 목록에 표시"
+
+msgid "Show all favorites in every folder list"
+msgstr "모든 즐겨찾기를 모든 폴더 목록에 표시"

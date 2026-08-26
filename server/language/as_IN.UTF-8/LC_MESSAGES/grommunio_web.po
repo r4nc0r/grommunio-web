@@ -138,3 +138,12 @@ msgstr "অজ্ঞাত ফোল্ডাৰ"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "কোনো ফোল্ডাৰ বাছনি কৰা হোৱা নাই, নতুন মেইলৰ কোনো জাননী দেখুওৱা নহ'ব।"
+
+msgid "Show favorites in the mail folder list only"
+msgstr "প্ৰিয়সমূহ কেৱল মেইল ফল্ডাৰ তালিকাত দেখুৱাওক"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "একে ধৰণৰ প্ৰিয়সমূহ প্ৰতিটো ফল্ডাৰ তালিকাত দেখুৱাওক"
+
+msgid "Show all favorites in every folder list"
+msgstr "সকলো প্ৰিয় প্ৰতিটো ফল্ডাৰ তালিকাত দেখুৱাওক"

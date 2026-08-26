@@ -228,13 +228,11 @@ Zarafa.hierarchy.data.HierarchyTreeLoader = Ext.extend(Ext.tree.TreeLoader, {
 				treeNode.attributes.folder = folder;
 				treeNode.reload();
 			} else if (folder.isFavoritesRootFolder()) {
-        // Check if favorite node and favorite folder doesn't have same number of children
-        // then reload the favorite node.
-        var favoritesStore = folder.getMAPIStore().getFavoritesStore();
-        if (treeNode.childNodes.length !== favoritesStore.getCount()) {
-          treeNode.reload();
-        }
-      }
+				// Counting the whole favorites store would reload whenever one is filtered out.
+				if (treeNode.childNodes.length !== this.getFilteredChildNodes(folder, 'folder').length) {
+					treeNode.reload();
+				}
+			}
 		}
 		// when we close the shared store suggested contact folder
 		// of shared store was removed but node was not removed from
@@ -299,14 +297,12 @@ Zarafa.hierarchy.data.HierarchyTreeLoader = Ext.extend(Ext.tree.TreeLoader, {
 
 		if (record.phantom !== true) {
 			if (this.tree.nodeFilter(record)) {
-				var treeNode;
-				// If record/folder is favorites mark and active context is other then Mail or Home and "show all folders"
-				// check box is unchecked then don't add new tree node in hierarchy.
-				if (record.isFavoritesFolder() && (record.isContainerClass('IPF.Note') || !this.tree.hasFilter())) {
-					treeNode = this.tree.getNodeById("favorites-"+record.get('entryid'));
-				} else {
-					treeNode = this.tree.getNodeById(record.get('entryid'));
+				// A header created here loads this favorite itself.
+				if (record.isFavoritesFolder() && this.ensureFavoritesRootNode(record)) {
+					return;
 				}
+
+				var treeNode = this.tree.getTreeNode(record);
 
 				if (!treeNode) {
 					var parentNode = this.getFilteredParentNode(record);
@@ -419,6 +415,45 @@ Zarafa.hierarchy.data.HierarchyTreeLoader = Ext.extend(Ext.tree.TreeLoader, {
 			if (treeNode) {
 				treeNode.remove(true);
 			}
+		}
+
+		this.pruneFavoritesRootNode();
+	},
+
+	/**
+	 * Create the favorites header when the first favorite this tree shows arrives.
+	 * @param {Zarafa.common.favorites.data.FavoritesFolderRecord} record The favorite which was added
+	 * @return {Boolean} True when the header was created by this call
+	 * @private
+	 */
+	ensureFavoritesRootNode: function(record)
+	{
+		var folder = record.getFavoritesRootFolder();
+		if (!folder || this.tree.getNodeById(folder.get('entryid')) || !this.tree.nodeFilter(folder)) {
+			return false;
+		}
+
+		this.tree.getRootNode().appendChild(this.createNode(Ext.apply({ nodeType: 'rootfolder', folder: folder }, this.nodeConfig)));
+
+		return true;
+	},
+
+	/**
+	 * Drop the favorites header once this tree shows no favorite. The child count cannot
+	 * decide: a node which was never expanded has none.
+	 * @private
+	 */
+	pruneFavoritesRootNode: function()
+	{
+		var mapiStore = this.store.getDefaultStore();
+		var folder = mapiStore ? mapiStore.getFavoritesRootFolder() : false;
+		if (!folder) {
+			return;
+		}
+
+		var treeNode = this.tree.getNodeById(folder.get('entryid'));
+		if (treeNode && !this.tree.nodeFilter(folder)) {
+			treeNode.remove(true);
 		}
 	},
 
@@ -573,7 +608,8 @@ Zarafa.hierarchy.data.HierarchyTreeLoader = Ext.extend(Ext.tree.TreeLoader, {
 			// when the node is created.
 			attr.id = folder.isFavoritesFolder() ? "favorites-" + folder.get('entryid') : folder.get('entryid');
 			if (folder.isFavoritesRootFolder()) {
-				attr.leaf = folder.get('assoc_content_count') === 0;
+				// assoc_content_count says nothing about which favorites this tree shows.
+				attr.leaf = Ext.isEmpty(this.getFilteredChildNodes(folder, 'folder'));
 			} else {
 				attr.leaf = !folder.get('has_subfolder');
 			}
@@ -581,6 +617,13 @@ Zarafa.hierarchy.data.HierarchyTreeLoader = Ext.extend(Ext.tree.TreeLoader, {
 			attr.uiProvider = Zarafa.hierarchy.ui.FolderNodeUI;
 			attr.expanded = this.tree.isFolderOpened(folder);
 			attr.allowDrag = !folder.isDefaultFolder() && !folder.isSearchFolder();
+
+			// A folder this context cannot open gets no checkbox; the rest follow the model.
+			if (Ext.isDefined(attr.checked) && !this.tree.isOwnFolderType(folder)) {
+				delete attr.checked;
+			} else if (Ext.isDefined(attr.checked) && this.tree.model) {
+				attr.checked = this.tree.model.hasFolder(folder);
+			}
 		}
 
 		return Zarafa.hierarchy.data.HierarchyTreeLoader.superclass.createNode.apply(this, arguments);

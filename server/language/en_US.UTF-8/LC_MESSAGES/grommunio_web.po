@@ -8250,3 +8250,12 @@ msgstr "Unknown folder"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "No folders selected, no new mail notification is shown."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Show favourites in the mail folder list only"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Show favourites of the same type in every folder list"
+
+msgid "Show all favorites in every folder list"
+msgstr "Show all favourites in every folder list"

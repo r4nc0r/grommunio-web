@@ -8278,3 +8278,12 @@ msgstr "未知文件夹"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "未选择任何文件夹，将不会显示新邮件通知。"
+
+msgid "Show favorites in the mail folder list only"
+msgstr "仅在邮件文件夹列表中显示收藏夹"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "在每个文件夹列表中显示同类型的收藏夹"
+
+msgid "Show all favorites in every folder list"
+msgstr "在每个文件夹列表中显示所有收藏夹"

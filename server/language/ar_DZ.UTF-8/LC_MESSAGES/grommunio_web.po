@@ -8361,3 +8361,12 @@ msgstr "مجلد مجهول"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "لم يتم تحديد أي مجلدات، لن يتم عرض أي إشعار بريد جديد."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "إظهار المفضلة في قائمة مجلدات البريد فقط"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "إظهار المفضلة من النوع نفسه في كل قائمة مجلدات"
+
+msgid "Show all favorites in every folder list"
+msgstr "إظهار كل المفضلة في كل قائمة مجلدات"

@@ -138,3 +138,12 @@ msgstr "ያልታወቀ አቃፊ"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "ምንም አቃፊ አልተመረጠም፣ የአዲስ መልእክት ማሳወቂያ አይታይም።"
+
+msgid "Show favorites in the mail folder list only"
+msgstr "ተመራጮችን በኢሜይል አቃፊ ዝርዝር ውስጥ ብቻ አሳይ"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "ተመሳሳይ ዓይነት ተመራጮችን በየአቃፊ ዝርዝሩ ውስጥ አሳይ"
+
+msgid "Show all favorites in every folder list"
+msgstr "ሁሉንም ተመራጮች በየአቃፊ ዝርዝሩ ውስጥ አሳይ"

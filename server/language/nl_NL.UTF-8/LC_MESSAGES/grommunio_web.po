@@ -8264,3 +8264,12 @@ msgstr "Onbekende map"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Geen mappen geselecteerd, er wordt geen notificatie van nieuwe e-mail getoond."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Favorieten alleen in de lijst met e-mailmappen weergeven"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Favorieten van hetzelfde type in elke mappenlijst weergeven"
+
+msgid "Show all favorites in every folder list"
+msgstr "Alle favorieten in elke mappenlijst weergeven"

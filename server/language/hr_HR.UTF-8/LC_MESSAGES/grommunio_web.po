@@ -8284,3 +8284,12 @@ msgstr "Nepoznata mapa"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Nema odabranih mapa, obavijest o novoj pošti neće se prikazati."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Prikaži favorite samo na popisu mapa pošte"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Prikaži favorite istoga tipa na svakom popisu mapa"
+
+msgid "Show all favorites in every folder list"
+msgstr "Prikaži sve favorite na svakom popisu mapa"

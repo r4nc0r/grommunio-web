@@ -138,3 +138,12 @@ msgstr "Անհայտ թղթապանակ"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Ոչ մի թղթապանակ ընտրված չէ, նոր նամակի մասին ծանուցում չի ցուցադրվի։"
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Ցուցադրել ընտրանիները միայն նամակների պանակների ցանկում"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Ցուցադրել նույն տիպի ընտրանիները բոլոր պանակների ցանկերում"
+
+msgid "Show all favorites in every folder list"
+msgstr "Ցուցադրել բոլոր ընտրանիները բոլոր պանակների ցանկերում"

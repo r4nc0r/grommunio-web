@@ -138,3 +138,12 @@ msgstr "Ifolda engaziwa"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Awekho amafolda akhethiwe, akukho saziso seposi elisha esiboniswayo."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Bonisa izintandokazi ohlwini lwamafayela eposi kuphela"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Bonisa izintandokazi zohlobo olufanayo kuwo wonke uhlu lwamafayela"
+
+msgid "Show all favorites in every folder list"
+msgstr "Bonisa zonke izintandokazi kuwo wonke uhlu lwamafayela"

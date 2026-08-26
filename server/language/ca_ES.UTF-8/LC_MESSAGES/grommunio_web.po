@@ -8272,3 +8272,12 @@ msgstr "Carpeta desconeguda"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "No s'ha seleccionat cap carpeta, no es mostrarà cap notificació de correu nou."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Mostra els preferits només a la llista de carpetes de correu"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Mostra els preferits del mateix tipus a totes les llistes de carpetes"
+
+msgid "Show all favorites in every folder list"
+msgstr "Mostra tots els preferits a totes les llistes de carpetes"

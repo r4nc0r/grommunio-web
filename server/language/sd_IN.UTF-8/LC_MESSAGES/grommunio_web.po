@@ -138,3 +138,12 @@ msgstr "اڻڄاتل فولڊر"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "ڪوبه فولڊر نه چونڊيو ويو آهي، نئين ميل جو ڪوبه اطلاع نه ڏيکاريو ويندو."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "پسنديدگيون رڳو ميل فولڊر جي فهرست ۾ ڏيکاريو"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "ساڳي قسم جون پسنديدگيون هر فولڊر فهرست ۾ ڏيکاريو"
+
+msgid "Show all favorites in every folder list"
+msgstr "سڀ پسنديدگيون هر فولڊر فهرست ۾ ڏيکاريو"

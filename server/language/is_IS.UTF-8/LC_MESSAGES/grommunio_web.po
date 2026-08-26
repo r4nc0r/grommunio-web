@@ -8257,3 +8257,12 @@ msgstr "Óþekkt mappa"
 
 msgid "No folders selected, no new mail notification is shown."
 msgstr "Engar möppur valdar, engin tilkynning um nýjan póst er sýnd."
+
+msgid "Show favorites in the mail folder list only"
+msgstr "Sýna uppáhald aðeins í möppulista pósts"
+
+msgid "Show favorites of the same type in every folder list"
+msgstr "Sýna uppáhald af sömu gerð í öllum möppulistum"
+
+msgid "Show all favorites in every folder list"
+msgstr "Sýna allt uppáhald í öllum möppulistum"

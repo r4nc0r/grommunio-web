@@ -44,23 +44,10 @@ if (!defined("ENABLE_FILE_PREVIEWER")) {
 	define("ENABLE_FILE_PREVIEWER", true);
 }
 
-// Allow dragging attachments out of an opened e-mail directly into a
-// cooperating web application's drop zone. The attachment bytes are embedded in
-// the drag operation so the receiving site can reconstruct the file without a
-// separate authenticated download. Set to false to disable that embedding.
-//
-// This does not switch off dragging attachments as such: dropping an attachment
-// onto the operating system (file manager, desktop) is done by handing the
-// browser the attachment's download URL, requires no embedded bytes and stays
-// available regardless of this setting.
-if (!defined("ENABLE_ATTACHMENT_DRAG_OUT")) {
-	define("ENABLE_ATTACHMENT_DRAG_OUT", true);
-}
-
 // Maximum attachment size (in bytes) whose content is embedded in the drag
-// operation for ENABLE_ATTACHMENT_DRAG_OUT. Larger attachments are not embedded
-// (to avoid excessive memory/bandwidth usage); they can still be dragged to the
-// operating system (file manager, desktop). Default: 25 MiB.
+// operation. Larger attachments are not embedded (to avoid excessive
+// memory/bandwidth usage); they can still be dragged to the operating system
+// (file manager, desktop). Default: 25 MiB.
 if (!defined("ATTACHMENT_DRAG_OUT_MAX_SIZE")) {
 	define("ATTACHMENT_DRAG_OUT_MAX_SIZE", 26214400);
 }

@@ -146,24 +146,17 @@ Zarafa.common.ui.messagepanel.AttachmentLinks = Ext.extend(Ext.DataView, {
 
 	/**
 	 * Returns whether the attachment bytes may be embedded in the drag
-	 * operation, which requires the server to allow it (see
-	 * ENABLE_ATTACHMENT_DRAG_OUT in config.php) and the browser to support it
-	 * (<tt>window.fetch</tt> and <tt>FileReader</tt>).
+	 * operation, which requires the browser to support <tt>window.fetch</tt>
+	 * and <tt>FileReader</tt>.
 	 *
-	 * This governs the {@link #attachmentDragOutType} payload only; it is not a
-	 * switch for dragging attachments as such. Dragging an attachment to the
-	 * operating system uses the <tt>DownloadURL</tt> type, needs no payload and
-	 * is always available.
+	 * This governs the {@link #attachmentDragOutType} payload only. Dragging an
+	 * attachment to the operating system uses the <tt>DownloadURL</tt> type and
+	 * needs no payload.
 	 * @return {Boolean} True if attachment payloads may be embedded in a drag
 	 * @private
 	 */
 	isDragOutEmbedEnabled: function()
 	{
-		var serverConfig = container.getServerConfig();
-		if (serverConfig && Ext.isFunction(serverConfig.isAttachmentDragOutEnabled) && !serverConfig.isAttachmentDragOutEnabled()) {
-			return false;
-		}
-
 		return Ext.isFunction(window.fetch) && typeof FileReader === 'function';
 	},
 

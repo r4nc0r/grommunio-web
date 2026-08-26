@@ -69,18 +69,6 @@ Zarafa.core.data.ServerConfig = Ext.extend(Object, {
 	},
 
 	/**
-	 * @return {Boolean} True if the attachment bytes may be embedded in a drag
-	 * operation, so a cooperating web application can reconstruct the file on
-	 * drop (see ENABLE_ATTACHMENT_DRAG_OUT in config.php). This does not affect
-	 * dragging an attachment onto the operating system, which needs no embedded
-	 * bytes.
-	 */
-	isAttachmentDragOutEnabled: function()
-	{
-		return this.meta.enable_attachment_drag_out !== false;
-	},
-
-	/**
 	 * @return {Number} The maximum attachment size (in bytes) whose content is
 	 * embedded in a drag operation for the attachment drag-out feature (see
 	 * ATTACHMENT_DRAG_OUT_MAX_SIZE in config.php). Defaults to 25 MiB when the

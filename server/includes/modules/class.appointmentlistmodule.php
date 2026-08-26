@@ -414,7 +414,10 @@ class AppointmentListModule extends ListModule {
 		try {
 			$folder = mapi_msgstore_openentry($store, $entryid);
 			$table = mapi_folder_getcontentstable($folder, MAPI_DEFERRED_ERRORS);
-			$calendaritems = mapi_table_queryallrows($table, $this->properties, $restriction);
+			// Restricting the table filters it while it loads; passing the
+			// restriction to queryallrows instead walks it row by row.
+			mapi_table_restrict($table, $restriction, TBL_BATCH);
+			$calendaritems = mapi_table_queryallrows($table, $this->properties);
 
 			return $this->processItems($calendaritems, $store, $entryid, $start, $end);
 		}

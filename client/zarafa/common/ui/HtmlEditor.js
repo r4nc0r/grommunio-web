@@ -213,14 +213,16 @@ Zarafa.common.ui.HtmlEditor = Ext.extend(Ext.ux.form.TinyMCETextArea, {
 						// field would be.
 						//
 						// The FileList has to be built with the constructor of the window
-						// uploadFiles() will check it against, which is the active browser
-						// window rather than necessarily this one: a dialog opened in its
-						// own window has its own FileList, and an object built here would
-						// fail that instanceof check and be attached as a bare filename.
-						var activeBrowserWindow = Zarafa.core.BrowserWindowMgr.getActive() || window;
+						// this editor is rendered in: a dialog opened in its own window has
+						// its own FileList, and an object built elsewhere would fail that
+						// instanceof check and be attached as a bare filename.
+						//
+						// Activating that window also makes the confirmation below open
+						// next to the editor, because a drop does not focus its window.
+						var editorWindow = Zarafa.core.BrowserWindowMgr.activateOwnerWindow(self.getEl()) || window;
 						var uploadFileList = nonEmbeddable;
-						if (Ext.isFunction(activeBrowserWindow.DataTransfer)) {
-							var fileListBuilder = new activeBrowserWindow.DataTransfer();
+						if (Ext.isFunction(editorWindow.DataTransfer)) {
+							var fileListBuilder = new editorWindow.DataTransfer();
 							nonEmbeddable.forEach(function(f) {
 								fileListBuilder.items.add(f);
 							});

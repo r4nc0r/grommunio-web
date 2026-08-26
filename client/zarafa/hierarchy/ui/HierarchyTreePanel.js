@@ -657,7 +657,7 @@ Zarafa.hierarchy.ui.HierarchyTreePanel = Ext.extend(Zarafa.hierarchy.ui.Tree, {
 		folderNode = this.getNodeById(folder.get('entryid'));
 
 		// No need to change the current selection if folder is not selected.
-		if (!folderNode.isSelected()) {
+		if (!folderNode || !folderNode.isSelected()) {
 			return;
 		}
 
@@ -778,8 +778,7 @@ Zarafa.hierarchy.ui.HierarchyTreePanel = Ext.extend(Zarafa.hierarchy.ui.Tree, {
 	 */
 	onFolderClicked: function(treeNode)
 	{
-		var folder = treeNode.getFolder();
-		Zarafa.hierarchy.Actions.openFolder(folder);
+		this.openFolder(treeNode.getFolder());
 	},
 
 	/**

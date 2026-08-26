@@ -113,13 +113,17 @@ Zarafa.common.ui.IconClass = {
 	 */
 	getIconClassFromContainerClass: function(folder, containerClass)
 	{
-		if (folder) {
-			if (Ext.isFunction(folder.isFavoritesFolder) && folder.isFavoritesFolder()) {
-				if(folder.isSearchFolder()) {
-					return 'icon_magnifier';
-				}
-				return 'icon_folder_note';
+		if (folder && Ext.isFunction(folder.isFavoritesFolder) && folder.isFavoritesFolder()) {
+			if (folder.isSearchFolder()) {
+				return 'icon_magnifier';
 			}
+
+			// A favorite reports the default store whichever store it points into.
+			containerClass = containerClass || folder.get('container_class');
+			folder = folder.getOriginalRecordFromFavoritesRecord();
+		}
+
+		if (folder) {
 			// For root nodes we need to discover if it is our private or public store,
 			// or if it is a shared store, in which case it can be an entire
 			// store, or only the root folder for a specific folder type

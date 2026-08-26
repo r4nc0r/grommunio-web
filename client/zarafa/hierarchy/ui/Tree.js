@@ -44,6 +44,21 @@ Zarafa.hierarchy.ui.Tree = Ext.extend(Ext.tree.TreePanel, {
 	 */
 	hideFavorites: false,
 
+		/**
+	 * @cfg {Boolean} contextFavorites True to let the
+	 * 'zarafa/v1/contexts/hierarchy/show_favorites_in_context' setting decide whether the
+	 * favorites survive the {@link #IPMFilter}. Only the context navigation trees opt in.
+	 */
+	contextFavorites: false,
+
+	/**
+	 * One of 'none', 'same_type' or 'all_types'. Resolved in {@link #initComponent}.
+	 * @property
+	 * @type String
+	 * @private
+	 */
+	favoritesMode: 'none',
+
 	/**
 	 * @cfg {Boolean} hideSearchFolders True to hide the search folder in hierarchy.
 	 */
@@ -163,6 +178,10 @@ Zarafa.hierarchy.ui.Tree = Ext.extend(Ext.tree.TreePanel, {
 	 */
 	initComponent: function()
 	{
+		if (this.contextFavorites === true && this.hideFavorites !== true) {
+			this.favoritesMode = container.getSettingsModel().get('zarafa/v1/contexts/hierarchy/show_favorites_in_context') || 'none';
+		}
+
 		// Initialize the loader
 		if (!this.loader) {
 			this.loader = new Zarafa.hierarchy.data.HierarchyTreeLoader({
@@ -277,7 +296,7 @@ Zarafa.hierarchy.ui.Tree = Ext.extend(Ext.tree.TreePanel, {
 		var hide = false;
 
 		// Check if the folder matches the requested IPMFilter
-		if (Ext.isDefined(this.IPMFilter)) {
+		if (Ext.isDefined(this.IPMFilter) && !this.isFavoritesExemptFromFilter(folder)) {
 			hide = !folder.isContainerClass(this.IPMFilter, false);
 		}
 
@@ -307,6 +326,74 @@ Zarafa.hierarchy.ui.Tree = Ext.extend(Ext.tree.TreePanel, {
 		}
 
 		return !hide;
+	},
+
+	/**
+	 * The favorites root has no container class of its own, the server reports it as
+	 * 'IPF.Note'. Exempt it from the {@link #IPMFilter}, and the favorites too in 'all_types'.
+	 * @param {Zarafa.hierarchy.data.MAPIFolderRecord} folder The folder to check
+	 * @return {Boolean} True when the IPMFilter must not be applied to the given folder
+	 * @private
+	 */
+	isFavoritesExemptFromFilter: function(folder)
+	{
+		if (this.favoritesMode === 'none') {
+			return false;
+		}
+
+		if (!folder.isFavoritesRootFolder()) {
+			return this.favoritesMode === 'all_types' && folder.isFavoritesFolder();
+		}
+
+		return this.hasVisibleFavorites(folder);
+	},
+
+	/**
+	 * Keeps a tree which shows no favorite from carrying an empty favorites header.
+	 * @param {Zarafa.hierarchy.data.MAPIFolderRecord} root The favorites root folder
+	 * @return {Boolean} True when a favorite below the root passes the {@link #nodeFilter}
+	 * @private
+	 */
+	hasVisibleFavorites: function(root)
+	{
+		var favorites = root.getChildren();
+		for (var i = 0, len = favorites.length; i < len; i++) {
+			if (this.nodeFilter(favorites[i])) {
+				return true;
+			}
+		}
+
+		return false;
+	},
+
+	/**
+	 * Check whether the given folder holds the folder type this tree was filtered on. Only
+	 * such folders can join a {@link Zarafa.hierarchy.ui.MultiSelectHierarchyTree} selection.
+	 * @param {Zarafa.hierarchy.data.MAPIFolderRecord} folder The folder to check
+	 * @return {Boolean} True when the folder holds this tree's own folder type
+	 */
+	isOwnFolderType: function(folder)
+	{
+		if (folder.isFavoritesRootFolder()) {
+			return false;
+		}
+
+		return !Ext.isDefined(this.IPMFilter) || folder.isContainerClass(this.IPMFilter, false);
+	},
+
+	/**
+	 * Open the given folder in response to a click on its node. A folder of another type is
+	 * handed to its own context, resolved, so that context does not have to reveal our node.
+	 * @param {Zarafa.hierarchy.data.MAPIFolderRecord} folder The folder to open
+	 * @protected
+	 */
+	openFolder: function(folder)
+	{
+		if (!this.isOwnFolderType(folder)) {
+			folder = Zarafa.hierarchy.Actions.resolveFavorites(folder);
+		}
+
+		Zarafa.hierarchy.Actions.openFolder(folder);
 	},
 
 	/**

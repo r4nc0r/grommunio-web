@@ -369,6 +369,7 @@ Zarafa.mail.MailContext = Ext.extend(Zarafa.core.Context, {
 					id: 'zarafa-navigationpanel-mail-navigation-tree',
 					model: this.getModel(),
 					IPMFilter: 'IPF.Note',
+					contextFavorites: true,
 					hideDeletedFolders: false,
 					enableDD: true,
 					enableItemDrop: true,

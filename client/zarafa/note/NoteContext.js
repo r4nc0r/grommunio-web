@@ -240,6 +240,7 @@ Zarafa.note.NoteContext = Ext.extend(Zarafa.core.Context, {
 					id: 'zarafa-navigationpanel-notes-navigation-tree',
 					model: this.getModel(),
 					IPMFilter: 'IPF.StickyNote',
+					contextFavorites: true,
 					hideDeletedFolders: true,
 					enableDD: true,
 					enableItemDrop: true,

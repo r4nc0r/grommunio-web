@@ -286,6 +286,7 @@ Zarafa.task.TaskContext = Ext.extend(Zarafa.core.Context, {
 					id: 'zarafa-navigationpanel-tasks-navigation-tree',
 					model: this.getModel(),
 					IPMFilter: 'IPF.Task',
+					contextFavorites: true,
 					hideDeletedFolders: true,
 					enableDD: true,
 					enableItemDrop: true,

@@ -74,10 +74,13 @@ Zarafa.hierarchy.ui.FolderNodeUI = Ext.extend(Ext.tree.TreeNodeUI, {
 			// There is no CalendarContextModel available in the case where that particular
 			// calendar-tree-node doesn't belongs to MultiSelectHierarchyTree.
 			// So, simply made that ContextModel available to current HierarchyTree.
-			if (!calendarContextModel) {
-				var calendarContext = container.getContextByName('calendar');
-				calendarContextModel = calendarContext.getModel();
-				n.getOwnerTree().model = calendarContextModel;
+			// A tree of another context has a model, but not one which knows about colors.
+			if (!calendarContextModel || !Ext.isFunction(calendarContextModel.getColorScheme)) {
+				var calendarModel = container.getContextByName('calendar').getModel();
+				if (!calendarContextModel) {
+					n.getOwnerTree().model = calendarModel;
+				}
+				calendarContextModel = calendarModel;
 			}
 
 			scheme = calendarContextModel.getColorScheme(a.folder.get('entryid'));

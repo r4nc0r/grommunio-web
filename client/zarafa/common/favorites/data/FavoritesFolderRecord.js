@@ -38,7 +38,8 @@ Zarafa.common.favorites.data.FavoritesFolderRecord = Ext.extend(Zarafa.hierarchy
 	getOriginalRecordFromFavoritesRecord: function()
 	{
 		var mapiStore = container.getHierarchyStore().getById(this.get('store_entryid'));
-		return mapiStore.getFolderStore().getById(this.get("entryid"));
+
+		return mapiStore ? mapiStore.getFolderStore().getById(this.get("entryid")) : undefined;
 	}
 });
 

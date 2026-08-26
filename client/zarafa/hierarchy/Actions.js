@@ -50,6 +50,31 @@ Zarafa.hierarchy.Actions = {
 	},
 
 	/**
+	 * Swap a favorite for the folder it points at. A model which re-sorts its folders replaces
+	 * the favorite instance by the original one, which the calendar view reads as a deselection.
+	 * @param {Zarafa.hierarchy.data.MAPIFolderRecord/Zarafa.hierarchy.data.MAPIFolderRecord[]} folders The folders to resolve
+	 * @return {Zarafa.hierarchy.data.MAPIFolderRecord/Zarafa.hierarchy.data.MAPIFolderRecord[]} The folders behind the favorites
+	 */
+	resolveFavorites: function(folders)
+	{
+		if (!Array.isArray(folders)) {
+			return this.resolveFavorites([ folders ])[0];
+		}
+
+		var resolved = [];
+		for (var i = 0, len = folders.length; i < len; i++) {
+			var folder = folders[i];
+
+			if (folder.isFavoritesFolder() && !folder.isSearchFolder()) {
+				folder = folder.getOriginalRecordFromFavoritesRecord() || folder;
+			}
+			resolved.push(folder);
+		}
+
+		return resolved;
+	},
+
+	/**
 	 * Event handler for the {@link Ext.MessageBox#show} which was opened by {@link #openFolder}.
 	 * If the "yes" button was pressed, then the folder (the 'this' context for this function)
 	 * will be removed from the hierarchy.

@@ -56,12 +56,20 @@ Zarafa.hierarchy.ui.MultiSelectHierarchyTree = Ext.extend(Zarafa.hierarchy.ui.Hi
 	 */
 	onTreeNodeClick: function(treeNode)
 	{
+		// A favorite of another type belongs to another context, not to our model.
+		if (!this.isOwnFolderType(treeNode.getFolder())) {
+			this.openFolder(treeNode.getFolder());
+			return false;
+		}
+
+		var folder = Zarafa.hierarchy.Actions.resolveFavorites(treeNode.getFolder());
 		var treeNodeui = treeNode.getUI();
-		if (treeNodeui.checkbox.checked && treeNode.isNodeSelected) {
+
+		// Two nodes can stand for one folder, so the model decides what is open, not the node.
+		if (treeNodeui.checkbox.checked && this.model.hasFolder(folder)) {
 			treeNodeui.toggleCheck(false);
 			return false;
 		}
-		var folder = treeNode.getFolder();
 		this.model.addFolder(folder);
 		treeNode.isNodeSelected = true;
 		treeNodeui.toggleCheck(true);
@@ -94,9 +102,9 @@ Zarafa.hierarchy.ui.MultiSelectHierarchyTree = Ext.extend(Zarafa.hierarchy.ui.Hi
 	 */
 	onTreeNodeCheckChange: function(node, checked)
 	{
-		var folder = node.getFolder();
+		var folder = Zarafa.hierarchy.Actions.resolveFavorites(node.getFolder());
 		if (checked) {
-			if (!node.isNodeSelected) {
+			if (!this.model.hasFolder(folder)) {
 				this.fireEvent('click', node);
 			}
 		} else {
@@ -120,10 +128,14 @@ Zarafa.hierarchy.ui.MultiSelectHierarchyTree = Ext.extend(Zarafa.hierarchy.ui.Hi
 		for (var i = 0; i < folders.length; i++) {
 			// traverse through all the available folders, and set the color if changed in other tree.
 			var folderEntryid = folders[i].get('entryid');
-			var node = this.getNodeById(folderEntryid);
-			if (Ext.isDefined(node)) {
-				var colorScheme = model.getColorScheme(folderEntryid);
-				Ext.get(node.getUI().iconNode).setStyle('color', colorScheme.base);
+			var colorScheme = model.getColorScheme(folderEntryid);
+
+			var ids = [ folderEntryid, 'favorites-' + folderEntryid ];
+			for (var j = 0; j < ids.length; j++) {
+				var node = this.getNodeById(ids[j]);
+				if (Ext.isDefined(node) && node.getUI().iconNode) {
+					Ext.get(node.getUI().iconNode).setStyle('color', colorScheme.base);
+				}
 			}
 		}
 	},
@@ -135,7 +147,8 @@ Zarafa.hierarchy.ui.MultiSelectHierarchyTree = Ext.extend(Zarafa.hierarchy.ui.Hi
 	 */
 	onCalendarActivate: function(folder)
 	{
-		var selectedNode = this.getNodeById(folder.get('entryid'));
+		var entryid = folder.get('entryid');
+		var selectedNode = this.getNodeById(entryid) || this.getNodeById('favorites-' + entryid);
 		if (selectedNode) {
 			selectedNode.select();
 		}

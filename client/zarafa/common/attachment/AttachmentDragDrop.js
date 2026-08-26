@@ -123,13 +123,13 @@ Zarafa.common.attachment.AttachmentDragDrop = {
 			return undefined;
 		}
 
-		var name = String(payload.name).replace(/[\r\n]+/g, ' ').replace(/^.*[\\\/]/, '');
+		var name = String(payload.name).replace(/[\r\n]+/g, ' ').replace(/^.*[\\/]/, '');
 		if (Ext.isEmpty(name)) {
 			return undefined;
 		}
 
 		var mimeType = String(payload.type || '').split(';')[0].trim();
-		if (!/^[\w.+-]+\/[\w.+-]+$/.test(mimeType)) {
+		if (!(/^[\w.+-]+\/[\w.+-]+$/).test(mimeType)) {
 			mimeType = this.defaultMimeType;
 		}
 

@@ -43,7 +43,8 @@ Zarafa.common.form.TextArea = Ext.extend(Ext.form.TextArea, {
 	onFileDragOver: function(e)
 	{
 		var dt = e.browserEvent.dataTransfer;
-		if (dt && (Array.prototype.indexOf.call(dt.types, 'Files') >= 0 || dt.files.length > 0)) {
+		if (dt && (Array.prototype.indexOf.call(dt.types, 'Files') >= 0 || dt.files.length > 0 ||
+			Zarafa.common.attachment.AttachmentDragDrop.hasPayload(dt))) {
 			e.preventDefault();
 		}
 	},
@@ -57,14 +58,26 @@ Zarafa.common.form.TextArea = Ext.extend(Ext.form.TextArea, {
 	 */
 	onFileDrop: function(e)
 	{
+		var dragDrop = Zarafa.common.attachment.AttachmentDragDrop;
 		var dt = e.browserEvent.dataTransfer;
-		if (!dt || (Array.prototype.indexOf.call(dt.types, 'Files') < 0 && dt.files.length === 0)) {
+		if (!dt || (Array.prototype.indexOf.call(dt.types, 'Files') < 0 && dt.files.length === 0 &&
+			!dragDrop.hasPayload(dt))) {
 			return;
 		}
 
 		e.preventDefault();
 
+		// A drop does not focus its window, so activate the one this field is
+		// rendered in or the confirmation below opens in the main window.
+		var ownerWindow = Zarafa.core.BrowserWindowMgr.activateOwnerWindow(this.el);
+
+		// A drag started on an attachment in another grommunio Web tab or window
+		// carries its bytes as a payload and leaves the FileList empty.
 		var files = dt.files;
+		if (!files || files.length === 0) {
+			files = dragDrop.getFileList(dt, ownerWindow);
+		}
+
 		if (!files || files.length === 0) {
 			return;
 		}
@@ -79,10 +92,6 @@ Zarafa.common.form.TextArea = Ext.extend(Ext.form.TextArea, {
 
 		var self = this;
 		var filesSnapshot = files; // keep a reference before the event is recycled
-
-		// A drop does not focus its window, so activate the one this field is
-		// rendered in or the confirmation opens in the main window.
-		Zarafa.core.BrowserWindowMgr.activateOwnerWindow(this.el);
 
 		Ext.MessageBox.confirm(
 			_('Add as attachment?'),

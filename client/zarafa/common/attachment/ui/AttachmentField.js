@@ -115,7 +115,18 @@ Zarafa.common.attachment.ui.AttachmentField = Ext.extend(Zarafa.common.ui.BoxFie
 
 		this.wrap.removeClass(this.wrapFocusClass);
 
-		var files = event.browserEvent.target.files || event.browserEvent.dataTransfer.files;
+		var dataTransfer = event.browserEvent.dataTransfer;
+		var files = event.browserEvent.target.files || dataTransfer.files;
+
+		// A drag started on an attachment in another grommunio Web tab or window
+		// carries its bytes as a payload and leaves the FileList empty.
+		if (!files || files.length === 0) {
+			var ownerWindow = Zarafa.core.BrowserWindowMgr.activateOwnerWindow(this.wrap);
+			files = Zarafa.common.attachment.AttachmentDragDrop.getFileList(dataTransfer, ownerWindow);
+			if (!files || files.length === 0) {
+				return;
+			}
+		}
 
 		// Test if the files can be uploaded, upload them if possible
 		if (this.boxStore.canUploadFiles(files, { container: this.recordComponentUpdaterPlugin.rootContainer.getEl() })) {

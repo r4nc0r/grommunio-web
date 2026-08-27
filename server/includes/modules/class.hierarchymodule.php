@@ -937,7 +937,8 @@ class HierarchyModule extends Module {
 			}
 		}
 
-		$messages = mapi_table_queryallrows($associatedTable, [PR_ENTRYID, PR_MESSAGE_CLASS, PR_WB_SF_ID, PR_WLINK_ENTRYID, PR_WLINK_STORE_ENTRYID, PR_PARENT_ENTRYID, PR_STORE_ENTRYID], $restriction);
+		mapi_table_restrict($associatedTable, $restriction, TBL_BATCH);
+		$messages = mapi_table_queryallrows($associatedTable, [PR_ENTRYID, PR_MESSAGE_CLASS, PR_WB_SF_ID, PR_WLINK_ENTRYID, PR_WLINK_STORE_ENTRYID, PR_PARENT_ENTRYID, PR_STORE_ENTRYID]);
 
 		if (!empty($messages)) {
 			foreach ($messages as $message) {
@@ -988,7 +989,8 @@ class HierarchyModule extends Module {
 			],
 		];
 
-		$messages = mapi_table_queryallrows($associatedTable, [PR_WB_SF_ID, PR_ENTRYID], $restriction);
+		mapi_table_restrict($associatedTable, $restriction, TBL_BATCH);
+		$messages = mapi_table_queryallrows($associatedTable, [PR_WB_SF_ID, PR_ENTRYID]);
 
 		if (!empty($messages)) {
 			foreach ($messages as $message) {
@@ -1384,7 +1386,8 @@ class HierarchyModule extends Module {
 				],
 			];
 
-			$subfolders = mapi_table_queryallrows($hierarchyTable, [PR_ENTRYID], $restriction);
+			mapi_table_restrict($hierarchyTable, $restriction, TBL_BATCH);
+			$subfolders = mapi_table_queryallrows($hierarchyTable, [PR_ENTRYID]);
 
 			if (is_array($subfolders)) {
 				foreach ($subfolders as $subfolder) {

@@ -551,7 +551,10 @@ class Operations {
 			}
 		}
 
-		$rows = mapi_table_queryallrows($table, $GLOBALS["properties"]->getFavoritesFolderProperties(), $restriction);
+		// Restricting the table filters it while it loads; passing the
+		// restriction to queryallrows instead walks it row by row.
+		mapi_table_restrict($table, $restriction, TBL_BATCH);
+		$rows = mapi_table_queryallrows($table, $GLOBALS["properties"]->getFavoritesFolderProperties());
 		$faultyLinkMsg = [];
 		foreach ($rows as $row) {
 			if (isset($row[PR_WLINK_TYPE]) && $row[PR_WLINK_TYPE] > wblSharedFolder) {
@@ -693,7 +696,8 @@ class Operations {
 		];
 
 		foreach ($finderHierarchyTables as $finderEntryid => $hierarchyTable) {
-			$rows = mapi_table_queryallrows($hierarchyTable, $GLOBALS["properties"]->getFavoritesFolderProperties(), $restriction);
+			mapi_table_restrict($hierarchyTable, $restriction, TBL_BATCH);
+			$rows = mapi_table_queryallrows($hierarchyTable, $GLOBALS["properties"]->getFavoritesFolderProperties());
 			foreach ($rows as $row) {
 				$flags = unpack("H2ExtendedFlags-Id/H2ExtendedFlags-Cb/H8ExtendedFlags-Data/H2SearchFolderTag-Id/H2SearchFolderTag-Cb/H8SearchFolderTag-Data/H2SearchFolderId-Id/H2SearchFolderId-Cb/H32SearchFolderId-Data", (string) $row[PR_EXTENDED_FOLDER_FLAGS]);
 				if ($flags["SearchFolderId-Data"] === bin2hex($searchFolderId)) {

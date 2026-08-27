@@ -1450,7 +1450,7 @@ class HierarchyModule extends Module {
 		foreach ($permissions as $grant) {
 			if ($grant['entryid'] == $mainUserEntryId) {
 				// user has owner rights, return all permissions
-				if ($grant['props']['rights'] == ecRightsFolderAccess || $grant['props']['rights'] == ecRightsGromoxStoreOwner) {
+				if (($grant['props']['rights'] & ecRightsFolderAccess) || ($grant['props']['rights'] & ecRightsGromoxStoreOwner)) {
 					unset($grants);
 					return $permissions;
 				}

@@ -1,5 +1,5 @@
 <!-- The <plugin> element. This is the root element for the document -->
-<!ELEMENT plugin (info,config?,dependencies?,translations?,components)>
+<!ELEMENT plugin (info,config?,dependencies?,optional?,translations?,components)>
 
 	<!-- The <info> element. Positioned inside the <plugin> and/or <component> elements. Provides meta information -->
 	<!ELEMENT info (version?,name,title?,author?,authorURL?,description?)>
@@ -19,6 +19,9 @@
 		<!ELEMENT depends (dependsname)>
 			<!ELEMENT dependsname (#PCDATA)>
 
+	<!-- The <optional> element. Positioned inside the <plugin> element. Declares that users can switch the plugin off in their settings; its client and resource files are then only sent to users who have it enabled. Plugins depending on an unloaded plugin are not loaded either -->
+	<!ELEMENT optional EMPTY>
+
 	<!-- The <translations> element. Positioned inside the <plugin> element. Provides the translations information -->
 	<!ELEMENT translations (translationsdir+)>
 		<!ELEMENT translationsdir (#PCDATA)>
@@ -36,6 +39,9 @@
 
 <!-- The attributes for the <plugin> element. -->
 <!ATTLIST plugin version CDATA #REQUIRED>
+
+<!-- The attributes for the <optional> element. The switch is the setting zarafa/v1/plugins/<settingsname>/enable, settingsname defaults to the plugin directory -->
+<!ATTLIST optional settingsname CDATA #IMPLIED>
 
 <!-- The attributes for the <depends> element. -->
 <!ATTLIST depends type (depends|requires|recommends|suggests) "depends">

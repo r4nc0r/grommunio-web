@@ -354,7 +354,7 @@ Zarafa.hierarchy.ui.ContextMenu = Ext.extend(Zarafa.core.ui.menu.ConditionalMenu
 		for(let i = 0; i < folderChildren.length; i++) {
 			const subTree = this.getRecusiveSubfolderList(folderChildren[i]);
 			if(Ext.isArray(subTree)) {
-				subTree.forEach(folder => newChildren.push(folder))
+				subTree.forEach((folder) => newChildren.push(folder));
 			} else {
 				newChildren.push(subTree);
 			}

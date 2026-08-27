@@ -313,12 +313,12 @@ Zarafa.settings.ui.SettingsAccountWidget = Ext.extend(Zarafa.settings.ui.Setting
 	{
 		try {
 			var imgDom = this.getPhotoImgEl();
-			var file = files[0]
-			const fr = new FileReader(file)
-			fr.readAsDataURL(file)
+			var file = files[0];
+			const fr = new FileReader(file);
+			fr.readAsDataURL(file);
 			fr.onload = function () {
 			 	imgDom.src = this.result;
-			}
+			};
 		}  catch(e) {
 			console.log('File Upload not supported: ${e}');
 		}

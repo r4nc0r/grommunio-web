@@ -312,8 +312,9 @@ Ext.apply(Zarafa, {
 
 		// Don't disable the browser contextmenu for regular
 		// text inputs.
-		if (el.dom.tagName.toUpperCase() === 'INPUT')
+		if (el.dom.tagName.toUpperCase() === 'INPUT') {
 			return;
+		}
 
 		// Disable contextmenu.
 		event.preventDefault();
@@ -393,7 +394,7 @@ Ext.apply(Zarafa, {
 		// it should be possible to save it afterwards anyway.
 		// See web issue #113
 		if (Ext.isDefined(args.sendRecords) && Ext.isArray(args.sendRecords)) {
-			args.sendRecords.forEach(record => {
+			args.sendRecords.forEach((record) => {
 				if (typeof record.isMeetingSent === 'function' &&
 				    !record?.isMeetingSent() &&
 				    record?.hasMessageAction('send')) {

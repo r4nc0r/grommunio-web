@@ -978,8 +978,9 @@ Zarafa.common.Actions = {
 		}
 
 		// If number of delete records equal to total loaded records then show load mask until server send success response.
-		if (store.totalLoadedRecord && records.length === store.totalLoadedRecord)
+		if (store.totalLoadedRecord && records.length === store.totalLoadedRecord) {
 			store.showLoadMask();
+		}
 	},
 
 	/**
@@ -1082,8 +1083,9 @@ Zarafa.common.Actions = {
 	 * @param {Object} opt The config object passed to the messagebox
 	 */
 	deleteWithNonReadReceipt: function(buttonClicked, text, opt) {
-		if (buttonClicked == "cancel")
+		if (buttonClicked == "cancel") {
 			return;
+		}
 		// @this is a record
 		if (opt?.softDelete) {
 			this.addMessageAction("soft_delete", "1");

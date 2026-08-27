@@ -138,6 +138,12 @@ Zarafa.calendar.ui.TextEditView = Ext.extend(Zarafa.core.ui.View, {
 		this.makeElementsVisible([this.body, this.header], false);
 
 		this.visible = false;
+
+		// Discard text that was never committed with RETURN. Leaving it lets the
+		// next layout create an appointment out of it, long after the view closed.
+		this.body.dom.value = '';
+		this.header.dom.value = '';
+		this.inputText = '';
 	},
 
 	/**
@@ -263,13 +269,6 @@ Zarafa.calendar.ui.TextEditView = Ext.extend(Zarafa.core.ui.View, {
 			}
 		} else {
 			this.makeElementsVisible([this.body, this.header], false);
-
-			// If input text is not empty then create the appointment
-			if (!Ext.isEmpty(this.inputText)) {
-				var text = this.inputText;
-				this.inputText = '';
-				this.fireEvent('textentered', this, text);
-			}
 		}
 
 		Zarafa.calendar.ui.TextEditView.superclass.onLayout.call(this);

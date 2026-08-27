@@ -266,7 +266,11 @@ Zarafa.settings.SettingsModel = Ext.extend(Ext.util.Observable, {
 		}
 
 		if (needsSave === true && this.autoSave !== false) {
-			persistent ? this.save() : this.scheduleSave();
+			if (persistent) {
+				this.save();
+			} else {
+				this.scheduleSave();
+			}
 		}
 	},
 

@@ -439,7 +439,12 @@ class ListModule extends Module {
 		$numberOfResults = count($searchResults);
 
 		if ($numberOfResults < $rowCount) {
-			$items = mapi_table_queryallrows($table, [PR_ENTRYID, PR_LAST_MODIFICATION_TIME]);
+			// Every row the loop below walks either fills one of the $rowCount
+			// slots or was counted in $searchResults already, so it can never
+			// reach past the first $rowCount rows. Reading the whole folder
+			// here costs the entire result set on every poll of a running
+			// search.
+			$items = mapi_table_queryrows($table, [PR_ENTRYID, PR_LAST_MODIFICATION_TIME], 0, $rowCount);
 
 			foreach ($items as $props) {
 				$sendItemToClient = false;

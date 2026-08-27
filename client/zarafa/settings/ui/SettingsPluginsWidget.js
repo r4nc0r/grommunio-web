@@ -59,6 +59,21 @@ Zarafa.settings.ui.SettingsPluginsWidget = Ext.extend(Zarafa.settings.ui.Setting
 			}
 		}
 
+		// Plugins the server did not send to this user cannot register themselves
+		Ext.each(server.getUnloadedPlugins(), function(plugin) {
+			if (container.getPluginMetaDataByName(plugin.name)) {
+				return;
+			}
+			store.add(new Ext.data.Record({
+				'name': plugin.name,
+				'display_name': plugin.display_name,
+				'version': Ext.isEmpty(pluginsVersion[plugin.name]) ? _('Unknown') : pluginsVersion[plugin.name],
+				'enabled': false,
+				'allow_disable': plugin.allow_disable,
+				'settings_base': plugin.settings_base
+			}));
+		});
+
 		store.sort('display_name', 'ASC');
 
 		var model = new Ext.grid.CheckboxSelectionModel({

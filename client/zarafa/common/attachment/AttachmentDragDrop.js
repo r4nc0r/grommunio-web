@@ -133,6 +133,12 @@ Zarafa.common.attachment.AttachmentDragDrop = {
 			mimeType = this.defaultMimeType;
 		}
 
+		// Check the encoded length before decoding: the payload arrives over a
+		// drag, so an oversized one must not be turned into bytes first.
+		if (maxSize > 0 && this.decodedLength(payload.data) > maxSize) {
+			return undefined;
+		}
+
 		var bytes = this.decodeBase64(payload.data, win);
 		if (!bytes || (maxSize > 0 && bytes.length > maxSize)) {
 			return undefined;
@@ -143,6 +149,24 @@ Zarafa.common.attachment.AttachmentDragDrop = {
 		} catch (e) {
 			return undefined;
 		}
+	},
+
+	/**
+	 * The number of bytes a base64 string decodes to, computed from its length
+	 * so an oversized payload can be rejected before it is decoded.
+	 * @param {String} base64 The base64 encoded file content
+	 * @return {Number} The decoded length in bytes
+	 * @private
+	 */
+	decodedLength: function(base64)
+	{
+		var text = String(base64).replace(/[\r\n\s]+/g, '');
+		var padding = 0;
+		if (text.charAt(text.length - 1) === '=') {
+			padding = text.charAt(text.length - 2) === '=' ? 2 : 1;
+		}
+
+		return Math.max(0, Math.floor(text.length / 4) * 3 - padding);
 	},
 
 	/**

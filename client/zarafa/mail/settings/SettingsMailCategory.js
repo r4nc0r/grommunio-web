@@ -62,14 +62,21 @@ Zarafa.mail.settings.SettingsMailCategory = Ext.extend(Zarafa.settings.ui.Settin
 			container.populateInsertionPoint('context.settings.category.mail.aftercomposesettings', this),
 			{
 				xtype: 'zarafa.settingsincomingmailwidget'
-			},{
+			}
+		];
+
+		if (container.getServerConfig().isConversationViewEnabled()) {
+			items.push({
 				xtype: 'zarafa.settingsconversationwidget'
-			},{
+			});
+		}
+
+		items.push({
 				xtype: 'zarafa.settingssignatureswidget',
 				settingsMailCategory: this
 			},
 			container.populateInsertionPoint('context.settings.category.mail', this)
-		];
+		);
 
 		Ext.applyIf(config, {
 			title: _('Mail'),

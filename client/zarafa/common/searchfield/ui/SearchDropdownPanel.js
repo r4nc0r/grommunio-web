@@ -151,7 +151,9 @@ Zarafa.common.searchfield.ui.SearchDropdownPanel = Ext.extend(Ext.Panel, {
 					return entries;
 				}
 			}
-		} catch (e) {}
+		} catch (e) {
+			// Unreadable or malformed storage: fall through to no history.
+		}
 		return [];
 	},
 
@@ -165,7 +167,9 @@ Zarafa.common.searchfield.ui.SearchDropdownPanel = Ext.extend(Ext.Panel, {
 		try {
 			window.localStorage.setItem(this.historyStorageKey,
 				JSON.stringify(entries.slice(0, this.historyMax)));
-		} catch (e) {}
+		} catch (e) {
+			// Storage disabled or full: the history is best effort.
+		}
 	},
 
 	/**

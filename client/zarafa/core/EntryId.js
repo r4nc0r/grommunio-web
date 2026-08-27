@@ -29,6 +29,9 @@ Zarafa.core.EntryId = (function()
 	/* Bit definitions for abFlags[3] of ENTRYID */
 	var ZARAFA_FAVORITE = '01';
 
+	/* Not all of the GUIDs below are referenced here. They are kept because they
+	   document the entryid formats this file parses. */
+	/* eslint-disable no-unused-vars */
 	/* GUID of root public folder */
 	var STATIC_GUID_PUBLICFOLDER = '00000000000000000000000000000003';
 	/* GUID of root favorite folder */
@@ -46,6 +49,7 @@ Zarafa.core.EntryId = (function()
 
 	/* Hardcoded ID used for generating entryid of addressbook container */
 	var ZARAFA_UID_GLOBAL_ADDRESS_BOOK = '01000000';
+	/* eslint-enable no-unused-vars */
 
 	var BASE_EID = Ext.extend(Object, {
 
@@ -215,7 +219,9 @@ Zarafa.core.EntryId = (function()
 		}
 	});
 
-	// The entryid for addressbook items
+	// The entryid for addressbook items. Only WrappedABEID is instantiated today;
+	// this layout is kept as the reference for the unwrapped form.
+	// eslint-disable-next-line no-unused-vars
 	var ABEID = Ext.extend(BASE_EID, {
 		abFlags: '',      // BYTE[4],  4 bytes, 8 hex characters
 		guid: '',       // GUID,   16 bytes, 32 hex characters

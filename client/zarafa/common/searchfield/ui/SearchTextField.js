@@ -461,7 +461,9 @@ Zarafa.common.searchfield.ui.SearchTextField = Ext.extend(Ext.form.TextField, {
 			var evt = document.createEvent('Event');
 			evt.initEvent('input', true, true);
 			this.el.dom.dispatchEvent(evt);
-		} catch (e) {}
+		} catch (e) {
+			// Nothing to do if the browser refuses the synthetic event.
+		}
 	},
 
 	// ===================================================================

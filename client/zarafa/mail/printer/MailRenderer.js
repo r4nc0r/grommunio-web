@@ -21,8 +21,8 @@ Zarafa.mail.printer.MailRenderer = Ext.extend(Zarafa.common.printer.renderers.Re
 		var subject = record.get('subject') || '';
 		var sender = record.get('sender_name') || '';
 
-		subject = subject.substring(0, 32).replace(/[\/\\:*?"<>|]/g, '_').trim();
-		sender = sender.replace(/[\/\\:*?"<>|]/g, '_').trim();
+		subject = subject.substring(0, 32).replace(/[/\\:*?"<>|]/g, '_').trim();
+		sender = sender.replace(/[/\\:*?"<>|]/g, '_').trim();
 
 		var parts = [];
 		if (Ext.isDate(date)) {

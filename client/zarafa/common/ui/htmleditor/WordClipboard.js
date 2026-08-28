@@ -436,7 +436,7 @@ Zarafa.common.ui.htmleditor.WordClipboard = {
 		// image. This is quote-aware, since a '>' inside a quoted attribute value
 		// would otherwise end the match early and promote the value's remainder to
 		// live markup.
-		out = out.replace(/<\/?(?:v|o|w|x)\:[a-zA-Z][a-zA-Z0-9]*\b(?:"[^"]*"|'[^']*'|[^"'>])*>/g, "");
+		out = out.replace(/<\/?(?:v|o|w|x):[a-zA-Z][a-zA-Z0-9]*\b(?:"[^"]*"|'[^']*'|[^"'>])*>/g, "");
 
 		return { html: out, replaced: replacements.length };
 	}

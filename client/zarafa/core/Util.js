@@ -471,7 +471,7 @@ Zarafa.core.Util =
 	validateEmailAddress: function(str)
 	{
 		//TODO make a better check
-		var filter = new RegExp(/^([^<]*<){0,1}(([a-z0-9\.\!\#\$\%\&\'\*\+\-\/\=\?\^\_\`\{\|\}\~])+\@(([a-z0-9\-])+\.)+([a-z0-9]{2,5})+)>{0,1}$|^\[[^\]]+\]$/i);
+		var filter = new RegExp(/^([^<]*<){0,1}(([a-z0-9.!#$%&'*+\-/=?^_`{|}~])+@(([a-z0-9-])+\.)+([a-z0-9]{2,5})+)>{0,1}$|^\[[^\]]+\]$/i);
 		if(Ext.isString(str) && str.length > 0 ){
 			return filter.test(str);
 		} else {

@@ -21,10 +21,10 @@ Zarafa.core.HTMLParser = (function() {
 	var nl2brRe = /\r\n|\n|\r/gim;
 
 	// regular expression to convert outlook style inline image urls to url which can request image using download_attachment.php
-	var cidToUrlRe = /(src\s*=\s*[\"\']?)cid:([^ \"\']*)([\"\']?)/igm;
+	var cidToUrlRe = /(src\s*=\s*["']?)cid:([^ "']*)(["']?)/igm;
 
 	// regular expression to convert url for inline images to outlook style url
-	var urlToCidRe = /(src\s*=\s*[\"\']?)\S*attachCid=([^ &\"\']*)[^ \"\']*([\"\']?)/igm;
+	var urlToCidRe = /(src\s*=\s*["']?)\S*attachCid=([^ &"']*)[^ "']*(["']?)/igm;
 
 	var cssUrlRe = /url\(\s*(['"]?)([^'")]+)\1\s*\)/igm;
 	var cssImportRe = /@import\s+(?:url\(\s*)?(['"]?)([^'")\s;]+)\1\s*\)?/igm;
@@ -297,7 +297,7 @@ Zarafa.core.HTMLParser = (function() {
 
 			// We should wrap the content in <pre> tag to maintain
 			// text indentation/spacing when we convert it to HTML.
-			content = '<div><pre wrap style=\"white-space: pre-wrap; word-wrap: break-word;\">' + content + '</pre></div>';
+			content = '<div><pre wrap style="white-space: pre-wrap; word-wrap: break-word;">' + content + '</pre></div>';
 
 			// convert all breaklines
 			content = Zarafa.core.HTMLParser.nl2br(content);
@@ -322,22 +322,22 @@ Zarafa.core.HTMLParser = (function() {
 			//----- remove tags but preserve the content ----
 
 			// remove all select / options tags
-			content = content.replace( /<[\/]?(?:select)[^>]*>/gim, '\n');
-			content = content.replace(/<[\/]?(?:option)[^>]*>/gim, '\t');
+			content = content.replace( /<[/]?(?:select)[^>]*>/gim, '\n');
+			content = content.replace(/<[/]?(?:option)[^>]*>/gim, '\t');
 
 			// replace all tags with their text equivalents
 			content = content.replace(/<(?:hr)[^>]*>/gim, '\n-----------\n');
-			content = content.replace(/<[\/]?(?:h[123456]|div|p|pre|title)[^>]*>/gim, '\n\n');
-			content = content.replace(/<[\/]?(?:ul|ol|dl|dt|textarea|img)[^>]*>/gim, '\n');
-			content = content.replace(/<[\/]?(?:dd|li)[^>]*>/gim, '\t');
+			content = content.replace(/<[/]?(?:h[123456]|div|p|pre|title)[^>]*>/gim, '\n\n');
+			content = content.replace(/<[/]?(?:ul|ol|dl|dt|textarea|img)[^>]*>/gim, '\n');
+			content = content.replace(/<[/]?(?:dd|li)[^>]*>/gim, '\t');
 
 			// tags related to table
-			content = content.replace(/<[\/]?(?:table)[^>]*>/gim, '\n\n');
-			content = content.replace(/<[\/]?(?:caption|tr)[^>]*>/gim, '\n');
-			content = content.replace(/<[^\/]?(?:th|td)[^>]*>/gim, '<br />');
+			content = content.replace(/<[/]?(?:table)[^>]*>/gim, '\n\n');
+			content = content.replace(/<[/]?(?:caption|tr)[^>]*>/gim, '\n');
+			content = content.replace(/<[^/]?(?:th|td)[^>]*>/gim, '<br />');
 
 			// remove anchor tag by preserving the links, links will be added after content of anchor tag in between <> signs
-			content = content.replace(/<a[^>]* href=[\'\"]?([^\s\'\">]*)[^>]*>([\s\S]*?)<\/a[^>]*>/gim, '$2 &lt;$1&gt;');
+			content = content.replace(/<a[^>]* href=['"]?([^\s'">]*)[^>]*>([\s\S]*?)<\/a[^>]*>/gim, '$2 &lt;$1&gt;');
 
 			//------ remove tags without preserving the contents -----
 
@@ -600,8 +600,8 @@ Zarafa.core.HTMLParser = (function() {
 			// @TODO more work needs for these regular expressions or else a dom based html parser
 			// check tags whose attributes are src or background
 
-			if (data.search(/(src|background|srcset)\s*=\s*([\'\"])*?\s*(https*:[^ \'\"]*)([\'\"])*/igm) !== -1) {
-				imgSrcs = data.match(/(src|background|srcset)\s*=\s*([\'\"])*?\s*(https*:[^ \'\"]*)([\'\"])*/igm);
+			if (data.search(/(src|background|srcset)\s*=\s*(['"])*?\s*(https*:[^ '"]*)(['"])*/igm) !== -1) {
+				imgSrcs = data.match(/(src|background|srcset)\s*=\s*(['"])*?\s*(https*:[^ '"]*)(['"])*/igm);
 			}
 			return actionHandler(imgSrcs);
 		},

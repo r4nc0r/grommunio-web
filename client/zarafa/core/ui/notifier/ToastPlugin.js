@@ -391,7 +391,7 @@ Zarafa.core.ui.notifier.ToastPlugin = Ext.extend(Zarafa.core.ui.notifier.NotifyP
 	{
 		var ids = [];
 		for (var id in this.activeToasts) {
-			if (this.activeToasts.hasOwnProperty(id)) {
+			if (Object.prototype.hasOwnProperty.call(this.activeToasts, id)) {
 				ids.push(id);
 			}
 		}

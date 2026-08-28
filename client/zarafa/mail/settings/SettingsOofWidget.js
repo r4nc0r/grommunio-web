@@ -407,7 +407,7 @@ Zarafa.mail.settings.SettingsOofWidget = Ext.extend(Zarafa.settings.ui.SettingsW
 		var sharedStores = container.getSettingsModel().get('zarafa/v1/contexts/hierarchy/shared_stores', true);
 		for (var user in sharedStores) {
 			// Skip not fully opened or already included stores
-			if (!sharedStores[user].hasOwnProperty("all") || processedStores.includes(user)) {
+			if (!Object.prototype.hasOwnProperty.call(sharedStores[user], "all") || processedStores.includes(user)) {
 				continue;
 			}
 
@@ -734,7 +734,7 @@ Zarafa.mail.settings.SettingsOofWidget = Ext.extend(Zarafa.settings.ui.SettingsW
 		} else {
 			this.extBodyField.disable();
 		}
-		if (!!this.record) {
+		if (this.record) {
 			this.record.set(checkbox.name, checked);
 		}
 	},
@@ -743,7 +743,7 @@ Zarafa.mail.settings.SettingsOofWidget = Ext.extend(Zarafa.settings.ui.SettingsW
 	{
 		if (checked === true) {
 			var set = radio.inputValue === 'true';
-			if (!!this.record) {
+			if (this.record) {
 				this.record.set(radio.name, set);
 			}
 		}

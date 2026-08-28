@@ -563,7 +563,7 @@ Zarafa.core.MultiFolderContextModel = Ext.extend(Zarafa.core.ContextModel, {
 			}
 			// Check the active folders in the groups
 			for ( var groupId in state.groupings ) {
-				if ( state.groupings.hasOwnProperty(groupId) ){
+				if ( Object.prototype.hasOwnProperty.call(state.groupings, groupId) ){
 					if ( state.groupings[groupId].folders.indexOf(state.groupings[groupId].active) < 0 ){
 						// If the active folder was not found in the folders of the group, then we will
 						// change the active folder to the first folder in the group

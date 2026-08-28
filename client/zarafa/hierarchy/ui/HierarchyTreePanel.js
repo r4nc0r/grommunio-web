@@ -561,7 +561,7 @@ Zarafa.hierarchy.ui.HierarchyTreePanel = Ext.extend(Zarafa.hierarchy.ui.Tree, {
 			// Show detailed warning message when record have no access to delete
 			// ask user to copy that records.
 			if (requireDeleteCheck && !Ext.isEmpty(noAccessRecord)) {
-				var msg = undefined;
+				var msg;
 				if (noAccessRecord.length > 1) {
 					msg = _("You have insufficient privileges to move following items.");
 					msg += "<br/><br/>";

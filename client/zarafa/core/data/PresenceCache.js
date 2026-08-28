@@ -31,7 +31,7 @@ Zarafa.core.data.PresenceCache = Ext.extend(Object, {
 	 * @private
 	 */
 	getUser: function(user, noSync) {
-		if (!user.hasOwnProperty('entryid')) {
+		if (!Object.prototype.hasOwnProperty.call(user, 'entryid')) {
 			return;
 		}
 

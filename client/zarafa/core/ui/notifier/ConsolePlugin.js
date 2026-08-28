@@ -1,4 +1,5 @@
 /*
+
  * #dependsFile client/zarafa/core/Container.js
  */
 Ext.namespace('Zarafa.core.ui.notifier');
@@ -11,6 +12,8 @@ Ext.namespace('Zarafa.core.ui.notifier');
  * messages to the browser console. This plugin will be registered to the
  * {@link Zarafa.core.ui.notifier.Notifier notifier} using the name 'console'.
  */
+/* This plugin is the console notifier; writing to the console is its job. */
+/* eslint-disable no-console */
 Zarafa.core.ui.notifier.ConsolePlugin = Ext.extend(Zarafa.core.ui.notifier.NotifyPlugin, {
 
 	/**

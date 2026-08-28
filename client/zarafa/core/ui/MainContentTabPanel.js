@@ -326,6 +326,7 @@ Zarafa.core.ui.MainContentTabPanel = Ext.extend(Ext.TabPanel, {
 			if (Zarafa.core.EntryId.compareEntryIds(item, entryid)) {
 				return true;
 			}
+			return false;
 		});
 	}
 });

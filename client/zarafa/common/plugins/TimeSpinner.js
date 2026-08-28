@@ -184,7 +184,7 @@ Zarafa.common.plugins.TimeSpinner = Ext.extend(Zarafa.common.plugins.SpinnerPlug
 			case 2:
 				// If the string has 2 digits, append '00' at the end
 				// For example, 12 -> 1200
-				currentValue = currentValue + '00';
+				currentValue += '00';
 				break;
 			case 1:
 				// If the string has 1 digit, append a '0' to the beginning

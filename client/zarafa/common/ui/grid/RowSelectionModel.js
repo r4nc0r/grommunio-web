@@ -73,6 +73,6 @@ Zarafa.common.ui.grid.RowSelectionModel = Ext.extend(Ext.grid.RowSelectionModel,
 		var r = Ext.isNumber(index) ? store.getAt(index) : index;
 		var id = (Ext.isFunction(store.getRecordKey) && store.getRecordKey(r)) || r.id;
 
-		return (r && this.selections.key(id) ? true : false);
+		return (!!(r && this.selections.key(id)));
 	}
 });

@@ -392,9 +392,9 @@ Zarafa.contact.data.ContactDetailsParser = Ext.extend(Object, {
 			// numbers being a city or state is very small. The postal code is normally
 			// at the start or at the end of the line as well. So we can simplify our
 			// check
-			if (Ext.isNumber(parseInt(addressParts[0]))) {
+			if (Ext.isNumber(parseInt(addressParts[0], 10))) {
 				result['postal_code'] = addressParts.shift();
-			} else if (Ext.isNumber(parseInt(addressParts[addressParts.length - 1]))) {
+			} else if (Ext.isNumber(parseInt(addressParts[addressParts.length - 1], 10))) {
 				result['postal_code'] = addressParts.pop();
 			}
 

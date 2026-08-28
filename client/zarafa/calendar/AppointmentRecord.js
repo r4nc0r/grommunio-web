@@ -229,7 +229,7 @@ Zarafa.calendar.AppointmentRecord = Ext.extend(Zarafa.core.data.MessageRecord, {
 					type = _('year');
 					occSingleDayRank = true;
 				} else {
-					everyn = everyn / 12;
+					everyn /= 12;
 					type = _('years');
 					occSingleDayRank = false;
 				}
@@ -987,7 +987,7 @@ Zarafa.calendar.AppointmentRecord = Ext.extend(Zarafa.core.data.MessageRecord, {
 		// Get the property value from record to prepare array of selected week days.
 		var weekdays = this.get('recurrence_weekdays');
 		weekDaysObject.each(function(dayObject) {
-			if(!!(dayObject.dayValue & weekdays)){
+			if(dayObject.dayValue & weekdays){
 				checkedWeekDays.push(dayObject.dayName);
 			}
 		});

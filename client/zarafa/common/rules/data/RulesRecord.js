@@ -188,6 +188,7 @@ Zarafa.common.rules.data.RulesRecord = Ext.extend(Zarafa.core.data.MAPIRecord, {
 					condition !== Zarafa.common.rules.data.ExceptionsConstants.INVALID_EXCEPTION){
 					return true;
 				}
+				return false;
 			});
 		}
 
@@ -219,6 +220,7 @@ Zarafa.common.rules.data.RulesRecord = Ext.extend(Zarafa.core.data.MAPIRecord, {
 					condition === Zarafa.common.rules.data.ExceptionsConstants.INVALID_EXCEPTION){
 					return true;
 				}
+				return false;
 			});
 
 			if(!Ext.isEmpty(conditions)) {

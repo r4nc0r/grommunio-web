@@ -298,7 +298,7 @@ Zarafa.common.ui.grid.MapiMessageGrid = Ext.extend(Zarafa.common.ui.grid.GridPan
 		}, this);
 
 		// Now we can recalculate the label width
-		labelWidth = labelWidth + unusedSpace/(labelCount-smallLabels.length);
+		labelWidth += unusedSpace/(labelCount-smallLabels.length);
 
 		// Finally apply the calculated label width to all labels that need it
 		Ext.each(labels, function(label, index){

@@ -87,7 +87,7 @@ Zarafa.core.data.StatefulObservable = Ext.extend(Ext.util.Observable, {
 	initStateEvents: function()
 	{
 		if (this.stateEvents) {
-			for (var i = 0, e; e = this.stateEvents[i]; i++) {
+			for (var i = 0, e; (e = this.stateEvents[i]); i++) {
 				this.on(e, this.saveState, this, {delay:100});
 			}
 		}

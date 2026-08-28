@@ -119,7 +119,7 @@ Zarafa.common.rules.dialogs.RulesEditPanel = Ext.extend(Ext.form.FormPanel, {
 	hideCheckBox: function(){
 		var version = container.getVersion();
 		var mapiVersion = version.getZCP();
-		return version.versionCompare(mapiVersion, '5.6') === -1 ? true : false;
+		return version.versionCompare(mapiVersion, '5.6') === -1;
 	},
 
 	/**

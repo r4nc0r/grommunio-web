@@ -158,6 +158,7 @@ Zarafa.advancesearch.ui.SearchGridRenderers = {
 			if (!Ext.isEmpty(record.get(prop))) {
 				return true;
 			}
+			return false;
 		});
 
 		if (phoneNumberProp) {

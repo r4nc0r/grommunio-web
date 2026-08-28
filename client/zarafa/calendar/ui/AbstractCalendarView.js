@@ -567,7 +567,7 @@ Zarafa.calendar.ui.AbstractCalendarView = Ext.extend(Zarafa.core.ui.View, {
 	getFolderIds: function()
 	{
 		var ret = [];
-		for (var i = 0, folder; folder = this.folders[i]; i++) {
+		for (var i = 0, folder; (folder = this.folders[i]); i++) {
 			ret[i] = folder.get('entryid');
 		}
 		return ret;
@@ -581,7 +581,7 @@ Zarafa.calendar.ui.AbstractCalendarView = Ext.extend(Zarafa.core.ui.View, {
 	getFolderById: function(id)
 	{
 		// Find folder object to go with the folder ID.
-		for (var i=0, folder; folder = this.folders[i]; i++) {
+		for (var i=0, folder; (folder = this.folders[i]); i++) {
 			if (Zarafa.core.EntryId.compareEntryIds(folder.get('entryid'), id)) {
 				return folder;
 			}
@@ -654,7 +654,7 @@ Zarafa.calendar.ui.AbstractCalendarView = Ext.extend(Zarafa.core.ui.View, {
 	sortFolders: function(folders)
 	{
 		var sortedFolders = [];
-		for (var i = 0, folder; folder = folders[i]; i++) {
+		for (var i = 0, folder; (folder = folders[i]); i++) {
 			if (this.containsFolderId(folder.get('entryid'))) {
 				sortedFolders.push(folder);
 			}
@@ -721,7 +721,7 @@ Zarafa.calendar.ui.AbstractCalendarView = Ext.extend(Zarafa.core.ui.View, {
 	 */
 	findAppointment: function(record)
 	{
-		for (var i=0, appointment; appointment=this.appointments[i]; i++) {
+		for (var i=0, appointment; (appointment=this.appointments[i]); i++) {
 			if (appointment.getRecord().equals(record)) {
 				return appointment;
 			}
@@ -795,7 +795,7 @@ Zarafa.calendar.ui.AbstractCalendarView = Ext.extend(Zarafa.core.ui.View, {
 	removeAppointment: function(record, layout)
 	{
 		var appointment;
-		if (appointment = this.findAppointment(record)) {
+		if ((appointment = this.findAppointment(record))) {
 			this.appointments.remove(appointment);
 			this.removeChildView(appointment, true);
 
@@ -816,7 +816,7 @@ Zarafa.calendar.ui.AbstractCalendarView = Ext.extend(Zarafa.core.ui.View, {
 	 */
 	clearAppointments: function(destroy, layout)
 	{
-		for (var i=0, appointment; appointment=this.appointments[i]; i++) {
+		for (var i=0, appointment; (appointment=this.appointments[i]); i++) {
 			this.removeChildView(appointment, destroy);
 		}
 
@@ -842,7 +842,7 @@ Zarafa.calendar.ui.AbstractCalendarView = Ext.extend(Zarafa.core.ui.View, {
 	{
 		var ret = [];
 
-		for (var i=0, appointment; appointment=this.appointments[i]; i++) {
+		for (var i=0, appointment; (appointment=this.appointments[i]); i++) {
 			ret.push(appointment.getRecord());
 		}
 
@@ -1289,7 +1289,7 @@ Zarafa.calendar.ui.AbstractCalendarView = Ext.extend(Zarafa.core.ui.View, {
 		// Layout the tabs.
 		var totalDesiredWidth = 0;
 
-		for (var i=0, folder; folder=this.folders[i]; i++) {
+		for (var i=0, folder; (folder=this.folders[i]); i++) {
 			var tab = this.tabs[folder.get('entryid')];
 			if (!tab) {
 				continue;
@@ -1355,14 +1355,14 @@ Zarafa.calendar.ui.AbstractCalendarView = Ext.extend(Zarafa.core.ui.View, {
 		}
 
 		// Layout the tabs.
-		for (var i=0, folder; folder=this.folders[i]; i++) {
+		for (var i=0, folder; (folder=this.folders[i]); i++) {
 			var tab = this.tabs[folder.get('entryid')];
 
 			var width = tab.desiredWidth;
 
 			// Check if we don't get conflicts with a possible min-width set in the css-files
 			tab.tabContents.dom.style.removeProperty('min-width');
-			var cssMinWidth = parseInt(tab.tabContents.getStyle('min-width')) + tab.tabContents.getPadding('lr');
+			var cssMinWidth = parseInt(tab.tabContents.getStyle('min-width'), 10) + tab.tabContents.getPadding('lr');
 
 			if ( cssMinWidth > width ){
 				tab.tabContents.setStyle('min-width', 0);
@@ -1422,7 +1422,7 @@ Zarafa.calendar.ui.AbstractCalendarView = Ext.extend(Zarafa.core.ui.View, {
 		}
 
 		// Determine the color scheme of the appointments
-		for (var i=0, appointment; appointment=this.appointments[i]; i++) {
+		for (var i=0, appointment; (appointment=this.appointments[i]); i++) {
 			var folderId = appointment.getRecord().get('parent_entryid');
 			appointment.calendarColorScheme = this.contextModel.getColorScheme(folderId);
 

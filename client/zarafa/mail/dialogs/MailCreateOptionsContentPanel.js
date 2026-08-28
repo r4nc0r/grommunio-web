@@ -25,7 +25,7 @@ Zarafa.mail.dialogs.MailCreateOptionsContentPanel = Ext.extend(Zarafa.core.ui.Re
 			recordComponentPluginConfig: Ext.applyIf(config.recordComponentPluginConfig || {}, {
 				allowWrite: true
 			}),
-			autoSave: config.modal ? false : true,
+			autoSave: !config.modal,
 			width: 320,
 			height: 330,
 			items: [{

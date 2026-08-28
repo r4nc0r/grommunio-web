@@ -139,7 +139,7 @@ Zarafa.hierarchy.data.MAPIFolderRecord = Ext.extend(Zarafa.core.data.IPFRecord, 
 	 */
 	isSharedFolder: function()
 	{
-		return Ext.isDefined(this.getSharedFolderKey()) ? true : false;
+		return !!Ext.isDefined(this.getSharedFolderKey());
 	},
 
 	/**
@@ -159,7 +159,7 @@ Zarafa.hierarchy.data.MAPIFolderRecord = Ext.extend(Zarafa.core.data.IPFRecord, 
 	 */
 	isDefaultFolder: function()
 	{
-		return Ext.isDefined(this.getDefaultFolderKey()) ? true : false;
+		return !!Ext.isDefined(this.getDefaultFolderKey());
 	},
 
 	/**

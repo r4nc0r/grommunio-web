@@ -653,7 +653,7 @@ Zarafa.common.dialogs.CopyMovePanel = Ext.extend(Ext.Panel, {
 		// Show detailed warning message when record have no access to delete
 		// ask user to copy that records.
 		if (requireDeleteCheck && !Ext.isEmpty(noAccessRecord)) {
-			var msg = undefined;
+			var msg;
 			if (noAccessRecord.length > 1) {
 				msg = _("You have insufficient privileges to move following items.");
 				msg += "<br/><br/>";

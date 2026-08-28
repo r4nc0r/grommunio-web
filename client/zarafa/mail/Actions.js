@@ -117,7 +117,9 @@ Zarafa.mail.Actions = {
 			if (actionType === Zarafa.mail.data.ActionTypes.FORWARD_ATTACH) {
 				response = model.createResponseRecord(record, actionType, response, config);
 			} else {
-				var openHandler = function(store, record) {
+				// let, not var: each record needs its own pair, because each handler
+				// unregisters itself by name when it fires.
+				let openHandler = function(store, record) {
 					// This function will called in the scope of the record for
 					// whom the event handler was registered.
 					if (this !== record) {
@@ -139,7 +141,7 @@ Zarafa.mail.Actions = {
 				// handler leaks and a later successful open would build an
 				// unexpected second compose window. The store's 'exception' fires
 				// for every record on it, so match on the failed record.
-				var failHandler = function(proxy, type, action, options, response, args) {
+				let failHandler = function(proxy, type, action, options, response, args) {
 					if (action !== Ext.data.Api.actions.open) {
 						return;
 					}

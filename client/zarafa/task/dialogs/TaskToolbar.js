@@ -526,9 +526,9 @@ Zarafa.task.dialogs.TaskToolbar = Ext.extend(Zarafa.core.ui.ContentPanelToolbar,
 				layout = true;
 			}
 
-			if(!contentReset
-				&& record.isModifiedSinceLastUpdate('taskhistory')
-				&& record.get('taskhistory') === Zarafa.core.mapi.TaskHistory.NONE) {
+			if(!contentReset &&
+				record.isModifiedSinceLastUpdate('taskhistory') &&
+				record.get('taskhistory') === Zarafa.core.mapi.TaskHistory.NONE) {
 				this.assignTask.setVisible(record.isNormalTask());
 			}
 		}

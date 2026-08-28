@@ -36,7 +36,7 @@ Zarafa.common.rules.dialogs.AtLeatSizeLink = Ext.extend(Zarafa.common.rules.dial
       xtype: 'container',
       style: {
         height: '100%',
-        display: 'flex',
+        display: 'flex'
       },
       width: 600,
       items: [{

@@ -307,14 +307,14 @@ Zarafa.common.ui.messagepanel.ExtraInfoLinks = Ext.extend(Ext.Container, {
 
 		// 104 is set in createmailitemmodule::setReplyForwardInfo when a message is forwarded.
 		if(lastVerbExecuted === 104) {
-			var text = lastVerbExecutionTime ? String.format(this.forwardStringTime, lastVerbExecutionTime.formatDefaultTime('j-m-Y {0}')) :
-				this.forwardString;
+			var text = lastVerbExecutionTime ? String.format(this.forwardStringTime, lastVerbExecutionTime.formatDefaultTime('j-m-Y {0}'))
+				: this.forwardString;
 			el.createChild({tag: 'div', html: text, cls: this.itemCls});
 
 			isVisible = true;
 		} else if(lastVerbExecuted === 102 || lastVerbExecuted == 103) { // 102/103 is set when the message is a reply.
-			var text = lastVerbExecutionTime ? String.format(this.repliedStringTime, lastVerbExecutionTime.formatDefaultTime('j-m-Y {0}')) :
-				this.repliedString;
+			var text = lastVerbExecutionTime ? String.format(this.repliedStringTime, lastVerbExecutionTime.formatDefaultTime('j-m-Y {0}'))
+				: this.repliedString;
 			el.createChild({tag: 'div', html: text, cls: this.itemCls});
 
 			isVisible = true;

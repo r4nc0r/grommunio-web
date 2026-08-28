@@ -474,6 +474,6 @@ Zarafa.core.EntryId = (function()
 			return messageGcv + '/0x' + messageGcv.toString(16) +
 				'; folder=' + folderGcv + '/0x' + folderGcv.toString(16) +
 				'; dbguid=' + databaseGuid + '; store=' + provider;
-		},
+		}
 	};
 })();

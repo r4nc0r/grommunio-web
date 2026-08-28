@@ -28,7 +28,7 @@ Zarafa.common.rules.dialogs.RulesExceptionContainer = Ext.extend(Zarafa.common.r
     config = Ext.apply(config || {},{
       id: 'rule-exception-container',
       addBtnName: _('Add exception'),
-      removeBtnName: _('Remove exception'),
+      removeBtnName: _('Remove exception')
     });
 
     Zarafa.common.rules.dialogs.RulesExceptionContainer.superclass.constructor.call(this, config);

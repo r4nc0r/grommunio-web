@@ -210,7 +210,7 @@ Zarafa.addressbook.ui.AddressBookGrid = Ext.extend(Zarafa.common.ui.grid.GridPan
 
 			Zarafa.addressbook.ui.AddressBookGrid.superclass.applyState.call(this, wrap);
 		}
- 	}
+	}
 });
 
 Ext.reg('zarafa.addressbookgrid', Zarafa.addressbook.ui.AddressBookGrid);

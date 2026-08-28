@@ -131,7 +131,7 @@ Zarafa.common.rules.dialogs.RulesActionsContainer = Ext.extend(Ext.Container, {
 		},{
 			xtype: 'zarafa.folderselectionlink',
 			id: baseId + '-folder',
-			storeEntryId: this.storeEntryId,
+			storeEntryId: this.storeEntryId
 		},{
 			xtype: 'zarafa.deletelink',
 			id: baseId + '-delete',
@@ -141,7 +141,7 @@ Zarafa.common.rules.dialogs.RulesActionsContainer = Ext.extend(Ext.Container, {
 			id: baseId + '-to'
 		},{
 			xtype: 'zarafa.markasreadlink',
-			id: baseId + '-markasread',
+			id: baseId + '-markasread'
 		}];
 	},
 
@@ -269,7 +269,7 @@ Zarafa.common.rules.dialogs.RulesActionsContainer = Ext.extend(Ext.Container, {
 			// Because it will not work if we keep it later after other actions.
 			// i.e. for actions like Move/copy , delete the entry id of the message changes,
 			// So if we add action after these actions it will not find the required message.
- 			if (action.action === Zarafa.core.mapi.RuleActions.OP_MARK_AS_READ) {
+			if (action.action === Zarafa.core.mapi.RuleActions.OP_MARK_AS_READ) {
 				actions.unshift(action);
 			} else {
 				actions.push(action);

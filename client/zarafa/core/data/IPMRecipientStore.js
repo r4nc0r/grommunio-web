@@ -651,9 +651,9 @@ Zarafa.core.data.IPMRecipientStore = Ext.extend(Zarafa.core.data.MAPISubStore, {
 			return '';
 		}
 
-		var emailAddress = record instanceof Ext.data.Record ?
-			record.get('smtp_address') || record.get('email_address') :
-			record.smtp_address || record.email_address;
+		var emailAddress = record instanceof Ext.data.Record
+			? record.get('smtp_address') || record.get('email_address')
+			: record.smtp_address || record.email_address;
 
 		return this.normalizeRecipientEmailAddress(emailAddress);
 	},

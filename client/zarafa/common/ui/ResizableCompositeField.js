@@ -81,8 +81,8 @@ Zarafa.common.ui.ResizableCompositeField = Ext.extend(Zarafa.common.ui.Composite
     this.innerCt = new Ext.Container({
       layout: 'hbox',
       layoutConfig: {
-      	pack: 'start',
-      	align: 'stretch'
+	pack: 'start',
+	align: 'stretch'
       },
       items : this.items,
       cls  : 'x-form-composite',
@@ -117,12 +117,12 @@ Zarafa.common.ui.ResizableCompositeField = Ext.extend(Zarafa.common.ui.Composite
 
     // Set a listener on boxfield items
     Ext.each( this.items.items, function(item){
-    	if ( item.isXType('zarafa.boxfield') ){
-    		item.mon(item, 'resizeheight', function(){
-    			this.onResize();
-    			this.ownerCt.doLayout(false);
-    		}, this, { delay: 2 });
-    	}
+	if ( item.isXType('zarafa.boxfield') ){
+		item.mon(item, 'resizeheight', function(){
+			this.onResize();
+			this.ownerCt.doLayout(false);
+		}, this, { delay: 2 });
+	}
     }, this);
   },
 
@@ -136,10 +136,10 @@ Zarafa.common.ui.ResizableCompositeField = Ext.extend(Zarafa.common.ui.Composite
    * @param {Number} rawHeight The height that was originally specified
 	 */
   onResize: function(adjWidth, adjHeight, rawWidth, rawHeight) {
-  	// Store the padding because getting it is an expensive operation
-  	if ( !Ext.isDefined(this.padding) ){
-  		this.padding = this.getEl().getPadding('tb');
-  	}
+	// Store the padding because getting it is an expensive operation
+	if ( !Ext.isDefined(this.padding) ){
+		this.padding = this.getEl().getPadding('tb');
+	}
 
     var innerCt = this.innerCt;
 
@@ -148,24 +148,24 @@ Zarafa.common.ui.ResizableCompositeField = Ext.extend(Zarafa.common.ui.Composite
     var height = 0;
     var items = innerCt.items;
     if ( items.items ){
-    	items = items.items;
+	items = items.items;
     }
     Ext.each(items, function(item){
-    	var itemHeight = 0;
-    	var itemPadding = 0;
-    	if ( item.getResizeEl && item.getResizeEl() ){
-	    	itemHeight = item.getResizeEl().getHeight();
-	    	itemPadding = item.getResizeEl().getPadding('tb');
+	var itemHeight = 0;
+	var itemPadding = 0;
+	if ( item.getResizeEl && item.getResizeEl() ){
+		itemHeight = item.getResizeEl().getHeight();
+		itemPadding = item.getResizeEl().getPadding('tb');
 	    }
-    	if ( itemHeight + itemPadding > height ){
-    		height = itemHeight + itemPadding;
-    	}
+	if ( itemHeight + itemPadding > height ){
+		height = itemHeight + itemPadding;
+	}
     }, this);
 
     height += this.padding;
 
     if ( height !== adjHeight ){
-    	adjHeight = height;
+	adjHeight = height;
     }
 
     if (this.rendered && innerCt.rendered) {

@@ -871,8 +871,8 @@ Zarafa.hierarchy.data.HierarchyStore = Ext.extend(Zarafa.core.data.IPFStore, {
 				}
 
 				var folderKey = folderStore.getDefaultFolderKey();
-				var newmail = folder.content_unread !== 0
-					&& folder.content_unread > folderStore.get('content_unread');
+				var newmail = folder.content_unread !== 0 &&
+					folder.content_unread > folderStore.get('content_unread');
 
 				if (newmail && folder_keys.indexOf(folderKey) === -1 && folderStore.isContainerClass('IPF.Note') &&
 					Zarafa.hierarchy.data.HierarchyStore.notifiesNewMail(folderStore)) {

@@ -169,7 +169,7 @@ Zarafa.core.MultiFolderContextModel = Ext.extend(Zarafa.core.ContextModel, {
 	/**
 	 * Overridden in order to assign colors to the loaded folders
 	 *
- 	 * Sets {@link #defaultFolder default folder} for the particular {@link Zarafa.core.Context context}.
+	 * Sets {@link #defaultFolder default folder} for the particular {@link Zarafa.core.Context context}.
 	 * This will help while opening new item dialog from other contexts
 	 * e.g. Create new Contact from Inbox, at this moment we need {@link #defaultFolder} to create the item.
 	 *
@@ -193,7 +193,7 @@ Zarafa.core.MultiFolderContextModel = Ext.extend(Zarafa.core.ContextModel, {
 		this.assignColors();
 	},
 
- 	onHierarchyAddFolder : function(hierarchyStore, storeRecord, folder)
+	onHierarchyAddFolder : function(hierarchyStore, storeRecord, folder)
 	{
 		this.assignColors();
 	},

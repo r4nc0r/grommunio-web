@@ -123,7 +123,7 @@ Zarafa.common.plugins.IconDragSelectorPlugin = Ext.extend(Object, {
 	 * @param {Ext.EventObject} e The event object
 	 * @private
 	 */
- 	onStart: function(e)
+	onStart: function(e)
 	{
 		this.view.on('containerclick', this.cancelClick, this, { single: true });
 		if (!this.proxy) {

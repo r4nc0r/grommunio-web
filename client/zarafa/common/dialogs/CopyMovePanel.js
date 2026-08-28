@@ -405,9 +405,9 @@ Zarafa.common.dialogs.CopyMovePanel = Ext.extend(Ext.Panel, {
 		}
 
 		if (!this.isContainerClassCompatible(folder)) {
-			var msg = isMoveAction ?
-				_("The selected items cannot be moved into this folder because it holds a different type of content.") :
-				_("The selected items cannot be copied into this folder because it holds a different type of content.");
+			var msg = isMoveAction
+				? _("The selected items cannot be moved into this folder because it holds a different type of content.")
+				: _("The selected items cannot be copied into this folder because it holds a different type of content.");
 			container.getNotifier().notify('error', _("Incompatible folder"), msg);
 			return false;
 		}
@@ -424,15 +424,15 @@ Zarafa.common.dialogs.CopyMovePanel = Ext.extend(Ext.Panel, {
 		if (records[0] instanceof Zarafa.core.data.IPFRecord) {
 			var access = folder.get('access') & Zarafa.core.mapi.Access.ACCESS_CREATE_HIERARCHY;
 			if (!access) {
-				var msg = isMoveAction ? _("You have insufficient privileges to move this folder. Ask the folder owner to grant you permissions or contact your system administrator.") :
-					_("You have insufficient privileges to copy this folder. Ask the folder owner to grant you permissions or contact your system administrator.");
+				var msg = isMoveAction ? _("You have insufficient privileges to move this folder. Ask the folder owner to grant you permissions or contact your system administrator.")
+					: _("You have insufficient privileges to copy this folder. Ask the folder owner to grant you permissions or contact your system administrator.");
 				container.getNotifier().notify('error', _("Insufficient privileges"), msg);
 				return false;
 			}
 		} else if (!folder.hasCreateRights()) {
 			// Check folder has create item rights.
-			var msg = isMoveAction ? _("You have insufficient privileges to move and copy this item. Ask the folder owner to grant you permissions or contact your system administrator.") :
-					_("You have insufficient privileges to copy this item. Ask the folder owner to grant you permissions or contact your system administrator.");
+			var msg = isMoveAction ? _("You have insufficient privileges to move and copy this item. Ask the folder owner to grant you permissions or contact your system administrator.")
+					: _("You have insufficient privileges to copy this item. Ask the folder owner to grant you permissions or contact your system administrator.");
 			container.getNotifier().notify('error', _("Insufficient privileges"), msg);
 			return false;
 		}
@@ -660,7 +660,7 @@ Zarafa.common.dialogs.CopyMovePanel = Ext.extend(Ext.Panel, {
 					noAccessRecord.forEach(function (item) {
 						var subject = item.record.get('subject');
 						subject = !Ext.isEmpty(subject) ? subject : _("None");
-						msg += "<b>" +_("Subject:") + "</b> " + subject ;
+						msg += "<b>" +_("Subject:") + "</b> " + subject;
 						msg += "<br/>";
 					}, this);
 				msg += "<br/>" + _("Would you like to copy instead?");

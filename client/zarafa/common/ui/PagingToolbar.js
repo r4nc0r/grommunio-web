@@ -190,9 +190,9 @@ Zarafa.common.ui.PagingToolbar = Ext.extend(Ext.PagingToolbar, {
 	{
 		if(this.displayItem){
 			var count = this.store.getCount();
-			var msg = count === 0 ?
-				this.emptyMsg:
-				String.format(
+			var msg = count === 0
+				? this.emptyMsg
+				:String.format(
 					this.displayMsg,
 					this.cursor+1, this.cursor+count, this.store.getTotalCount()
 				);

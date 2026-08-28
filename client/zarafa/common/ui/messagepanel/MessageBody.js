@@ -528,7 +528,7 @@ Zarafa.common.ui.messagepanel.MessageBody = Ext.extend(Ext.Container, {
 		var lookupParts = Zarafa.core.Util.splitStringByPattern(str, this.linkPattern);
 		var parts = [];
 		// Now loop through all the pieces split them up based on whether they contain an email address
-		for(var i=0;i<lookupParts.length;i++){
+		for(var i=0; i<lookupParts.length; i++){
 			// Do not examine the piece that already contains a link
 			if(lookupParts[i].search(this.linkPattern) == -1){
 				// Split the pieces up based on whether they contain a link
@@ -543,7 +543,7 @@ Zarafa.common.ui.messagepanel.MessageBody = Ext.extend(Ext.Container, {
 		var containerNode = Ext.DomHelper.createDom({
 			tag: 'span'
 		});
-		for(var i=0;i<parts.length;i++){
+		for(var i=0; i<parts.length; i++){
 			// Create the node for a normal link
 			if(parts[i].search(this.linkPattern) != -1){
 				// Create a new anchor-node for making url clickable.
@@ -569,7 +569,7 @@ Zarafa.common.ui.messagepanel.MessageBody = Ext.extend(Ext.Container, {
 		}
 
 		// Replace the original text node under the parent with the new anchor nodes and split up text nodes.
-		for(var i=0, count=containerNode.childNodes.length;i<count;i++){
+		for(var i=0, count=containerNode.childNodes.length; i<count; i++){
 			// We remove the childNode from the parent by using this line so every loop we can add the first as the list shrinks
 			parentNode.insertBefore(containerNode.childNodes.item(0), node);
 		}
@@ -588,7 +588,7 @@ Zarafa.common.ui.messagepanel.MessageBody = Ext.extend(Ext.Container, {
 		var mailtoElements = iframeDocumentElement.query('a[href^="mailto:"]');
 
 		if(!Ext.isEmpty(mailtoElements)){
-			for (var i=0; i<mailtoElements.length ; i++)
+			for (var i=0; i<mailtoElements.length; i++)
 			{
 				Ext.EventManager.on(mailtoElements[i], 'click', this.onMailtoClick);
 			}

@@ -24,7 +24,7 @@ Zarafa.core.data.MessageRecordFields = [
 	{name: 'message_delivery_time', type:'date', dateFormat:'timestamp', defaultValue: null, sortDir: 'DESC'},
 	{name: 'client_submit_time', type:'date', dateFormat:'timestamp', defaultValue: null, sortDir: 'DESC'},
 	{name: 'transport_message_headers'},
-	{name: 'hide_attachments', type: 'boolean', defaultValue: false},
+	{name: 'hide_attachments', type: 'boolean', defaultValue: false}
 ];
 
 /**
@@ -686,7 +686,7 @@ Zarafa.core.data.MessageRecord = Ext.extend(Zarafa.core.data.IPMRecord, {
 
 			recipientStore.add(record);
 		}
-	},
+	}
 });
 
 /**

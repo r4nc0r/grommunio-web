@@ -28,15 +28,15 @@ Zarafa.contact.printer.ContactRenderer = Ext.extend(Zarafa.common.printer.render
 		html += this.addRow('', '');  // separator
 		html += this.optionalRow(_('Business Address'), 'business_address',
 			// american formatted address. translations can add more <br> and change sequence
-			'{business_address_street}<br>'
-			+ '{business_address_city} {business_address_state} {business_address_postal_code}<br>'
-			+ '{business_address_country}');
+			'{business_address_street}<br>' +
+			'{business_address_city} {business_address_state} {business_address_postal_code}<br>' +
+			'{business_address_country}');
 		html += this.optionalRow(_('IM Address'), 'im', '{im}');
 		html += this.addRow('', '');  // separator
 		html += this.optionalRow(_('Home Address'), 'home_address',
-			'{home_address_street}<br>'
-			+ '{home_address_city} {home_address_state} {home_address_postal_code}<br>'
-			+ '{home_address_country}');
+			'{home_address_street}<br>' +
+			'{home_address_city} {home_address_state} {home_address_postal_code}<br>' +
+			'{home_address_country}');
 		html += this.addRow('', '');  // separator
 		html += this.optionalRow(_('Business'), 'business_telephone_number', '{business_telephone_number}');
 		html += this.optionalRow(_('Home'), 'home_telephone_number', '{home_telephone_number}');

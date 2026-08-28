@@ -113,7 +113,7 @@ Zarafa.common.ui.messagepanel.MessageHeader = Ext.extend(Ext.Panel, {
 					xtype: 'zarafa.recipientlinks',
 					plugins: [ 'zarafa.recordcomponentupdaterplugin' ],
 					fieldLabel : pgettext('mail.previewpanel', 'Bcc'),
-					recipientType: Zarafa.core.mapi.RecipientType.MAPI_BCC,
+					recipientType: Zarafa.core.mapi.RecipientType.MAPI_BCC
 				});
 		}
 		items.push({

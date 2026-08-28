@@ -416,8 +416,8 @@ Zarafa.calendar.dialogs.AppointmentToolbar = Ext.extend(Zarafa.core.ui.ContentPa
 			var mailModel = container.getContextByName('mail').getModel();
 			var responseRecord = mailModel.createRecord();
 
-			var prefix = container.getSettingsModel().get('zarafa/v1/contexts/mail/use_english_abbreviations') ?
-				'Re' : _('Re');
+			var prefix = container.getSettingsModel().get('zarafa/v1/contexts/mail/use_english_abbreviations')
+				? 'Re' : _('Re');
 			var subject = rec.get('normalized_subject') || rec.get('subject') || '';
 			responseRecord.set('subject', prefix + ': ' + subject);
 

@@ -107,7 +107,7 @@ Zarafa.core.ui.NavigationPanel = Ext.extend(Zarafa.core.ui.MainViewSidebar, {
 		items.push.apply(items, southComponents);
 
 		// Add CSS class to every item
-		for(var i=0,len=items.length;i<len;i++){
+		for(var i=0,len=items.length; i<len; i++){
 			// Prevent overriding other css classes
 			if(Ext.isEmpty(items[i].cls)){
 				items[i].cls = 'zarafa-navigationpanel-item';

@@ -559,7 +559,7 @@ Zarafa.core.ui.MessageContentPanel = Ext.extend(Zarafa.core.ui.RecordContentPane
 					// it will have to abort.
 					callback(buttonClicked == 'yes');
 				},
-				scope: this,
+				scope: this
 			});
 		} else {
 			// The subject is provided, we can continue

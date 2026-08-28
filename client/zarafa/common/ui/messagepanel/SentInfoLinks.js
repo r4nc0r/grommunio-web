@@ -163,7 +163,7 @@ Zarafa.common.ui.messagepanel.SentInfoLinks = Ext.extend(Ext.Container, {
 					}
 
 					return !/^\s*\/[Oo]=/.test(address);
-				},
+				}
 			});
 		}
 	},
@@ -263,7 +263,7 @@ Zarafa.common.ui.messagepanel.SentInfoLinks = Ext.extend(Ext.Container, {
 	 * @param {Ext.EventObject} evt The mouse event object
 	 * @param {HTMLElement} elem The target node
 	 * @param {Object} obj The options configuration passed to the {@link Ext.Element#addListener} call
- 	 * @private
+	 * @private
 	 */
 	onDoubleClick: function(evt, elem, obj)
 	{

@@ -263,7 +263,7 @@ Zarafa.core.data.ListModuleStore = Ext.extend(Zarafa.core.data.IPMStore, {
 	/**
 	 * Function will set entryid of mapi store.
 	 * @param {HexString} storeEntryId entry id of mapi store.
- 	 * @param {Boolean} add append store entryids instead of overwriting it.
+	 * @param {Boolean} add append store entryids instead of overwriting it.
 	 */
 	setStoreEntryId: function(storeEntryId, add)
 	{
@@ -443,7 +443,7 @@ Zarafa.core.data.ListModuleStore = Ext.extend(Zarafa.core.data.IPMStore, {
 
 		/**
 		 * We don't required search restriction while navigate using page navigation tool bar in search result grid.
- 		 */
+		 */
 		if(options.actionType == Zarafa.core.Actions['list'] && Array.isArray(options.params.restriction.search) && Ext.isDefined(options.params.search_folder_entryid)) {
 			delete options.params.restriction.search;
 		}

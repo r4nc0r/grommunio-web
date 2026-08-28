@@ -270,7 +270,7 @@ Zarafa.common.recipientfield.ui.RecipientHoverCardView = Ext.extend(Ext.Window, 
 	/**
 	 * Handler for the "Copy email address" and 'Copy email addresses' option. This will
 	 * copy email address(es) of the resolved recipient(s).
- 	 * @param {Zarafa.common.recipientfield.ui.RecipientHoverCardButton} item The item can be
+	 * @param {Zarafa.common.recipientfield.ui.RecipientHoverCardButton} item The item can be
 	 * 'Copy email address' or 'Copy email addresses' button in hover card.
 	 */
 	copyEmail: function (item)

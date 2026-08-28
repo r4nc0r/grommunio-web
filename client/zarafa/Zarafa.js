@@ -238,7 +238,7 @@ Ext.apply(Zarafa, {
 			// So we need to whitelist them by this new regEx.
 			ALLOWED_URI_REGEXP: Object.seal(/^(?:(?:(?:f|ht)tps?|mailto|elodms|msteams|webexteams|zoommtg|zoomus|gotomeeting|tel|callto|cid|xmpp|smb|file):|[^a-z]|[a-z]:|[a-z+.-]+(?:[^a-z+.\-:]|$))/i),
 			ALLOW_DATA_ATTR: true,
-			ADD_TAGS: ['svg', 'use', 'symbol'],
+			ADD_TAGS: ['svg', 'use', 'symbol']
 		});
 
 		DOMPurify.addHook('afterSanitizeAttributes', function(node) {
@@ -1134,10 +1134,10 @@ Ext.apply(Zarafa, {
 		}
 
 		// Pre-compile the color regexes once instead of per-rule.
-		var primaryRe = activeIconset['primary-color'] ?
-			new RegExp(activeIconset['primary-color'], 'gi') : null;
-		var secondaryRe = activeIconset['secondary-color'] ?
-			new RegExp(activeIconset['secondary-color'], 'gi') : null;
+		var primaryRe = activeIconset['primary-color']
+			? new RegExp(activeIconset['primary-color'], 'gi') : null;
+		var secondaryRe = activeIconset['secondary-color']
+			? new RegExp(activeIconset['secondary-color'], 'gi') : null;
 
 		// Collect the full CSS text of the iconset stylesheet in memory,
 		// recoloring SVG data URIs as we go.  This avoids per-rule

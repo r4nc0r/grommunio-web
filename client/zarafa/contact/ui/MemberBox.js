@@ -38,7 +38,7 @@ Zarafa.contact.ui.MemberBox = Ext.extend(Zarafa.common.recipientfield.ui.Recipie
 	 * to render the contents of the box.
 	 * @param {Ext.data.Record} record The record which is going to be rendered
 	 * @return {Object} The data object which can be passed to {@link #textTpl}.
- 	 * @private
+	 * @private
 	 */
 	prepareData: function(record)
 	{

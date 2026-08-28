@@ -276,7 +276,7 @@ Zarafa.mail.settings.SettingsOofWidget = Ext.extend(Zarafa.settings.ui.SettingsW
 						change: this.onFieldChange,
 						scope: this
 					}
-				}],
+				}]
 			}, {
 				title: _('Outside My Organization'),
 				itemId: 'external',

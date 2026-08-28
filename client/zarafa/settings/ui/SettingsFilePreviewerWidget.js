@@ -56,7 +56,7 @@ Zarafa.settings.ui.SettingsFilePreviewerWidget = Ext.extend(Zarafa.settings.ui.S
 	            name:'zarafa/v1/main/file_previewer/odf_zoom',
 	            ref: 'odfZoom',
 	            store: zoomStore,
-	            fieldLabel: _('Document default zoom'),
+	            fieldLabel: _('Document default zoom')
 	        },{
 	            name:'zarafa/v1/main/file_previewer/pdf_zoom',
 	            ref: 'pdfZoom',
@@ -86,21 +86,21 @@ Zarafa.settings.ui.SettingsFilePreviewerWidget = Ext.extend(Zarafa.settings.ui.S
 	    for (var config of configs) {
 	        items.push(
 				Object.assign(config, {
-	            	xtype: 'combo',
-	            	width: 125,
-	            	mode: 'local',
-	            	triggerAction: 'all',
-	            	displayField: 'name',
-	            	valueField: 'value',
-	            	lazyInit: false,
-	            	forceSelection: true,
-	            	editable: false,
-	            	autoSelect: true,
-	            	listeners: {
-	            	    change: this.onDefaultZoomSelect,
-	            	    scope: this
-	            	}
-	        	})
+		xtype: 'combo',
+		width: 125,
+		mode: 'local',
+		triggerAction: 'all',
+		displayField: 'name',
+		valueField: 'value',
+		lazyInit: false,
+		forceSelection: true,
+		editable: false,
+		autoSelect: true,
+		listeners: {
+		    change: this.onDefaultZoomSelect,
+		    scope: this
+		}
+		})
 			);
 	    }
 	    return items;

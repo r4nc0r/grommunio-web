@@ -15,7 +15,7 @@ Zarafa.mail.dialogs.ShowMailContentPanel = Ext.extend(Zarafa.core.ui.MessageCont
 	model: undefined,
 
 	/**
- 	 * @constructor
+	 * @constructor
 	 * @param config Configuration structure
 	 */
 	constructor: function(config)

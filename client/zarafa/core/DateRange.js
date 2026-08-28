@@ -521,8 +521,8 @@ Zarafa.core.DateRange = Ext.extend(Ext.util.Observable, {
 	isAllDay: function()
 	{
 		if(Ext.isDate(this.startDate) && Ext.isDate(this.dueDate) && !this.isZeroMinuteRange()) {
-			return (this.startDate.clearTime(true).getTime() === this.getStartTime())
-			&& (this.dueDate.clearTime(true).getTime() === this.getDueTime());
+			return (this.startDate.clearTime(true).getTime() === this.getStartTime()) &&
+			(this.dueDate.clearTime(true).getTime() === this.getDueTime());
 		}
 
 		return false;

@@ -24,7 +24,7 @@ Zarafa.common.outofoffice.data.OofRecordFields = [
   {name: 'allow_external'},
   {name: 'external_audience'},
   {name: 'external_reply'},
-  {name: 'external_subject'},
+  {name: 'external_subject'}
 ];
 
 /**
@@ -39,7 +39,7 @@ Zarafa.common.outofoffice.data.OofRecord = Ext.extend(Zarafa.core.data.MAPIRecor
    * @type Array
    * @private
    */
-  baseIdProperties: ['store_entryid'],
+  baseIdProperties: ['store_entryid']
 });
 
 // Register a custom type to be used by the Record Factory

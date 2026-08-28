@@ -241,10 +241,10 @@ Zarafa.task.TaskContext = Ext.extend(Zarafa.core.Context, {
 				component = Zarafa.task.dialogs.SendTaskRequestConfirmationContentPanel;
 				break;
 			case Zarafa.core.data.SharedComponentType['common.contextmenu']:
-		 		component = Zarafa.task.ui.TaskContextMenu;
+				component = Zarafa.task.ui.TaskContextMenu;
 				break;
 			case Zarafa.core.data.SharedComponentType['task.contextmenu.flags']:
-		 		component = Zarafa.task.ui.TaskFlagsMenu;
+				component = Zarafa.task.ui.TaskFlagsMenu;
 				break;
 			case Zarafa.core.data.SharedComponentType['task.dialog.options']:
 				component = Zarafa.task.dialogs.TaskOptionsContentPanel;

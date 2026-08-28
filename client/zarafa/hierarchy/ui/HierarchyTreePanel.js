@@ -52,8 +52,8 @@ Zarafa.hierarchy.ui.HierarchyTreePanel = Ext.extend(Zarafa.hierarchy.ui.Tree, {
 	{
 		config = config || {};
 
-		var checked = Ext.isDefined(config.showAllFoldersDefaultValue) ?
-			config.showAllFoldersDefaultValue: this.showAllFoldersDefaultValue;
+		var checked = Ext.isDefined(config.showAllFoldersDefaultValue)
+			? config.showAllFoldersDefaultValue: this.showAllFoldersDefaultValue;
 
 		Ext.applyIf(config, {
 			xtype: 'zarafa.hierarchytreepanel',
@@ -412,8 +412,8 @@ Zarafa.hierarchy.ui.HierarchyTreePanel = Ext.extend(Zarafa.hierarchy.ui.Tree, {
 
 			var msg;
 			if (!hasAccess) {
-				msg = hasCtrlKeyPressed ? _("You have insufficient privileges to copy this folder. Ask the folder owner to grant you permissions or contact your system administrator.") :
-					_("You have insufficient privileges to move this folder. Ask the folder owner to grant you permissions or contact your system administrator.");
+				msg = hasCtrlKeyPressed ? _("You have insufficient privileges to copy this folder. Ask the folder owner to grant you permissions or contact your system administrator.")
+					: _("You have insufficient privileges to move this folder. Ask the folder owner to grant you permissions or contact your system administrator.");
 				container.getNotifier().notify('error', _("Insufficient privileges"), msg);
 				return false;
 			}
@@ -569,7 +569,7 @@ Zarafa.hierarchy.ui.HierarchyTreePanel = Ext.extend(Zarafa.hierarchy.ui.Tree, {
 						cloneSourceNodes.splice(item.index, 1);
 						var subject = item.record.get('subject');
 						subject = !Ext.isEmpty(subject) ? subject : _("None");
-						msg += "<b>" +_("Subject:") + "</b> " + subject ;
+						msg += "<b>" +_("Subject:") + "</b> " + subject;
 						msg += "<br/>";
 					}, this);
 					msg += "<br/>" + _("Would you like to copy instead?");
@@ -650,8 +650,8 @@ Zarafa.hierarchy.ui.HierarchyTreePanel = Ext.extend(Zarafa.hierarchy.ui.Tree, {
 		// Return if a folder belongs to a shared store, or the folder is a Calendar item
 		// and the 'Show all folders' checkbox is unchecked, or the container class of folder is
 		// not of the current context hierarchy.
-		if (isSharedFolder || (!isAllFolderHierarchy && !isContextHierarchy)
-			|| (isContextHierarchy && (folder.isCalendarFolder() || folder.get('container_class') !== this.IPMFilter))) {
+		if (isSharedFolder || (!isAllFolderHierarchy && !isContextHierarchy) ||
+			(isContextHierarchy && (folder.isCalendarFolder() || folder.get('container_class') !== this.IPMFilter))) {
 			return;
 		}
 		folderNode = this.getNodeById(folder.get('entryid'));

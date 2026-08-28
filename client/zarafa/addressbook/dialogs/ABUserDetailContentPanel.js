@@ -8,7 +8,7 @@ Ext.namespace('Zarafa.addressbook.dialogs');
 Zarafa.addressbook.dialogs.ABUserDetailContentPanel = Ext.extend(Zarafa.core.ui.RecordContentPanel, {
 
 	/**
- 	 * @constructor
+	 * @constructor
 	 * @param config Configuration structure
 	 */
 	constructor : function(config)

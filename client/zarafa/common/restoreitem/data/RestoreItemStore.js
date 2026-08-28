@@ -98,7 +98,7 @@ Zarafa.common.restoreitem.data.RestoreItemStore = Ext.extend(Zarafa.core.data.Li
 	/**
 	 * Function which used to reload the store.
 	 */
-	reload: Ext.emptyFn,
+	reload: Ext.emptyFn
 });
 
 Ext.reg('zarafa.restoreitemstore', Zarafa.common.restoreitem.data.RestoreItemStore);

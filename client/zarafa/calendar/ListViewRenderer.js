@@ -31,44 +31,44 @@ Zarafa.calendar.printer.ListViewRenderer = Ext.extend(Zarafa.common.printer.rend
 		 * [name]                                    [print date]
 		 */
 
-		var html = '<div id="k-listview">'
+		var html = '<div id="k-listview">' +
 
 			// Div with calendar name
-			+ '<div id="k-name">'
-			+	'<tr><td>' + _('An overview of') + ': ' + '{foldernames} </td><tr>'
-			+ '</div>'
-			+ '<table id="k-printlist" cellpadding=0 cellspacing=0>'
-			+ 	'<tr>'
-			+		'<th>' + _('Subject') + '</th>'
-			+		'<th>' + _('Start') + '</th>'
-			+		'<th>' + _('End') + '</th>'
-			+		'<th>' + _('Duration') + '</th>'
-			+		'<th>' + _('Location') + '</th>'
-			+		'<th>' + _('Categories') + '</th>'
-			+	'</tr>'
+			'<div id="k-name">'	+
+			'<tr><td>' + _('An overview of') + ': ' + '{foldernames} </td><tr>' +
+			'</div>' +
+			'<table id="k-printlist" cellpadding=0 cellspacing=0>' 	+
+			'<tr>'		+
+			'<th>' + _('Subject') + '</th>'		+
+			'<th>' + _('Start') + '</th>'		+
+			'<th>' + _('End') + '</th>'		+
+			'<th>' + _('Duration') + '</th>'		+
+			'<th>' + _('Location') + '</th>'		+
+			'<th>' + _('Categories') + '</th>'	+
+			'</tr>' 	+
 			// date format l jS F = Monday 1st January
-			+ 	'<tpl for="appointments">'
-			+		'<tr>'
-			+			'<td>{values.data.subject:htmlEncode}</td>'
+			'<tpl for="appointments">'		+
+			'<tr>'			+
+			'<td>{values.data.subject:htmlEncode}</td>'			+
 						// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for the meaning of these formatting instructions
-			+			'<td>{values.data.startdate:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'
+			'<td>{values.data.startdate:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'			+
 						// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for the meaning of these formatting instructions
-			+			'<td>{values.data.duedate:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'
-			+			'<td>{[Ext.util.Format.duration(values.data.duration, 1)]}</td>'
-			+			'<td>{values.data.location:htmlEncode}</td>'
-			+			'<td>{values.data.categories:htmlEncode}</td>'
-			+		'</tr>'
-			+	'</tpl>'
-			+'</table>'
+			'<td>{values.data.duedate:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'			+
+			'<td>{[Ext.util.Format.duration(values.data.duration, 1)]}</td>'			+
+			'<td>{values.data.location:htmlEncode}</td>'			+
+			'<td>{values.data.categories:htmlEncode}</td>'		+
+			'</tr>'	+
+			'</tpl>'+
+			'</table>' +
 
 			// Bottom table with username and date
-			+ '<table id="k-printlistbottom">'
-			+	'<tr>'
+			'<table id="k-printlistbottom">'	+
+			'<tr>'		+
 					// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for the meaning of these formatting instructions
-     	        	+		'<td class="nowrap" align="left">'+_('Printed by') + ' ' + '{fullname}' + ' '+_('at') + ' ' + '{currenttime:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'
-			+	'</tr>'
-			+ '</table>'
-		+ '</div>';
+		'<td class="nowrap" align="left">'+_('Printed by') + ' ' + '{fullname}' + ' '+_('at') + ' ' + '{currenttime:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'	+
+			'</tr>' +
+			'</table>' +
+		'</div>';
 
 		return html;
 	},

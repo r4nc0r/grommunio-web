@@ -530,13 +530,13 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 		var dayRatioIndex = dayIndex % 1;
 		dayIndex = Math.floor(dayIndex);
 
-		var dayMap = this.daysMap[ dayIndex ];
+		var dayMap = this.daysMap[dayIndex];
 		var numDisplayedHours = this.hoursEachDayMap.length;
 		// Get the index of the hour the focus is centered on using the decimal part of the dayIndex
 		var hourIndex = Math.floor(numDisplayedHours * dayRatioIndex);
 
 		// Get the start and the end of the hour slot that is focus is centered on
-		var focusStartTimestamp = dayMap.timestamp + this.hoursEachDayMap[ hourIndex ].startDayOffset;
+		var focusStartTimestamp = dayMap.timestamp + this.hoursEachDayMap[hourIndex].startDayOffset;
 		var focusEndTimestamp = focusStartTimestamp + this.slotDuration;
 
 		return new Zarafa.core.DateRange({ startDate: new Date(focusStartTimestamp*1000), dueDate: new Date(focusEndTimestamp*1000) });
@@ -872,18 +872,18 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 		// Determine what days need to be loaded extra and what days can be removed.
 		var loadDays = [];
 		var cleanupDays = [];
-		for(var i=0;i<this.daysMap.length;i++){
+		for(var i=0; i<this.daysMap.length; i++){
 			// If day is between the range to visualize.
 			if(i >= startDayIndex && i <= endDayIndex){
 				// Only add to loadDays when it is not displayed yet
-				if(!this.daysMap[ i ].displayNodeBody){
-					loadDays[ loadDays.length ] = i;
+				if(!this.daysMap[i].displayNodeBody){
+					loadDays[loadDays.length] = i;
 				}
 			// If day falls outside visual range
 			} else {
 				// If day is marked as displayed it needs to be cleaned up
-				if(this.daysMap[ i ].displayNodeBody){
-					cleanupDays[ cleanupDays.length ] = i;
+				if(this.daysMap[i].displayNodeBody){
+					cleanupDays[cleanupDays.length] = i;
 				}
 			}
 		}
@@ -906,20 +906,20 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 		var headerElem = Ext.get(this.headerBodyElem);
 		var bodyElem = Ext.get(this.bodyBackgroundElem);
 
-		for(var i=0;i<renderDays.length;i++){
+		for(var i=0; i<renderDays.length; i++){
 			var dayIndex = renderDays[i];
 			var currDayCls = '';
-			if(this.daysMap[ dayIndex ].currentDay){
+			if(this.daysMap[dayIndex].currentDay){
 				currDayCls = ' x-freebusy-timeline-day-current';
 			}
 
 			var bodyDayElem = bodyElem.createChild({
 				cls: 'x-freebusy-timeline-day' + currDayCls
 			});
-			bodyDayElem.dom.style.left = this.daysMap[ dayIndex ].leftPos+"px";
+			bodyDayElem.dom.style.left = this.daysMap[dayIndex].leftPos+"px";
 
 			this.bodyBGTemplate.overwrite(bodyDayElem, {
-				dayLabel: this.daysMap[ dayIndex ].label,
+				dayLabel: this.daysMap[dayIndex].label,
 				hours: this.hoursEachDayMap,
 				hourWidth: this.hourWidth,
 				numHours: this.hoursEachDayMap.length,
@@ -929,10 +929,10 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 			var headerDayElem = headerElem.createChild({
 				cls: 'x-freebusy-timeline-day' + currDayCls
 			});
-			headerDayElem.dom.style.left = this.daysMap[ dayIndex ].leftPos+"px";
+			headerDayElem.dom.style.left = this.daysMap[dayIndex].leftPos+"px";
 
 			this.headerTemplate.overwrite(headerDayElem, {
-				dayLabel: this.daysMap[ dayIndex ].label,
+				dayLabel: this.daysMap[dayIndex].label,
 				hours: this.hoursEachDayMap,
 				hourWidth: this.hourWidth,
 				numHours: this.hoursEachDayMap.length,
@@ -950,8 +950,8 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 				borderSpacing: this.borderSpacing
 			});
 
-			this.daysMap[ dayIndex ].displayNodeHeader = headerDayElem;
-			this.daysMap[ dayIndex ].displayNodeBody = bodyDayElem;
+			this.daysMap[dayIndex].displayNodeHeader = headerDayElem;
+			this.daysMap[dayIndex].displayNodeBody = bodyDayElem;
 		}
 	},
 
@@ -963,16 +963,16 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 	cleanUpTimelineDays: function(cleanupDays){
 		var elem;
 
-		for(var i=0;i<cleanupDays.length;i++){
+		for(var i=0; i<cleanupDays.length; i++){
 			var dayIndex = cleanupDays[i];
 
-			elem = this.daysMap[ dayIndex ].displayNodeHeader;
+			elem = this.daysMap[dayIndex].displayNodeHeader;
 			Ext.removeNode( elem.dom );
-			elem = this.daysMap[ dayIndex ].displayNodeBody;
+			elem = this.daysMap[dayIndex].displayNodeBody;
 			Ext.removeNode( elem.dom );
 
-			this.daysMap[ dayIndex ].displayNodeHeader = false;
-			this.daysMap[ dayIndex ].displayNodeBody = false;
+			this.daysMap[dayIndex].displayNodeHeader = false;
+			this.daysMap[dayIndex].displayNodeBody = false;
 		}
 	},
 
@@ -1019,13 +1019,13 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 		var availableSlotsPerDay = (24*60*60) / this.slotDuration;
 
 		// Dirty way of assigning the working hours
-		for(var i=0;i<availableSlotsPerDay;i++) {
+		for(var i=0; i<availableSlotsPerDay; i++) {
 			// FIXME: We should support minutes as well, so we shouldn't
 			// round to entire hours but to 15 minutes for example.
 			var startHour = Math.floor(this.workingHoursStart / 60);
 			var endHour = Math.ceil(this.workingHoursEnd / 60);
 			if (!this.model.showOnlyWorkingHours() || (i >= startHour && i < endHour)) {
-				this.hoursEachDayMap[ this.hoursEachDayMap.length ] = {
+				this.hoursEachDayMap[this.hoursEachDayMap.length] = {
 					// Run the hour through a formatter
 					label: Date.parseDate(i, 'G').formatDefaultTime(),
 					startDayOffset: i * this.slotDuration,
@@ -1339,7 +1339,7 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 		var periodStart = this.daterange.getStartDate().getTime()/1000;
 		var periodEnd = this.daterange.getDueDate().getTime()/1000;
 
-		for(var i=0;i<records.length;i++){
+		for(var i=0; i<records.length; i++){
 			var blockStart = parseInt( records[i].get("start"), 10);
 			var blockEnd = parseInt( records[i].get("end"), 10);
 
@@ -1489,7 +1489,7 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 	 */
 	findPixelOffsetStartOfDayBySecs: function(secondsSinceStartDay){
 		var firstHourStartDayOffsetSecs = this.hoursEachDayMap[0].startDayOffset;
-		var lastHourStartDayOffsetSecs = this.hoursEachDayMap[ this.hoursEachDayMap.length-1 ].startDayOffset;
+		var lastHourStartDayOffsetSecs = this.hoursEachDayMap[this.hoursEachDayMap.length-1].startDayOffset;
 
 		// Timestamp takes place after last visible hour
 		if(lastHourStartDayOffsetSecs + this.slotDuration < secondsSinceStartDay){
@@ -1571,14 +1571,14 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 			timeSinceStartOfDay = (ratioDay * durationVisHours) + this.hoursEachDayMap[0].startDayOffset;
 		} else {
 			// One slot duration past last shown hour slot
-			timeSinceStartOfDay = this.hoursEachDayMap[ this.hoursEachDayMap.length-1 ].startDayOffset + this.slotDuration;
+			timeSinceStartOfDay = this.hoursEachDayMap[this.hoursEachDayMap.length-1].startDayOffset + this.slotDuration;
 		}
 		/* Use timestamp of the start of the day to make an date object that we can add the hour and
 		 * minutes to. We divide the number of seconds since the start of the day to get the hour
 		 * and minutes. This we will add to the Date object by using the setHours and setMinutes
 		 * methods. This will prevent problems after Daylight Saving Time.
 		 */
-		var date = new Date( this.daysMap[ Math.floor(dayIndex) ].timestamp * 1000 );
+		var date = new Date( this.daysMap[Math.floor(dayIndex)].timestamp * 1000 );
 		var hoursSinceStartOfDay = Math.floor(timeSinceStartOfDay/(60*60));
 		var minutesSinceStartOfDay = Math.floor( (timeSinceStartOfDay%(60*60)) / 60 );
 		/* NOTE: Using setHours/setMinutes will cause an issue right on the DST change. If you look

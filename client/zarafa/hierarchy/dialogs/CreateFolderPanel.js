@@ -202,7 +202,7 @@ Zarafa.hierarchy.dialogs.CreateFolderPanel = Ext.extend(Ext.Panel, {
 			Ext.MessageBox.show({
 				title: _('No folder name'),
 				msg: _("You must specify a name."),
-				buttons: Ext.MessageBox.OK,
+				buttons: Ext.MessageBox.OK
 			});
 
 			return;
@@ -224,7 +224,7 @@ Zarafa.hierarchy.dialogs.CreateFolderPanel = Ext.extend(Ext.Panel, {
 			Ext.MessageBox.show({
 				title: _('No destination'),
 				msg: _("You must select a destination folder."),
-				buttons: Ext.MessageBox.OK,
+				buttons: Ext.MessageBox.OK
 			});
 
 			return;

@@ -125,9 +125,9 @@ Zarafa.common.form.TextArea = Ext.extend(Ext.form.TextArea, {
 	insertAtCursor: function(text) {
 		var startPos = this.el.dom.selectionStart;
 		var endPos = this.el.dom.selectionEnd;
-		this.el.dom.value = this.el.dom.value.substring(0, startPos)
-			+ text
-			+ this.el.dom.value.substring(endPos, this.el.dom.value.length);
+		this.el.dom.value = this.el.dom.value.substring(0, startPos) +
+			text +
+			this.el.dom.value.substring(endPos, this.el.dom.value.length);
 
 		this.el.focus();
 		this.el.dom.setSelectionRange(endPos + text.length, endPos + text.length);
@@ -158,7 +158,7 @@ Zarafa.common.form.TextArea = Ext.extend(Ext.form.TextArea, {
 	 * @param {String} selector The selector query which used to select the text in editor.
 	 * @return {boolean} return true if text is selected in editor else false.
 	 */
-	selectBySelector: Ext.emptyFn,
+	selectBySelector: Ext.emptyFn
 });
 
 Ext.reg('zarafa.textarea', Zarafa.common.form.TextArea);

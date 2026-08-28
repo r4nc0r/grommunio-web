@@ -57,10 +57,10 @@ Zarafa.core.ui.menu.ConditionalItem = Ext.extend(Ext.menu.Item, {
    * @return {Object}
    */
   getTemplateArgs: function() {
-  	// Get the original template arguments from the original function
-  	var templateArgs = Zarafa.core.ui.menu.ConditionalItem.superclass.getTemplateArgs.call(this);
-  	// Add the argument for the icon style
-  	templateArgs.iconStyle = this.iconBG ? 'style="background-color:'+this.iconBG+';"' : '';
+	// Get the original template arguments from the original function
+	var templateArgs = Zarafa.core.ui.menu.ConditionalItem.superclass.getTemplateArgs.call(this);
+	// Add the argument for the icon style
+	templateArgs.iconStyle = this.iconBG ? 'style="background-color:'+this.iconBG+';"' : '';
 		return templateArgs;
 	},
 	/**

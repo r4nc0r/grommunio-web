@@ -64,60 +64,60 @@ Zarafa.calendar.printer.WeekViewRenderer = Ext.extend(Zarafa.calendar.printer.Da
 		 * Printed by {fullname} at {date}
 		 */
 
-		return '<table class="print-calendar" cellpadding=0 cellspacing=0>\n'
-			+	'<tr style="height:10%;"><td colspan=2>'
-			+		'<table id="top">\n'
-			+			'<tr><td align="center">' +_('An overview of') + ' {fullname} {foldernames}</td>'
-			+			'<td align="center" rowspan="2"valign="top" width="10%"><div id="datepicker_left"></div></td>'
-			+			'<td align="center" rowspan="2" valign="top" width="10%"><div id="datepicker_right"></div></td></tr>\n'
-			+			'<tr><td align="left" valign="top" style="font-size: large;">'
-			+				'{startdate:date("' + _("l jS F Y") + '")} - {duedate:date("' + _("l jS F Y") + '")}'
-			+			'</td></tr>\n'
-			+		'</table>\n'
-			+ '</td></tr>\n'
-			+	'<tr style="height:40px;">'
+		return '<table class="print-calendar" cellpadding=0 cellspacing=0>\n'	+
+			'<tr style="height:10%;"><td colspan=2>'		+
+			'<table id="top">\n'			+
+			'<tr><td align="center">' +_('An overview of') + ' {fullname} {foldernames}</td>'			+
+			'<td align="center" rowspan="2"valign="top" width="10%"><div id="datepicker_left"></div></td>'			+
+			'<td align="center" rowspan="2" valign="top" width="10%"><div id="datepicker_right"></div></td></tr>\n'			+
+			'<tr><td align="left" valign="top" style="font-size: large;">'				+
+			'{startdate:date("' + _("l jS F Y") + '")} - {duedate:date("' + _("l jS F Y") + '")}'			+
+			'</td></tr>\n'		+
+			'</table>\n' +
+			'</td></tr>\n'	+
+			'<tr style="height:40px;">'		+
 				// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+		'<th class="date-header-center">{date1:date("' + _("l jS F") + '")}</th>'
+			'<th class="date-header-center">{date1:date("' + _("l jS F") + '")}</th>'		+
 				// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+		'<th class="date-header-center">{date2:date("' + _("l jS F") + '")}</th>'
-			+	'</tr>\n'
-			+	'<tr style="height:20%;">'
-			+		'<td valign="top"><table id="date1">{date1_table_data}</table></td>'
-			+		'<td valign="top"><table id="date2">{date2_table_data}</table></td>'
-			+	'</tr>\n'
-			+	'<tr style="height:40px;">'
+			'<th class="date-header-center">{date2:date("' + _("l jS F") + '")}</th>'	+
+			'</tr>\n'	+
+			'<tr style="height:20%;">'		+
+			'<td valign="top"><table id="date1">{date1_table_data}</table></td>'		+
+			'<td valign="top"><table id="date2">{date2_table_data}</table></td>'	+
+			'</tr>\n'	+
+			'<tr style="height:40px;">'		+
 				// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+		'<th class="date-header-center">{date3:date("' + _("l jS F") + '")}</th>'
+			'<th class="date-header-center">{date3:date("' + _("l jS F") + '")}</th>'		+
 				// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+		'<th class="date-header-center">{date4:date("' + _("l jS F") + '")}</th>'
-			+	'</tr>\n'
-			+	'<tr style="height:20%;">'
-			+		'<td valign="top"><table id="date3">{date3_table_data}</table></td>'
-			+		'<td valign="top"><table id="date4">{date4_table_data}</table></td>'
-			+	'</tr>\n'
-			+	'<tr style="height:40px;">'
+			'<th class="date-header-center">{date4:date("' + _("l jS F") + '")}</th>'	+
+			'</tr>\n'	+
+			'<tr style="height:20%;">'		+
+			'<td valign="top"><table id="date3">{date3_table_data}</table></td>'		+
+			'<td valign="top"><table id="date4">{date4_table_data}</table></td>'	+
+			'</tr>\n'	+
+			'<tr style="height:40px;">'		+
 				// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+		'<th class="date-header-center">{date5:date("' + _("l jS F") + '")}</th>'
+			'<th class="date-header-center">{date5:date("' + _("l jS F") + '")}</th>'		+
 				// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+		'<th class="date-header-center">{date6:date("' + _("l jS F") + '")}</th>'
-			+	'</tr>\n'
-			+	'<tr style="height:20%;">'
-			+		'<td valign="top"><table id="date5">{date5_table_data}</table></td>'
-			+		'<td valign="top"><table id="date6">{date6_table_data}</table></td>'
-			+	'</tr>\n'
-			+	'<tr style="height:40px;">'
+			'<th class="date-header-center">{date6:date("' + _("l jS F") + '")}</th>'	+
+			'</tr>\n'	+
+			'<tr style="height:20%;">'		+
+			'<td valign="top"><table id="date5">{date5_table_data}</table></td>'		+
+			'<td valign="top"><table id="date6">{date6_table_data}</table></td>'	+
+			'</tr>\n'	+
+			'<tr style="height:40px;">'		+
 				// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+		'<th class="date-header-center">{date7:date("' + _("l jS F") + '")}</th>'
-			+	'</tr>\n'
-			+	'<tr style="height:20%;">'
-			+		'<td valign="top"><table id="date7">{date7_table_data}</table></td>'
-			+	'</tr>\n</table>\n'
+			'<th class="date-header-center">{date7:date("' + _("l jS F") + '")}</th>'	+
+			'</tr>\n'	+
+			'<tr style="height:20%;">'		+
+			'<td valign="top"><table id="date7">{date7_table_data}</table></td>'	+
+			'</tr>\n</table>\n' +
 			// Bottom name and print date
-			+ '<table class="bottom">'
-			+		'<tr>'
+			'<table class="bottom">'		+
+			'<tr>'			+
 						// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+			'<td>'+_('Printed by') + ' {fullname} ' + _('at') + ' {currenttime:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'
-			+		'</tr>'
-			+ '</table>';
+			'<td>'+_('Printed by') + ' {fullname} ' + _('at') + ' {currenttime:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'		+
+			'</tr>' +
+			'</table>';
 	}
 });

@@ -84,9 +84,9 @@ Zarafa.common.ui.layout.SwitchBorderLayout = Ext.extend(Ext.layout.BorderLayout,
 				}
 
 				// Allocate the region
-				this[pos] = pos != 'center' && c.split ?
-					new Zarafa.common.ui.layout.SwitchBorderLayout.SwitchSplitRegion(this, c.initialConfig, pos):
-					new Zarafa.common.ui.layout.SwitchBorderLayout.SwitchRegion(this, c.initialConfig, pos);
+				this[pos] = pos != 'center' && c.split
+					? new Zarafa.common.ui.layout.SwitchBorderLayout.SwitchSplitRegion(this, c.initialConfig, pos)
+					:new Zarafa.common.ui.layout.SwitchBorderLayout.SwitchRegion(this, c.initialConfig, pos);
 				this[pos].render(target, c);
 
 				// If this is not the center region, we can create
@@ -94,9 +94,9 @@ Zarafa.common.ui.layout.SwitchBorderLayout = Ext.extend(Ext.layout.BorderLayout,
 				if (pos != 'center') {
 					var altPos = this.switchMap[pos];
 
-					this[altPos] = this[pos].split ?
-						new Zarafa.common.ui.layout.SwitchBorderLayout.SwitchSplitRegion(this, c.initialConfig, altPos):
-						new Zarafa.common.ui.layout.SwitchBorderLayout.SwitchRegion(this, c.initialConfig, altPos);
+					this[altPos] = this[pos].split
+						? new Zarafa.common.ui.layout.SwitchBorderLayout.SwitchSplitRegion(this, c.initialConfig, altPos)
+						:new Zarafa.common.ui.layout.SwitchBorderLayout.SwitchRegion(this, c.initialConfig, altPos);
 					this[altPos].render(target, c, true);
 
 					// Update the region references

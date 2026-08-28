@@ -72,7 +72,7 @@ Zarafa.common.ui.ColorPicker = Ext.extend(Ext.form.Field, {
 	 */
   constructor: function(config)
   {
-  	this.addEvents(
+	this.addEvents(
 			/**
 			 * @event show
 			 * Fired when the menu is shown.
@@ -99,14 +99,14 @@ Zarafa.common.ui.ColorPicker = Ext.extend(Ext.form.Field, {
 			 * @param {String} color The color that was picked (hex rgb code)
 			 */
 			'select'
-  	);
+	);
 
-  	config = config || {};
-  	Ext.applyIf(config, {
-  		// setting defaultAutoCreate to true to have a simple div as element
-  		// and not have Ext.form.Field create an input.
-  			defaultAutoCreate: true
-  	});
+	config = config || {};
+	Ext.applyIf(config, {
+		// setting defaultAutoCreate to true to have a simple div as element
+		// and not have Ext.form.Field create an input.
+			defaultAutoCreate: true
+	});
 
     Zarafa.common.ui.ColorPicker.superclass.constructor.call(this, config);
   },
@@ -127,7 +127,7 @@ Zarafa.common.ui.ColorPicker = Ext.extend(Ext.form.Field, {
     Zarafa.common.ui.ColorPicker.superclass.onRender.apply(this, arguments);
 
     if ( this.border ){
-    	this.cls = (this.cls || '') + ' zarafa-border';
+	this.cls = (this.cls || '') + ' zarafa-border';
     }
 
     this.el.addClass([this.fieldClass, this.cls]);
@@ -192,7 +192,7 @@ Zarafa.common.ui.ColorPicker = Ext.extend(Ext.form.Field, {
 	 */
 	setValue: function(value) {
     if ( !Ext.isEmpty(value) ){
-    	this.value = value.startsWith('#') ? value.replace('#', '') : value;
+	this.value = value.startsWith('#') ? value.replace('#', '') : value;
     }
 
     if(this.rendered){

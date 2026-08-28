@@ -38,7 +38,7 @@ Zarafa.hierarchy.dialogs.FolderSelectionPanel = Ext.extend(Ext.Panel, {
 				hideFavorites: true,
 				forceLayout: true,
 				treeSorter: true,
-				hideTodoList: !!config.hideTodoList,
+				hideTodoList: !!config.hideTodoList
 			}]
 		});
 

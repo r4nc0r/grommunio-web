@@ -36,7 +36,7 @@ Zarafa.addressbook.dialogs.ABUserSelectionContentPanel = Ext.extend(Zarafa.core.
 	listRestriction: undefined,
 
 	/**
- 	 * @constructor
+	 * @constructor
 	 * @param {Object} config Configuration structure
 	 */
 	constructor: function(config)

@@ -293,7 +293,7 @@ Zarafa.advancesearch.dialogs.SearchPanel = Ext.extend(Ext.Panel, {
 		/**
 		 * After removed search folder on server side and close the search tab we need
 		 * to again set the active search tab store in model.
- 		 */
+		 */
 		if(currentSearchStore !== false) {
 			model.setActiveStore(currentSearchStore);
 		}
@@ -634,7 +634,7 @@ Zarafa.advancesearch.dialogs.SearchPanel = Ext.extend(Ext.Panel, {
 			if (isAllFolderSelected) {
 				checkBox.wrap.dom.qtip = _("All folders are selected");
 			} else {
-				delete(checkBox.wrap.dom.qtip);
+				delete (checkBox.wrap.dom.qtip);
 			}
 		}
 	},

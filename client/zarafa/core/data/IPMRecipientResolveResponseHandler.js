@@ -16,7 +16,7 @@ Zarafa.core.data.IPMRecipientResolveResponseHandler = Ext.extend(Zarafa.core.dat
 	doChecknames: function(response) {
 		this.receivedRecords = [];
 		if (Ext.isDefined(response.resolveresponse)) {
-			for(var i=0;i<response.resolveresponse.length;i++){
+			for(var i=0; i<response.resolveresponse.length; i++){
 				this.receivedRecords.push({
 					id: response.resolveresponse[i].id,
 					result: this.readRecordsFromResponse(response.resolveresponse[i], 'result')

@@ -192,7 +192,7 @@ Zarafa.core.ui.MainToolbar = Ext.extend(Zarafa.core.ui.Toolbar, {
 		// Only loop through the list if the default button is found.
 		if(itemIndex >= 0){
 			// Loop from the itemIndex onwards.
-			for(var i=itemIndex,len=menu.items.length;i<len;i++){
+			for(var i=itemIndex,len=menu.items.length; i<len; i++){
 				var item = menu.items.itemAt(i);
 				// Only get the first button of the context that is active
 				if(button===false && item.context == newContext.getName()){
@@ -374,7 +374,7 @@ Zarafa.core.ui.MainToolbar = Ext.extend(Zarafa.core.ui.Toolbar, {
 	 {
 		 var menu, menuItems = [];
 		 var contexts = container.getContexts();
-		 for(var i=0,len=contexts.length;i<len;i++){
+		 for(var i=0,len=contexts.length; i<len; i++){
 			var context = contexts[i];
 			menu = context.getMainToolbarPrintButtons();
 			if(Array.isArray(menu) && menu.length){
@@ -572,17 +572,17 @@ Zarafa.core.ui.MainToolbar = Ext.extend(Zarafa.core.ui.Toolbar, {
 		if (this.undoButton && this.undoButton.rendered) {
 			this.undoButton.setDisabled(!undoManager.canUndo());
 			var next = undoManager.peekUndo();
-			this.undoButton.setTooltip(next ?
-				String.format(Ext.util.Format.htmlDecode(_('Undo: {0}')), next.description) + undoHint :
-				_('Undo') + undoHint);
+			this.undoButton.setTooltip(next
+				? String.format(Ext.util.Format.htmlDecode(_('Undo: {0}')), next.description) + undoHint
+				: _('Undo') + undoHint);
 		}
 
 		if (this.redoButton && this.redoButton.rendered) {
 			this.redoButton.setDisabled(!undoManager.canRedo());
 			var redoNext = undoManager.peekRedo();
-			this.redoButton.setTooltip(redoNext ?
-				String.format(Ext.util.Format.htmlDecode(_('Redo: {0}')), redoNext.description) + redoHint :
-				_('Redo') + redoHint);
+			this.redoButton.setTooltip(redoNext
+				? String.format(Ext.util.Format.htmlDecode(_('Redo: {0}')), redoNext.description) + redoHint
+				: _('Redo') + redoHint);
 		}
 	},
 

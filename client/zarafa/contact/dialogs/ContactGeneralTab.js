@@ -1152,7 +1152,7 @@ Zarafa.contact.dialogs.ContactGeneralTab = Ext.extend(Ext.form.FormPanel, {
 		} else if(!Ext.isEmpty(companyName)) {
 			// only companyname is set
 			fileasOptions.push([companyName]);
- 		}
+		}
 
 		comboStore.loadData(fileasOptions);
 	},

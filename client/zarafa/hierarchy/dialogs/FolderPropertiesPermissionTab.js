@@ -204,7 +204,7 @@ Zarafa.hierarchy.dialogs.FolderPropertiesPermissionTab = Ext.extend(Ext.Panel, {
 				boxLabel: _('Full Details'),
 				hideLabel: true,
 				rightsValue: Zarafa.core.mapi.Rights.RIGHTS_READ_ANY | Zarafa.core.mapi.Rights.RIGHTS_FOLDER_VISIBLE
-			},
+			}
 		];
 		return {
 			xtype: 'form',

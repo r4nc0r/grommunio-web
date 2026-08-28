@@ -87,7 +87,7 @@ Zarafa.calendar.Actions = {
 			record.convertToMeeting();
 			Zarafa.core.data.UIFactory.openCreateRecord(record, config);
 		}.createDelegate(this, [config], true));
- 	},
+	},
 
 	/**
 	 * Opens an address-book selection dialog so the user can choose

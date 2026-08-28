@@ -86,21 +86,21 @@ Zarafa.settings.ui.SettingsFilePreviewerWidget = Ext.extend(Zarafa.settings.ui.S
 	    for (var config of configs) {
 	        items.push(
 				Object.assign(config, {
-	            	xtype: 'combo',
-	            	width: 125,
-	            	mode: 'local',
-	            	triggerAction: 'all',
-	            	displayField: 'name',
-	            	valueField: 'value',
-	            	lazyInit: false,
-	            	forceSelection: true,
-	            	editable: false,
-	            	autoSelect: true,
-	            	listeners: {
-	            	    change: this.onDefaultZoomSelect,
-	            	    scope: this
-	            	}
-	        	})
+		xtype: 'combo',
+		width: 125,
+		mode: 'local',
+		triggerAction: 'all',
+		displayField: 'name',
+		valueField: 'value',
+		lazyInit: false,
+		forceSelection: true,
+		editable: false,
+		autoSelect: true,
+		listeners: {
+		    change: this.onDefaultZoomSelect,
+		    scope: this
+		}
+		})
 			);
 	    }
 	    return items;

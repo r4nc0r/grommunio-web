@@ -264,7 +264,7 @@ Zarafa.core.data.ServerConfig = Ext.extend(Object, {
 	},
 
 	/**
- 	 * @return {Array} returns the installed plugins version information array.
+	 * @return {Array} returns the installed plugins version information array.
 	 */
 	getPluginsVersion: function()
 	{

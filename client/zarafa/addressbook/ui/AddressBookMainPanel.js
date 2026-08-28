@@ -49,7 +49,7 @@ Zarafa.addressbook.ui.AddressBookMainPanel = Ext.extend(Ext.Panel, {
 	noResultsGridText: _('There are no items to show in this list'),
 
 	/**
- 	 * @constructor
+	 * @constructor
 	 * @param {Object} config Configuration structure
 	 */
 	constructor: function(config)

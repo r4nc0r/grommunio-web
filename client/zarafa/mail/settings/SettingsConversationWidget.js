@@ -129,7 +129,7 @@ Zarafa.mail.settings.SettingsConversationWidget = Ext.extend(Zarafa.settings.ui.
 	 */
 	onClickEnableConversationsHandler: function(checkbox, checked)
 	{
-	 	this.singleExpand.setDisabled(!checked);
+		this.singleExpand.setDisabled(!checked);
 	}
 });
 

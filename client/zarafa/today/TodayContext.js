@@ -19,7 +19,7 @@ Zarafa.today.TodayContext = Ext.extend(Zarafa.core.Context, {
 	 */
 
 	/**
- 	 * @constructor
+	 * @constructor
 	 * @param config
 	 */
 	constructor: function(config)

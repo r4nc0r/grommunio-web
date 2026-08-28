@@ -223,7 +223,7 @@ Zarafa.core.KeyMapMgr = Ext.extend(Object, {
 	 * @param {Ext.Component} component component that is going to be destroyed
 	 */
 	onComponentDestroy: function(component)
- 	{
+	{
 		this.deactivate(component.getEl());
 	},
 

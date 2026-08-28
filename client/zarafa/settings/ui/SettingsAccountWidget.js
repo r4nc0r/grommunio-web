@@ -317,7 +317,7 @@ Zarafa.settings.ui.SettingsAccountWidget = Ext.extend(Zarafa.settings.ui.Setting
 			const fr = new FileReader(file);
 			fr.readAsDataURL(file);
 			fr.onload = function () {
-			 	imgDom.src = this.result;
+				imgDom.src = this.result;
 			};
 		}  catch(e) {
 			console.log('File Upload not supported: ' + e);

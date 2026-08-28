@@ -92,7 +92,7 @@ Zarafa.mail.Actions = {
 	 * to format the message.
 	 *
 	 * @param {Zarafa.core.data.IPMRecord|Zarafa.core.data.IPMRecord[]} record The record to which will be responded.
- 	 * @param {Zarafa.mail.MailContextModel} model mail context model,
+	 * @param {Zarafa.mail.MailContextModel} model mail context model,
 	 * model object that will be used to create a new {@link Zarafa.core.data.IPMRecord IPMRecord}
 	 * @param {Zarafa.mail.data.ActionTypes} actionType The action type of this response.
 	 * @param {Object} config (optional) Configuration object used to create

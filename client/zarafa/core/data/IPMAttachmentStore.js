@@ -615,7 +615,7 @@ Zarafa.core.data.IPMAttachmentStore = Ext.extend(Zarafa.core.data.MAPISubStore, 
 		return data;
 	},
 
- 	/**
+	/**
 	 * Add given {@link Zarafa.core.data.IPMRecord IPMRecord} as embedded attachment to {@link Zarafa.core.data.IPMAttachmentStore IPMAttachmentStore}, this will generate new
 	 * {@link Zarafa.core.data.IPMAttachmentRecord attachment record} and
 	 * add those to the store and will send request to server to save embedded attachment info to state file.

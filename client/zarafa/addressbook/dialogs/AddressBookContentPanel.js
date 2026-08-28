@@ -21,7 +21,7 @@ Zarafa.addressbook.dialogs.AddressBookContentPanel = Ext.extend(Zarafa.core.ui.C
 	listRestriction: undefined,
 
 	/**
- 	 * @constructor
+	 * @constructor
 	 * @param config Configuration structure
 	 */
 	constructor: function(config)

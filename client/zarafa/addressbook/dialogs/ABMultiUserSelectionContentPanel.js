@@ -53,7 +53,7 @@ Zarafa.addressbook.dialogs.ABMultiUserSelectionContentPanel = Ext.extend(Zarafa.
 	selectionCfg: undefined,
 
 	/**
- 	 * @constructor
+	 * @constructor
 	 * @param {Object} config Configuration structure
 	 */
 	constructor: function(config)

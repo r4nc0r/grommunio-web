@@ -74,7 +74,7 @@ Zarafa.calendar.widget.CalendarFolderSelectionLink = Ext.extend(Ext.BoxComponent
 	 * @param {Number} index The index of the target node
 	 * @param {HTMLElement} node The target node
 	 * @param {Ext.EventObject} evt The mouse event
- 	 * @protected
+	 * @protected
 	 */
 	onClick: function(dataView, index, node, evt)
 	{
@@ -105,7 +105,7 @@ Zarafa.calendar.widget.CalendarFolderSelectionLink = Ext.extend(Ext.BoxComponent
 			folder = this.folder;
 		}
 
- 		var data = folder ? folder.data : { display_name: this.emptyText };
+		var data = folder ? folder.data : { display_name: this.emptyText };
 		Zarafa.calendar.widget.CalendarFolderSelectionLink.superclass.update.call(this, this.tpl.apply(data));
 	}
 });

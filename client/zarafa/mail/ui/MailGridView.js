@@ -35,7 +35,7 @@ Zarafa.mail.ui.MailGridView = Ext.extend(Zarafa.common.ui.grid.GridView, {
         if (Ext.isGecko) {
             this.focusEl.focus();
         } else {
-        	this.focusEl.focus.defer(1, this.focusEl);
+	this.focusEl.focus.defer(1, this.focusEl);
         }
 	}
 });

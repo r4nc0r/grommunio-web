@@ -116,7 +116,7 @@ Zarafa.common.rules.dialogs.WordSelectionLink = Ext.extend(Ext.BoxComponent, {
 	 * @param {Number} index The index of the target node
 	 * @param {HTMLElement} node The target node
 	 * @param {Ext.EventObject} evt The mouse event
- 	 * @protected
+	 * @protected
 	 */
 	onClick: function(dataView, index, node, evt)
 	{

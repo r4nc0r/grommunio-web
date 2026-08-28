@@ -116,7 +116,7 @@ Zarafa.core.EntryId = (function()
 			entryId = entryId.substring(0, entryId.length - this.padding.length);
 
 			this.abFlags = entryId.substr(offset, 8);
-			offset =+8;
+			offset =+ 8;
 
 			this.guid = entryId.substr(offset, 32);
 			offset += 32;
@@ -157,7 +157,7 @@ Zarafa.core.EntryId = (function()
 			entryId = entryId.substring(0, entryId.length - this.padding.length);
 
 			this.abFlags = entryId.substr(offset, 8);
-			offset =+8;
+			offset =+ 8;
 
 			this.guid = entryId.substr(offset, 32);
 			offset += 32;
@@ -244,7 +244,7 @@ Zarafa.core.EntryId = (function()
 			entryId = entryId.substring(0, entryId.length - this.padding.length);
 
 			this.abFlags = entryId.substr(offset, 8);
-			offset =+8;
+			offset =+ 8;
 
 			this.guid = entryId.substr(offset, 32);
 			offset += 32;

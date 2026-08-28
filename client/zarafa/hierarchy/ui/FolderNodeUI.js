@@ -11,32 +11,32 @@ Ext.namespace('Zarafa.hierarchy.ui');
  *
  * The default layout of extjs for treenodes is something like this
  <pre><code>
- 	 <div unselectable="on" class="x-tree-node-el x-tree-node-leaf x-unselectable" >	// element node
- 		<span class="x-tree-node-indent">		// for indentation
- 			<img class="x-tree-elbow-line">
- 			<img class="x-tree-elbow-line">
- 		</span>
- 		<img class="x-tree-ec-icon x-tree-elbow">	// expand icon
- 		<img unselectable="on" class="x-tree-node-icon icon_folder_note">	// folder icon
- 		<a tabindex="1" href="" class="x-tree-node-anchor" hidefocus="on">
- 			<span unselectable="on"> node text </span>						// text node
- 		</a>
- 	 </div>
+	 <div unselectable="on" class="x-tree-node-el x-tree-node-leaf x-unselectable" >	// element node
+		<span class="x-tree-node-indent">		// for indentation
+			<img class="x-tree-elbow-line">
+			<img class="x-tree-elbow-line">
+		</span>
+		<img class="x-tree-ec-icon x-tree-elbow">	// expand icon
+		<img unselectable="on" class="x-tree-node-icon icon_folder_note">	// folder icon
+		<a tabindex="1" href="" class="x-tree-node-anchor" hidefocus="on">
+			<span unselectable="on"> node text </span>						// text node
+		</a>
+	 </div>
  </code></pre>
  * but for our custom needs we need to change that layout to accommodate counters also
  <pre><code>
- 	<div unselectable="on" class="x-tree-node-el x-tree-node-leaf x-unselectable" >	// element node
- 		<span class="x-tree-node-indent">		// for indentation
- 			<img class="x-tree-elbow-line">
- 			<img class="x-tree-elbow-line">
- 		</span>
- 		<img class="x-tree-ec-icon x-tree-elbow">	// expand icon
- 		<img unselectable="on" class="x-tree-node-icon icon_folder_note">	// folder icon
- 		<a tabindex="1" href="" class="x-tree-node-anchor" hidefocus="on">
- 			<span unselectable="on" class="zarafa-hierarchy-node-text"> node text </span>	// text node
- 			<span unselectable="on" class="zarafa-hierarchy-node-unread-count">(2)</span>	// counter node
- 		</a>
- 	</div>
+	<div unselectable="on" class="x-tree-node-el x-tree-node-leaf x-unselectable" >	// element node
+		<span class="x-tree-node-indent">		// for indentation
+			<img class="x-tree-elbow-line">
+			<img class="x-tree-elbow-line">
+		</span>
+		<img class="x-tree-ec-icon x-tree-elbow">	// expand icon
+		<img unselectable="on" class="x-tree-node-icon icon_folder_note">	// folder icon
+		<a tabindex="1" href="" class="x-tree-node-anchor" hidefocus="on">
+			<span unselectable="on" class="zarafa-hierarchy-node-text"> node text </span>	// text node
+			<span unselectable="on" class="zarafa-hierarchy-node-unread-count">(2)</span>	// counter node
+		</a>
+	</div>
  </code></pre>
  */
 Zarafa.hierarchy.ui.FolderNodeUI = Ext.extend(Ext.tree.TreeNodeUI, {

@@ -65,7 +65,7 @@ Zarafa.calendar.printer.ListViewRenderer = Ext.extend(Zarafa.common.printer.rend
 			'<table id="k-printlistbottom">'	+
 			'<tr>'		+
 					// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for the meaning of these formatting instructions
-     	        	'<td class="nowrap" align="left">'+_('Printed by') + ' ' + '{fullname}' + ' '+_('at') + ' ' + '{currenttime:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'	+
+		'<td class="nowrap" align="left">'+_('Printed by') + ' ' + '{fullname}' + ' '+_('at') + ' ' + '{currenttime:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'	+
 			'</tr>' +
 			'</table>' +
 		'</div>';

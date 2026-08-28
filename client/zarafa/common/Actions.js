@@ -417,7 +417,7 @@ Zarafa.common.Actions = {
 		Zarafa.core.data.UIFactory.openCreateRecord(record, config);
 	},
 
- 	/**
+	/**
 	 * Opens a {@link @link Zarafa.common.sendas.dialogs.SendAsEditContentPanel SendAsEditContentPanel} for editing
 	 * user name and email address of a sendAs.
 	 * @param {Ext.data.Record} record record that should be opened in

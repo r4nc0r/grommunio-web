@@ -110,7 +110,7 @@ Zarafa.common.rules.dialogs.FolderSelectionLink = Ext.extend(Ext.BoxComponent, {
 	 * @param {Number} index The index of the target node
 	 * @param {HTMLElement} node The target node
 	 * @param {Ext.EventObject} evt The mouse event
- 	 * @protected
+	 * @protected
 	 */
 	onClick: function(dataView, index, node, evt)
 	{
@@ -178,7 +178,7 @@ Zarafa.common.rules.dialogs.FolderSelectionLink = Ext.extend(Ext.BoxComponent, {
 	 */
 	update: function(folder)
 	{
- 		var data = folder ? folder.data : { display_name: this.emptyText };
+		var data = folder ? folder.data : { display_name: this.emptyText };
 		Zarafa.common.rules.dialogs.FolderSelectionLink.superclass.update.call(this, this.tpl.apply(data));
 	}
 });

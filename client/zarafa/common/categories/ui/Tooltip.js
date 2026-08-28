@@ -44,9 +44,9 @@ Zarafa.common.categories.ui.Tooltip = Ext.extend(Ext.ToolTip, {
 	onBeforeshow: function(tooltip)
 	{
 		// Don't show the tooltip for categories that aren't truncated
-  	if ( !this.isCategoryNameTruncated(tooltip.triggerElement) ){
-  		return false;
-  	}
+	if ( !this.isCategoryNameTruncated(tooltip.triggerElement) ){
+		return false;
+	}
 
     tooltip.body.dom.innerHTML = Ext.util.Format.htmlEncode(tooltip.triggerElement.textContent);
 	},

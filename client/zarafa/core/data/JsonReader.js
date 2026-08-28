@@ -130,7 +130,7 @@ Zarafa.core.data.JsonReader = Ext.extend(Ext.data.JsonReader, {
 		if (!Ext.isDefined(ef))
 		{
 			ef = [];
-    	for(var i = 0; i < len; i++){
+	for(var i = 0; i < len; i++){
 				var f = items[i];
 				var map = (!Ext.isEmpty(f.mapping)) ? f.mapping : f.name;
 				ef.push(this.createAccessor.call(this, map));

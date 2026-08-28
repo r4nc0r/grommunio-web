@@ -62,6 +62,8 @@ Zarafa.mail.settings.SettingsMailCategory = Ext.extend(Zarafa.settings.ui.Settin
 			container.populateInsertionPoint('context.settings.category.mail.aftercomposesettings', this),
 			{
 				xtype: 'zarafa.settingsincomingmailwidget'
+			},{
+				xtype: 'zarafa.settingsnewmailfolderswidget'
 			}
 		];
 

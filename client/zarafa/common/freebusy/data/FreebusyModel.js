@@ -1024,13 +1024,10 @@ Zarafa.common.freebusy.data.FreebusyModel = Ext.extend(Ext.util.Observable,
 				var sumEnd = sumBlock.get('end');
 
 				if (sumEnd < start || sumStart > end) {
-					// The entire block falls before the requested range,
-					// just keep looping until we find the desired range.
+					// The block falls entirely before or entirely after the
+					// requested range, so it contributes nothing. Any range left
+					// over after the loop is added below.
 					return;
-				} else if (sumStart > end) {
-					// The entire block falls after the requested range
-					// we don't need to do anything anymore.
-					return false;
 				} else if (sumStart <= start) {
 					// The block overlap our range, our new start
 					// time is the end time of this block.

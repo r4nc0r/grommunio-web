@@ -529,7 +529,7 @@ Zarafa.mail.MailContextModel = Ext.extend(Zarafa.core.ContextModel, {
 		htmlBody = this.getBestEffortHtmlBody(origRecord, htmlBody, plainBody);
 
 		// Remove the comments
-		htmlBody = htmlBody.replace(/<\!\-\-.*?\-\->/gi, '');
+		htmlBody = htmlBody.replace(/<!--.*?-->/gi, '');
 
 		// Remove the wrapping div
 		htmlBody = htmlBody.replace(/^\s*<div\s+class=['"]bodyclass['"]\s*>/gi, '');

@@ -175,7 +175,7 @@ Zarafa.common.searchfield.ui.SearchTextField = Ext.extend(Ext.form.TextField, {
 			this.syncHiddenInput();
 			this.fireEvent('chipchange', this, this.getFilterChips());
 			var textValue = this.buildQuery().trim();
-			var specialCharsFilter = /[#\$%\^\&*\)\(]/g;
+			var specialCharsFilter = /[#$%^&*)(]/g;
 			if (Ext.isEmpty(textValue) || textValue.match(specialCharsFilter)) {
 				this.stopSearch();
 			} else {
@@ -491,7 +491,7 @@ Zarafa.common.searchfield.ui.SearchTextField = Ext.extend(Ext.form.TextField, {
 		// trailing \S+ alternative already consumes whole whitespace-delimited
 		// runs, so the field alternative is only ever retried at a token start.
 		var regex = new RegExp(
-			'(' + fieldsPattern + '):(\"[^\"]*\"|\'[^\']*\'|\\S*)|\\b(AND|OR|NOT)\\b|(\"[^\"]*\"|\'[^\']*\')|\\S+', 'gi'
+			'(' + fieldsPattern + '):("[^"]*"|\'[^\']*\'|\\S*)|\\b(AND|OR|NOT)\\b|("[^"]*"|\'[^\']*\')|\\S+', 'gi'
 		);
 
 		var match;
@@ -1420,7 +1420,7 @@ Zarafa.common.searchfield.ui.SearchTextField = Ext.extend(Ext.form.TextField, {
 			this.syncHiddenInput();
 			this.fireEvent('chipchange', this, this.getFilterChips());
 			var textValue = this.buildQuery().trim();
-			var specialCharsFilter = /[#\$%\^\&*\)\(]/g;
+			var specialCharsFilter = /[#$%^&*)(]/g;
 			if (Ext.isEmpty(textValue) || textValue.match(specialCharsFilter)) {
 				this.stopSearch();
 			} else {

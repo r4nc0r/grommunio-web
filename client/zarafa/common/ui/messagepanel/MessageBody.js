@@ -17,13 +17,13 @@ Zarafa.common.ui.messagepanel.MessageBody = Ext.extend(Ext.Container, {
 	 * The {RegExp} of emailPattern, this regular expression finds mailto links or email address
 	 * inside string.
 	 */
-	emailPattern: /((mailto:)[\w-@,;.?=&%:///+ ]+)|([\w-\._\+%]+@(?:[\w-]+\.)+[\w]*)/gi,
+	emailPattern: /((mailto:)[\w-@,;.?=&%:///+ ]+)|([\w-._+%]+@(?:[\w-]+\.)+[\w]*)/gi,
 
 	/**
 	 * The {RegExp} of linkPattern, this regular expression finds urls inside string.
 	 * Urls like http, https, ftp or www.
 	 */
-	linkPattern: /((?:http|ftp)s?:\/\/|www.)([\w\.\-]+)\.(\w{2,6})([\w\/\-\_\+\.\,\?\=\&\!\:\;\%\#\|]+)*/gi,
+	linkPattern: /((?:http|ftp)s?:\/\/|www.)([\w.-]+)\.(\w{2,6})([\w/\-_+.,?=&!:;%#|]+)*/gi,
 
 	/**
 	 * The scroll position of the document in the iframe that holds the message body

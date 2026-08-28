@@ -157,7 +157,7 @@ Zarafa.common.ui.grid.Renderers = {
 		if (Ext.isDefined(record) && !Ext.isEmpty(record.get('reminder_time'))) {
 			var reminderTime = record.get('reminder_time');
 			var tooltip = String.format(_('Reminder is set on: {0}, {1}'), reminderTime.format(_('d-m-Y')), reminderTime.formatDefaultTime());
-			p.attr = 'ext:qtip=\"'+Ext.util.Format.htmlEncode(tooltip)+'\"';
+			p.attr = 'ext:qtip="'+Ext.util.Format.htmlEncode(tooltip)+'"';
 		}
 		return '';
 	},

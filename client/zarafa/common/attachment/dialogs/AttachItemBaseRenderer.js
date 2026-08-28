@@ -87,7 +87,7 @@ Zarafa.common.attachment.dialogs.AttachItemBaseRenderer = Ext.extend(Object, {
 		// below processing is only needed when we have some data to return
 		if(!Ext.isEmpty(text.trim()) && htmlFormat) {
 			// Remove extra line separator from end of text
-			text = text.replace(/(<hr width=\'100%\'>)*$/gi, '');
+			text = text.replace(/(<hr width='100%'>)*$/gi, '');
 
 			// add a blockquote for styling purposes
 			var html = '<blockquote style=\'border-left: 2px solid #325FBA; padding-left: 5px; margin-left: 10px; margin-top: 10px;\'>';

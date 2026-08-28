@@ -12,6 +12,12 @@ class ItemModule extends Module {
 	public $directBookingMeetingRequest;
 
 	/**
+	 * The opt-in setting whether responding to a meeting outside the request mail
+	 * also removes that mail.
+	 */
+	public $removeRequestOnResponse;
+
+	/**
 	 * The array of properties which should not be copied during the copy() action.
 	 */
 	public $skipCopyProperties;
@@ -29,6 +35,10 @@ class ItemModule extends Module {
 	 */
 	public function __construct($id, $data) {
 		$this->directBookingMeetingRequest = ENABLE_DIRECT_BOOKING;
+		$this->removeRequestOnResponse = $GLOBALS['settings']->get(
+			'zarafa/v1/contexts/calendar/remove_meetingrequest_on_calendar_response',
+			false
+		);
 		$this->skipCopyProperties = [];
 		$this->plaintext = false;
 
@@ -111,7 +121,7 @@ class ItemModule extends Module {
 								// auto-processing in open().
 								mapi_deleteprops($message, [PR_PROCESSED]);
 
-								$req = new Meetingrequest($store, $message, $GLOBALS["mapisession"]->getSession(), $this->directBookingMeetingRequest);
+								$req = new Meetingrequest($store, $message, $GLOBALS["mapisession"]->getSession(), $this->directBookingMeetingRequest, $this->removeRequestOnResponse);
 
 								// Update extra body information
 								if (isset($action["message_action"]['meetingTimeInfo']) && !empty($action["message_action"]['meetingTimeInfo'])) {
@@ -262,7 +272,7 @@ class ItemModule extends Module {
 								$message = $GLOBALS["operations"]->openMessage($store, $entryid);
 								$basedate = (isset($action['basedate']) && !empty($action['basedate'])) ? $action['basedate'] : false;
 
-								$req = new Meetingrequest($store, $message, $GLOBALS["mapisession"]->getSession(), $this->directBookingMeetingRequest);
+								$req = new Meetingrequest($store, $message, $GLOBALS["mapisession"]->getSession(), $this->directBookingMeetingRequest, $this->removeRequestOnResponse);
 
 								// @FIXME: may be we can remove this body check any get it while declining meeting 'body'
 								$body = false;

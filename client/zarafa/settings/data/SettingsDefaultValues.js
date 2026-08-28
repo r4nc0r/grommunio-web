@@ -606,6 +606,14 @@ Zarafa.settings.data.SettingsDefaultValue = function(){
 								 */
 								'default_allday_busy_status': 0,
 								/**
+								 * zarafa/v1/contexts/calendar/remove_meetingrequest_on_calendar_response
+								 * Move the request mail out of the inbox when the meeting is
+								 * answered from the calendar. Off by default.
+								 * @property
+								 * @type Boolean
+								 */
+								'remove_meetingrequest_on_calendar_response': false,
+								/**
 								 * zarafa/v1/contexts/calendar/default_reminder
 								 * @property
 								 * @type Boolean

@@ -748,8 +748,6 @@ Zarafa.common.searchfield.ui.SearchTextField = Ext.extend(Ext.form.TextField, {
 			if (implicit) {
 				// Implicit AND → promote to explicit token
 				// Find the right token index: count non-operator tokens before this chip
-				var chipsBefore = chip.parentNode.querySelectorAll('.k-search-chip');
-				var pos = Array.prototype.indexOf.call(chipsBefore, chip);
 				// Find adjacent tokens and insert operator between them
 				// Count visible tokens to find insertion point
 				var tokenIdx = 0;

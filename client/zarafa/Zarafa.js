@@ -386,7 +386,7 @@ Ext.apply(Zarafa, {
 		if (Ext.get('loading')) {
 			this.setErrorLoadingMask(title, message);
 		} else {
-			container.getNotifier().notify('error.proxy', title, message, {
+			container.getNotifier().notify(notificationType, title, message, {
 				details_message : detailsMessage
 			});
 		}

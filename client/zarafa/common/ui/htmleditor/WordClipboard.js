@@ -291,7 +291,7 @@ Zarafa.common.ui.htmleditor.WordClipboard = {
 
 		// The self-closed alternative must come first. A child-less autoshape is
 		// written <v:shape ... />, and letting it fall into the paired form would
-		// extend the match — and the slot to be replaced — to the next </v:shape>.
+		// extend the match — and the slot to be replaced — to the next </v:shape>.
 		var re = /<img\b[^>]*>|<v:shape\b[^>]*\/>|<v:shape\b[^>]*>[\s\S]*?<\/v:shape>/gi;
 		var match;
 		while ((match = re.exec(visible)) !== null) {

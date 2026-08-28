@@ -320,7 +320,7 @@ Zarafa.settings.ui.SettingsAccountWidget = Ext.extend(Zarafa.settings.ui.Setting
 			 	imgDom.src = this.result;
 			};
 		}  catch(e) {
-			console.log('File Upload not supported: ${e}');
+			console.log('File Upload not supported: ' + e);
 		}
 	},
 

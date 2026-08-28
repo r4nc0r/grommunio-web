@@ -894,8 +894,8 @@ Zarafa.core.Util =
 	 */
 	bin2hex : function (str)
 	{
-		return str.split('').reduce((str, aChar) =>
-			str += `0${aChar.charCodeAt().toString(16)}`.slice(-2), '');
+		return str.split('').reduce((acc, aChar) =>
+			acc + `0${aChar.charCodeAt().toString(16)}`.slice(-2), '');
 	},
 
 	/**
@@ -905,8 +905,8 @@ Zarafa.core.Util =
 	 */
 	hex2bin : function (str)
 	{
-		return str.match(/.{1,2}/g).reduce((str, hex) =>
-			str += String.fromCharCode(parseInt(hex, 16)), '');
+		return str.match(/.{1,2}/g).reduce((acc, hex) =>
+			acc + String.fromCharCode(parseInt(hex, 16)), '');
 	},
 
 	/**

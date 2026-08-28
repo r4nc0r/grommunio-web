@@ -45,12 +45,8 @@ module.exports = [
 			"block-spacing": "warn",
 			"brace-style": "off",
 			"callback-return": "off",
-			"camelcase": [
-				"warn",
-				{
-					"properties": "never"
-				}
-			],
+			// identifiers mirror MAPI property names (display_name, is_html)
+			"camelcase": "off",
 			"capitalized-comments": "off",
 			"class-methods-use-this": "error",
 			"comma-dangle": "warn",
@@ -82,10 +78,8 @@ module.exports = [
 				"warn",
 				"never"
 			],
-			"func-style": [
-				"warn",
-				"expression"
-			],
+			// both declarations and expressions are used
+			"func-style": "off",
 			"generator-star-spacing": "error",
 			"getter-return": "warn",
 			"global-require": "error",
@@ -107,7 +101,8 @@ module.exports = [
 			],
 			"lines-around-comment": "off",
 			"lines-around-directive": "error",
-			"max-depth": "warn",
+			// style preference
+			"max-depth": "off",
 			"max-len": "off",
 			"max-lines": "off",
 			"max-nested-callbacks": "error",
@@ -116,7 +111,8 @@ module.exports = [
 				9
 			],
 			"max-statements": "off",
-			"max-statements-per-line": "warn",
+			// single-line guards are the house style
+			"max-statements-per-line": "off",
 			"new-cap": "off",
 			"new-parens": "error",
 			"newline-after-var": "off",
@@ -130,14 +126,21 @@ module.exports = [
 			"no-catch-shadow": "error",
 			"no-case-declarations": "warn",
 			"no-confusing-arrow": "error",
-			"no-continue": "warn",
+			// continue is the normal early-skip in these loops
+			"no-continue": "off",
 			"no-console": "warn",
-			"no-constant-condition": "warn",
+			"no-constant-condition": [
+				"warn",
+				{
+					"checkLoops": "none"
+				}
+			],
 			"no-cond-assign": "warn",
 			"no-div-regex": "error",
 			"no-delete-var": "off",
 			"no-duplicate-imports": "error",
-			"no-else-return": "warn",
+			// style preference, and its fix leaves the former else body mis-indented
+			"no-else-return": "off",
 			"no-empty-function": "warn",
 			"no-eq-null": "error",
 			"no-eval": "error",
@@ -147,7 +150,8 @@ module.exports = [
 			"no-extra-parens": "off",
 			"no-extra-boolean-cast": "warn",
 			"no-floating-decimal": "error",
-			"no-implicit-coercion": "warn",
+			// !!x and +x are used deliberately
+			"no-implicit-coercion": "off",
 			"no-implicit-globals": "error",
 			"no-implied-eval": "error",
 			"no-inline-comments": "off",
@@ -160,7 +164,8 @@ module.exports = [
 			"no-label-var": "error",
 			"no-labels": "error",
 			"no-lone-blocks": "error",
-			"no-lonely-if": "warn",
+			// style preference
+			"no-lonely-if": "off",
 			"no-loop-func": "warn",
 			"no-magic-numbers": "off",
 			"no-mixed-operators": "off",
@@ -168,11 +173,18 @@ module.exports = [
 			"no-multi-spaces": "off",
 			"no-multi-str": "error",
 			"no-multiple-empty-lines": "off",
-			"no-mixed-spaces-and-tabs": "warn",
+			// tabs to indent, spaces to align a continuation under what it lines up
+			// with, which is what smart-tabs permits. Spaces before a tab stay an error.
+			"no-mixed-spaces-and-tabs": [
+				"warn",
+				"smart-tabs"
+			],
 			"no-native-reassign": "error",
-			"no-negated-condition": "warn",
+			// if (!x) ... else ... is used throughout
+			"no-negated-condition": "off",
 			"no-negated-in-lhs": "error",
-			"no-nested-ternary": "warn",
+			// style preference
+			"no-nested-ternary": "off",
 			"no-new": "off",
 			"no-new-func": "error",
 			"no-new-object": "error",
@@ -192,7 +204,8 @@ module.exports = [
 			"no-restricted-properties": "error",
 			"no-restricted-syntax": "error",
 			"no-return-assign": "error",
-			"no-redeclare": "warn",
+			// var-scoped ES5: for (var i ...) recurs inside one function
+			"no-redeclare": "off",
 			"no-script-url": "error",
 			"no-self-compare": "error",
 			"no-sequences": "error",
@@ -207,7 +220,8 @@ module.exports = [
 			"no-trailing-spaces": "off",
 			"no-undef-init": "warn",
 			"no-undefined": "off",
-			"no-underscore-dangle": "warn",
+			// _private naming, and Ext uses it on its own members
+			"no-underscore-dangle": "off",
 			"no-unmodified-loop-condition": "error",
 			"no-unneeded-ternary": "warn",
 			"no-unused-expressions": "error",
@@ -243,10 +257,8 @@ module.exports = [
 			],
 			"object-shorthand": "off",
 			"one-var": "off",
-			"one-var-declaration-per-line": [
-				"warn",
-				"initializations"
-			],
+			// var a, b; on one line is normal here; the fix does not indent the split
+			"one-var-declaration-per-line": "off",
 			"operator-assignment": [
 				"warn",
 				"always"
@@ -292,7 +304,8 @@ module.exports = [
 			],
 			"vars-on-top": "off",
 			"wrap-iife": "off",
-			"wrap-regex": "warn",
+			// requires (/re/); nothing in the tree writes that
+			"wrap-regex": "off",
 			"yield-star-spacing": "error",
 			"yoda": [
 				"error",

@@ -227,6 +227,16 @@ Zarafa.calendar.settings.SettingsCalendarWidget = Ext.extend(Zarafa.settings.ui.
 					check: this.onBoldCheck,
 					scope: this
 				}
+			},{
+				xtype: 'checkbox',
+				ref: 'removeRequestCheck',
+				boxLabel: _('Delete the meeting request from the inbox when answering from the calendar'),
+				hideLabel: true,
+				name: 'zarafa/v1/contexts/calendar/remove_meetingrequest_on_calendar_response',
+				listeners: {
+					check: this.onRemoveRequestCheck,
+					scope: this
+				}
 			}]
 		});
 
@@ -256,6 +266,7 @@ Zarafa.calendar.settings.SettingsCalendarWidget = Ext.extend(Zarafa.settings.ui.
 		this.zoomLevelCombo.setValue(settingsModel.get(this.zoomLevelCombo.name));
 		this.busyStatusCombo.setValue(settingsModel.get(this.busyStatusCombo.name));
 		this.boldCheck.setValue(settingsModel.get(this.boldCheck.name));
+		this.removeRequestCheck.setValue(settingsModel.get(this.removeRequestCheck.name));
 
 		this.durationSpinner.setValue(settingsModel.get(this.durationSpinner.name));
 
@@ -385,6 +396,20 @@ Zarafa.calendar.settings.SettingsCalendarWidget = Ext.extend(Zarafa.settings.ui.
 			if (this.model.get(field.name) !== check) {
 				this.model.set(field.name, check);
 			}
+		}
+	},
+
+	/**
+	 * Event handler which is fired when the "delete the meeting request" checkbox
+	 * has been clicked.
+	 * @param {Ext.form.Checkbox} field The checkbox which fired the event
+	 * @param {Boolean} check True if the checkbox is checked
+	 * @private
+	 */
+	onRemoveRequestCheck: function(field, check)
+	{
+		if (this.model && this.model.get(field.name) !== check) {
+			this.model.set(field.name, check);
 		}
 	},
 

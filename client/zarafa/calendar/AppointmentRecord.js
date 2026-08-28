@@ -439,8 +439,8 @@ Zarafa.calendar.AppointmentRecord = Ext.extend(Zarafa.core.data.MessageRecord, {
 	 */
 	forwardMeetingRequest: function(recipients)
 	{
-		var prefix = container.getSettingsModel().get('zarafa/v1/contexts/mail/use_english_abbreviations') ?
-			'Fwd' : _('Fwd');
+		var prefix = container.getSettingsModel().get('zarafa/v1/contexts/mail/use_english_abbreviations')
+			? 'Fwd' : _('Fwd');
 		this.addMessageAction('action_type', 'forwardMeetingRequest');
 		this.addMessageAction('forwardRecipients', recipients);
 		this.addMessageAction('forwardSubjectPrefix', prefix + ': ');

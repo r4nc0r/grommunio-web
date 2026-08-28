@@ -78,7 +78,7 @@ Zarafa.common.manageCc.ui.ManageCcGrid = Ext.extend(Ext.grid.GridPanel, {
 			fixed: true,
 			width: 150,
 			listeners: {
-				click: this.onCellClick,
+				click: this.onCellClick
 			}
 		},{
 			dataIndex: 'display_name',

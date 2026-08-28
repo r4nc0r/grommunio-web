@@ -163,7 +163,7 @@ Zarafa.common.ui.messagepanel.SentInfoLinks = Ext.extend(Ext.Container, {
 					}
 
 					return !/^\s*\/[Oo]=/.test(address);
-				},
+				}
 			});
 		}
 	},

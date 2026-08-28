@@ -196,7 +196,7 @@ Zarafa.advancesearch.AdvanceSearchContext = Ext.extend(Zarafa.core.Context, {
 				break;
 			case Zarafa.core.data.SharedComponentType['common.create']:
 				if(record.get('folder_type') === Zarafa.core.mapi.MAPIFolderType.FOLDER_SEARCH) {
-					component = Zarafa.advancesearch.dialogs.CreateSearchFolderContentPanel ;
+					component = Zarafa.advancesearch.dialogs.CreateSearchFolderContentPanel;
 				}
 				break;
 			case Zarafa.core.data.SharedComponentType['common.contextmenu']:

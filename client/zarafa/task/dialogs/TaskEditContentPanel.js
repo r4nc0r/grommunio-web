@@ -117,8 +117,8 @@ Zarafa.task.dialogs.TaskEditContentPanel = Ext.extend(Zarafa.core.ui.MessageCont
 	{
 		if (record.isOpened()) {
 			if (record.isTaskRequest() ||
-				(!contentReset && record.isModifiedSinceLastUpdate('taskhistory')
-				&& record.get('taskhistory') === Zarafa.core.mapi.TaskHistory.NONE)) {
+				(!contentReset && record.isModifiedSinceLastUpdate('taskhistory') &&
+				record.get('taskhistory') === Zarafa.core.mapi.TaskHistory.NONE)) {
 				this.closeOnSave = false;
 			} else {
 				this.closeOnSave = true;

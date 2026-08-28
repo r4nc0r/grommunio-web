@@ -30,7 +30,7 @@ Zarafa.common.outofoffice.data.OofStore = Ext.extend(Zarafa.core.data.ListModule
       reader: new Zarafa.core.data.JsonReader({
         dynamicRecord: false,
         id: 'store_entryid',
-        idProperty: 'store_entryid',
+        idProperty: 'store_entryid'
       }, recordType),
 
       batch: true,

@@ -74,7 +74,7 @@ Zarafa.hierarchy.dialogs.BrokenFilesPanel = Ext.extend(Ext.Panel, {
 		var leftOutList = "";
 
 		Ext.each(this.records, function(record) {
-			leftOutList += record.name + "\n" ;
+			leftOutList += record.name + "\n";
 		});
 
 		leftOutTextArea.setValue(leftOutList);

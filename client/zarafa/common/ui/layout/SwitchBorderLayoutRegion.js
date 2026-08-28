@@ -103,9 +103,9 @@ Zarafa.common.ui.layout.SwitchBorderLayout.SwitchRegion = Ext.extend(Ext.layout.
 		var splitSize = 0;
 
 		if (splitEl && splitEl.dom) {
-			splitSize = (this.position === 'north' || this.position === 'south') ?
-				splitEl.dom.offsetHeight :
-				splitEl.dom.offsetWidth;
+			splitSize = (this.position === 'north' || this.position === 'south')
+				? splitEl.dom.offsetHeight
+				: splitEl.dom.offsetWidth;
 		}
 
 		if (this.position === 'north' || this.position === 'south') {

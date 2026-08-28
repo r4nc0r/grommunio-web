@@ -634,7 +634,7 @@ Zarafa.advancesearch.dialogs.SearchPanel = Ext.extend(Ext.Panel, {
 			if (isAllFolderSelected) {
 				checkBox.wrap.dom.qtip = _("All folders are selected");
 			} else {
-				delete(checkBox.wrap.dom.qtip);
+				delete (checkBox.wrap.dom.qtip);
 			}
 		}
 	},

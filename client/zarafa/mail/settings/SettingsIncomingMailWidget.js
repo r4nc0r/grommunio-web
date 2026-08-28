@@ -112,7 +112,7 @@ Zarafa.mail.settings.SettingsIncomingMailWidget = Ext.extend(Zarafa.settings.ui.
 				lazyInit: false,
 				forceSelection: true,
 				editable: false,
-				autoSelect: true,
+				autoSelect: true
 			}
 		]
 		});

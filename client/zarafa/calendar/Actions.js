@@ -298,9 +298,9 @@ Zarafa.calendar.Actions = {
 				var localDisplayTypeEx = Zarafa.core.mapi.DisplayTypeEx.DTE_LOCAL(user.get('display_type_ex'));
 				var isResource = localDisplayTypeEx === Zarafa.core.mapi.DisplayTypeEx.DT_ROOM ||
 				                  localDisplayTypeEx === Zarafa.core.mapi.DisplayTypeEx.DT_EQUIPMENT;
-				var recipientType = isResource ?
-					Zarafa.core.mapi.RecipientType.MAPI_BCC :
-					(field ? field.defaultRecipientType : config.defaultRecipientType);
+				var recipientType = isResource
+					? Zarafa.core.mapi.RecipientType.MAPI_BCC
+					: (field ? field.defaultRecipientType : config.defaultRecipientType);
 				return user.convertToRecipient(recipientType);
 			},
 			store: store,

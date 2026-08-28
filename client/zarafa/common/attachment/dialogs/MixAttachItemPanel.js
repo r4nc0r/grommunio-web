@@ -87,7 +87,7 @@ Zarafa.common.attachment.dialogs.MixAttachItemPanel = Ext.extend(Ext.Panel, {
 
 		Ext.each(this.records, function(record) {
 			if(record.isEmbeddedMessage()){
-				leftOutList += record.get('name') + "\n" ;
+				leftOutList += record.get('name') + "\n";
 			}
 		});
 

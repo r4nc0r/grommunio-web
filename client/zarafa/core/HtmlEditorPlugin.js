@@ -75,5 +75,5 @@ Zarafa.core.HtmlEditorPlugin = Ext.extend(Zarafa.core.Plugin, {
 	 * @param {String} selector The selector query which used to select the text in editor.
 	 * @return {boolean} return true if text is selected in editor else false.
 	 */
-	selectBySelector: Ext.emptyFn,
+	selectBySelector: Ext.emptyFn
 });

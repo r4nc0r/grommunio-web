@@ -33,7 +33,7 @@ Zarafa.settings.ui.SettingsAdvancedCategory = Ext.extend(Zarafa.settings.ui.Sett
 			items: [{
 				xtype:'container',
 				layout: {
-					type: 'border',
+					type: 'border'
 				},
 				items: [{
 					xtype: 'zarafa.settingswidget',

@@ -32,36 +32,36 @@ Zarafa.task.printer.TaskListViewRenderer = Ext.extend(Zarafa.common.printer.rend
 
 		html += '<table id="k-printlist" cellpadding=0 cellspacing=0>\n';
 
-		html += '<tr>'
-			+ '<th>' + _('Priority') + '</th>'
-			+ '<th>' + _('Completed') + '</th>'
-			+ '<th>' + _('Subject') + '</th>'
-			+ '<th>' + _('Owner') + '</th>'
-			+ '<th>' + _('Due date') + '</th>'
-			+ '</tr>\n';
+		html += '<tr>' +
+			'<th>' + _('Priority') + '</th>' +
+			'<th>' + _('Completed') + '</th>' +
+			'<th>' + _('Subject') + '</th>' +
+			'<th>' + _('Owner') + '</th>' +
+			'<th>' + _('Due date') + '</th>' +
+			'</tr>\n';
 
 		// date format l jS F == Monday 1st January
-		html += '<tpl for="tasks">'
-			+ '<tr>'
-			+ '<td>{values.data.importance:importanceString}</td>'
-			+ '<td>{values.data.percent_complete:percentage(0)}</td>'
-			+ '<td>{values.data.subject:htmlEncode}</td>'
-			+ '<td>{values.data.owner:htmlEncode}</td>'
+		html += '<tpl for="tasks">' +
+			'<tr>' +
+			'<td>{values.data.importance:importanceString}</td>' +
+			'<td>{values.data.percent_complete:percentage(0)}</td>' +
+			'<td>{values.data.subject:htmlEncode}</td>' +
+			'<td>{values.data.owner:htmlEncode}</td>' +
 			// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for the meaning of these formatting instructions
-			+ '<td>{values.data.duedate:date("' + _("l jS F Y") + '")}</td>'
-			+ '</tr>\n'
-			+ '</tpl>';
+			'<td>{values.data.duedate:date("' + _("l jS F Y") + '")}</td>' +
+			'</tr>\n' +
+			'</tpl>';
 
 		html += '</table>\n';
 
 		// Bottom table with username and date
-		html += '<table id="k-printlistbottom">'
-		+ '<tr>'
-		+ '<td>' + _('Printed by: ') +'{fullname:htmlEncode}</td>'
+		html += '<table id="k-printlistbottom">' +
+		'<tr>' +
+		'<td>' + _('Printed by: ') +'{fullname:htmlEncode}</td>' +
 		// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for the meaning of these formatting instructions
-		+ '<td class="right">' + _('Printed on: ') + '{currenttime:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'
-		+ '</tr>'
-		+ '</table>\n';
+		'<td class="right">' + _('Printed on: ') + '{currenttime:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>' +
+		'</tr>' +
+		'</table>\n';
 		return html;
 	},
 

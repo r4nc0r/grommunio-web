@@ -317,9 +317,9 @@ Zarafa.task.ui.TaskGridColumnModel = Ext.extend(Zarafa.common.ui.grid.ColumnMode
 				break;
 		}
 
-		if((record.get('complete')
-				|| record.get('flag_status') === Zarafa.core.mapi.FlagStatus.completed)
-			&& !Ext.isEmpty(value)) {
+		if((record.get('complete') ||
+				record.get('flag_status') === Zarafa.core.mapi.FlagStatus.completed) &&
+			!Ext.isEmpty(value)) {
 			p.css += ' k-task-complete';
 		}
 		return value;

@@ -333,8 +333,8 @@ Zarafa.common.ui.grid.GridPanel = Ext.extend(Ext.grid.GridPanel, {
 	 */
 	onViewReady: function()
 	{
-		var show = this.store && (this.store.isExecuting(Zarafa.core.Actions['list']) === true
-			|| this.store.isExecuting(Zarafa.core.Actions['search']) === true);
+		var show = this.store && (this.store.isExecuting(Zarafa.core.Actions['list']) === true ||
+			this.store.isExecuting(Zarafa.core.Actions['search']) === true);
 
 		if (this.loadMask && show) {
 			this.loadMask.show();

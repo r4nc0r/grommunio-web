@@ -131,7 +131,7 @@ Zarafa.common.rules.dialogs.RulesActionsContainer = Ext.extend(Ext.Container, {
 		},{
 			xtype: 'zarafa.folderselectionlink',
 			id: baseId + '-folder',
-			storeEntryId: this.storeEntryId,
+			storeEntryId: this.storeEntryId
 		},{
 			xtype: 'zarafa.deletelink',
 			id: baseId + '-delete',
@@ -141,7 +141,7 @@ Zarafa.common.rules.dialogs.RulesActionsContainer = Ext.extend(Ext.Container, {
 			id: baseId + '-to'
 		},{
 			xtype: 'zarafa.markasreadlink',
-			id: baseId + '-markasread',
+			id: baseId + '-markasread'
 		}];
 	},
 

@@ -56,7 +56,7 @@ Zarafa.settings.ui.SettingsFilePreviewerWidget = Ext.extend(Zarafa.settings.ui.S
 	            name:'zarafa/v1/main/file_previewer/odf_zoom',
 	            ref: 'odfZoom',
 	            store: zoomStore,
-	            fieldLabel: _('Document default zoom'),
+	            fieldLabel: _('Document default zoom')
 	        },{
 	            name:'zarafa/v1/main/file_previewer/pdf_zoom',
 	            ref: 'pdfZoom',

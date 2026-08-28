@@ -323,10 +323,10 @@ Zarafa.common.ui.htmleditor.WordClipboard = {
 				isImg: isImg,
 				// _x0020_ is how Word escapes a space in these attributes
 				name: nameAttr ? nameAttr[1].replace(/_x0020_/g, " ").trim() : null,
-				width: width ? parseInt(width[1], 10) :
-					(styleWidth ? Math.round(parseFloat(styleWidth[1]) * 96 / 72) : 0),
-				height: height ? parseInt(height[1], 10) :
-					(styleHeight ? Math.round(parseFloat(styleHeight[1]) * 96 / 72) : 0),
+				width: width ? parseInt(width[1], 10)
+					: (styleWidth ? Math.round(parseFloat(styleWidth[1]) * 96 / 72) : 0),
+				height: height ? parseInt(height[1], 10)
+					: (styleHeight ? Math.round(parseFloat(styleHeight[1]) * 96 / 72) : 0),
 				styleDimensions: (styleWidth ? "width:" + styleWidth[1] + "pt;" : "") +
 					(styleHeight ? "height:" + styleHeight[1] + "pt;" : "")
 			});
@@ -410,8 +410,8 @@ Zarafa.common.ui.htmleditor.WordClipboard = {
 			// size is stripped and the picture renders at its full native size.
 			// For a screenshot, this means it overflows the message and pushes the
 			// text into a narrow column beside it.
-			var dimensions = slots[i].width && slots[i].height ?
-				' width="' + slots[i].width + '" height="' + slots[i].height + '"' : "";
+			var dimensions = slots[i].width && slots[i].height
+				? ' width="' + slots[i].width + '" height="' + slots[i].height + '"' : "";
 			replacements.push({
 				start: slots[i].start,
 				length: slots[i].length,

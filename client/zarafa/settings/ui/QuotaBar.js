@@ -111,7 +111,7 @@ Zarafa.settings.ui.QuotaBar = Ext.extend(Ext.BoxComponent, {
 				// Set blockSize
 				var blockSize, totalSize = 0;
 				var element = 'div.zarafa-quotabar-normal';
-				for (var i = 0; i < quota.length ; i++)
+				for (var i = 0; i < quota.length; i++)
 				{
 					blockSize = quota[i].size;
 					if(storeSize <= blockSize) {

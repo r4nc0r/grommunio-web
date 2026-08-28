@@ -524,7 +524,7 @@ Zarafa.mail.ui.MailGridContextMenu = Ext.extend(Zarafa.core.ui.menu.ConditionalM
 		Zarafa.mail.Actions.openMailOptionsContent(this.records, {
 			autoSave: true
 		});
-	},
+	}
 });
 
 Ext.reg('zarafa.mailgridcontextmenu', Zarafa.mail.ui.MailGridContextMenu);

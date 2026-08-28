@@ -683,7 +683,7 @@ Zarafa.advancesearch.KQLParser = Ext.extend(Object, {
 				'sent_representing_email_address',
 				{type:'recipient', recipientType: Zarafa.core.mapi.RecipientType.MAPI_TO},
 			{type:'recipient', recipientType: Zarafa.core.mapi.RecipientType.MAPI_CC},
-			{type:'recipient', recipientType: Zarafa.core.mapi.RecipientType.MAPI_BCC},
+			{type:'recipient', recipientType: Zarafa.core.mapi.RecipientType.MAPI_BCC}
 			]
 		};
 		if (Ext.isArray(anyFieldPreference) && anyFieldPreference.length) {

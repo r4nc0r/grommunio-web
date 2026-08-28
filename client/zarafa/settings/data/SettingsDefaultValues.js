@@ -197,7 +197,7 @@ Zarafa.settings.data.SettingsDefaultValue = function(){
 											 * @type String
 											 */
 											'value': 'toast'
-										},
+										}
 									},
 
 									'proxy': {
@@ -228,7 +228,7 @@ Zarafa.settings.data.SettingsDefaultValue = function(){
 										 * @type String
 										 */
 										'value': 'console'
-									},
+									}
 								},
 
 								'info': {
@@ -965,7 +965,7 @@ Zarafa.settings.data.SettingsDefaultValue = function(){
 								 * @type Number
 								 */
 								'num_columns': 3
-							},
+							}
 						},
 
 						'widgets': {

@@ -698,7 +698,7 @@ Zarafa.common.recurrence.dialogs.RecurrencePanel = Ext.extend(Ext.Panel, {
 		Ext.each(this.endPatternPanel.findByType('radio'), function(radio) {
 			radio.setValue(radio.endTerm == Zarafa.common.recurrence.data.RecurrenceEnd.N_OCCURRENCES);
 		});
-	},
+	}
 });
 
 Ext.reg('zarafa.recurrencepanel', Zarafa.common.recurrence.dialogs.RecurrencePanel);

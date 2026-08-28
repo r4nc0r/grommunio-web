@@ -57,7 +57,7 @@ Zarafa.addressbook.AddressBookRecordFields = [
 	{name: 'icon_index'},
 	{name: 'is_shared'},
 	{name: 'is_contact_item'},
-	{name: 'email_index', type: 'int', defaultValue: -1},
+	{name: 'email_index', type: 'int', defaultValue: -1}
 ];
 
 Zarafa.core.data.RecordFactory.addFieldToObjectType(Zarafa.core.mapi.ObjectType.MAPI_MAILUSER, Zarafa.addressbook.AddressBookRecordFields);

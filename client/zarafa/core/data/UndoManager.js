@@ -345,9 +345,9 @@ Zarafa.core.data.UndoManager = Ext.extend(Ext.util.Observable, {
 	 */
 	notifyFailure: function(mode, command)
 	{
-		var msg = this.plainText(mode === 'undo' ?
-			_('Could not undo {0}. The item may have been moved, changed or removed in the meantime.') :
-			_('Could not redo {0}. The item may have been moved, changed or removed in the meantime.'));
+		var msg = this.plainText(mode === 'undo'
+			? _('Could not undo {0}. The item may have been moved, changed or removed in the meantime.')
+			: _('Could not redo {0}. The item may have been moved, changed or removed in the meantime.'));
 		// the message embeds user text and the toast renders HTML, encode it
 		container.getNotifier().notify('error',
 			mode === 'undo' ? _('Undo failed') : _('Redo failed'),
@@ -1002,20 +1002,20 @@ Zarafa.core.data.UndoManager = Ext.extend(Ext.util.Observable, {
 
 		switch (kind) {
 			case 'delete':
-				return count === 1 ?
-					String.format(this.plainText(_('Delete {0}')), subject) :
-					String.format(this.plainText(_('Delete {0} items')), count);
+				return count === 1
+					? String.format(this.plainText(_('Delete {0}')), subject)
+					: String.format(this.plainText(_('Delete {0} items')), count);
 			case 'move': {
 				var folder = this.formatFolder(items[0].redoLoc.parent_entryid);
-				return count === 1 ?
-					String.format(this.plainText(_('Move {0} to {1}')), subject, folder) :
-					String.format(this.plainText(_('Move {0} items to {1}')), count, folder);
+				return count === 1
+					? String.format(this.plainText(_('Move {0} to {1}')), subject, folder)
+					: String.format(this.plainText(_('Move {0} items to {1}')), count, folder);
 			}
 			case 'copy': {
 				var folder = this.formatFolder(items[0].redoLoc.parent_entryid);
-				return count === 1 ?
-					String.format(this.plainText(_('Copy {0} to {1}')), subject, folder) :
-					String.format(this.plainText(_('Copy {0} items to {1}')), count, folder);
+				return count === 1
+					? String.format(this.plainText(_('Copy {0} to {1}')), subject, folder)
+					: String.format(this.plainText(_('Copy {0} items to {1}')), count, folder);
 			}
 			case 'create':
 				return String.format(this.plainText(_('Create {0}')), subject);
@@ -1047,9 +1047,9 @@ Zarafa.core.data.UndoManager = Ext.extend(Ext.util.Observable, {
 		if (keyList.length === 1 && keyList[0] === 'message_flags') {
 			var wasRead = (items[0].oldValues.message_flags & Zarafa.core.mapi.MessageFlags.MSGFLAG_READ) > 0;
 			what = this.plainText(wasRead ? _('Mark as unread') : _('Mark as read'));
-			return count === 1 ?
-				String.format(this.plainText(_('{0}: {1}')), what, subject) :
-				String.format(this.plainText(_('{0}: {1} items')), what, count);
+			return count === 1
+				? String.format(this.plainText(_('{0}: {1}')), what, subject)
+				: String.format(this.plainText(_('{0}: {1} items')), what, count);
 		}
 
 		var isFlagChange = keyList.some(function(key) {
@@ -1071,9 +1071,9 @@ Zarafa.core.data.UndoManager = Ext.extend(Ext.util.Observable, {
 		}
 		what = this.plainText(what);
 
-		return count === 1 ?
-			String.format(this.plainText(_('{0}: {1}')), what, subject) :
-			String.format(this.plainText(_('{0}: {1} items')), what, count);
+		return count === 1
+			? String.format(this.plainText(_('{0}: {1}')), what, subject)
+			: String.format(this.plainText(_('{0}: {1} items')), what, count);
 	},
 
 	/**
@@ -1435,8 +1435,8 @@ Zarafa.core.data.UndoLocationCommand = Ext.extend(Zarafa.core.data.UndoCommand, 
 			Ext.each(entries, function(entry) {
 				var response = entry.record.undoResponse;
 				delete entry.record.undoResponse;
-				var newEntryid = response && response.new_entryids ?
-					response.new_entryids[entry.item.ids.entryid] : false;
+				var newEntryid = response && response.new_entryids
+					? response.new_entryids[entry.item.ids.entryid] : false;
 
 				if (!Ext.isEmpty(newEntryid)) {
 					var to = {

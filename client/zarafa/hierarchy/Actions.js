@@ -33,9 +33,9 @@ Zarafa.hierarchy.Actions = {
 		} else if (folder.isIPMSubTree() || folder.isSharedFolder()) {
 			Ext.MessageBox.show({
 				title: _('Insufficient permissions'),
-				msg: (folder.isIPMSubTree() ?
-					_('Not enough permissions to open this store, do you want to remove it from the hierarchy?'):
-					_('Not enough permissions to open this folder, do you want to remove it from the hierarchy?')),
+				msg: (folder.isIPMSubTree()
+					? _('Not enough permissions to open this store, do you want to remove it from the hierarchy?')
+					:_('Not enough permissions to open this folder, do you want to remove it from the hierarchy?')),
 				buttons: Ext.MessageBox.YESNO,
 				fn: this.onFolderPermissionBox,
 				scope: folder

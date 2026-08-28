@@ -145,7 +145,7 @@ Zarafa.common.rules.dialogs.BaseContainer = Ext.extend(Ext.Container, {
       id: baseId + '-headerwords'
     }, {
       xtype: 'zarafa.importancelink',
-      id: baseId + '-importance',
+      id: baseId + '-importance'
     }, {
       xtype: 'zarafa.userselectionlink',
       id: baseId + '-to'

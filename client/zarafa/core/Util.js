@@ -349,7 +349,7 @@ Zarafa.core.Util =
 		// Cut the string up into the pieces based on the cutOffPoints
 		var parts = [];
 		if(cutOffPoints.length > 1){
-			for(var i=0;i<cutOffPoints.length;i++){
+			for(var i=0; i<cutOffPoints.length; i++){
 				// Use the current and the next cutOffPoint to calculate the number of character we need to extract.
 				if(Ext.isDefined(cutOffPoints[i+1])){
 					parts.push(str.slice(cutOffPoints[i], cutOffPoints[i+1]));

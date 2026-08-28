@@ -35,30 +35,30 @@ Zarafa.calendar.printer.DaysViewRenderer = Ext.extend(Zarafa.calendar.printer.Ab
 	{
 		switch (busyStatus) {
 			case Zarafa.core.mapi.BusyStatus.FREE:
-				return '<svg width="7" height="20" class="k-appointment-status">'
-					+ '<rect x="0" y="0" rx="1" ry="1" width="7" height="20" style="fill:none; stroke:#FFF; stroke-width:1;" /> ' +
+				return '<svg width="7" height="20" class="k-appointment-status">' +
+					'<rect x="0" y="0" rx="1" ry="1" width="7" height="20" style="fill:none; stroke:#FFF; stroke-width:1;" /> ' +
 					+'</svg>';
 			case Zarafa.core.mapi.BusyStatus.BUSY:
-				return '<svg width="7" height="20" class="k-appointment-status">'
-					+ '<rect x="0" y="0" rx="5" ry="1" width="7" height="20" style="fill:#0000FF; stroke:#0000FF; stroke-width:1;" /> ' +
+				return '<svg width="7" height="20" class="k-appointment-status">' +
+					'<rect x="0" y="0" rx="5" ry="1" width="7" height="20" style="fill:#0000FF; stroke:#0000FF; stroke-width:1;" /> ' +
 					+'</svg>';
 			case Zarafa.core.mapi.BusyStatus.OUTOFOFFICE:
-				return '<svg width="7" height="20" class="k-appointment-status">'
-					+ '<rect x="0" y="0" rx="5" ry="1" width="7" height="20" style="fill:#912787; stroke:#912787; stroke-width:0;" /> ' +
+				return '<svg width="7" height="20" class="k-appointment-status">' +
+					'<rect x="0" y="0" rx="5" ry="1" width="7" height="20" style="fill:#912787; stroke:#912787; stroke-width:0;" /> ' +
 					+'</svg>';
 			case Zarafa.core.mapi.BusyStatus.WORKINGELSEWHERE:
-				return '<svg width="7" height="20" class="k-appointment-status">'
-					+ '<rect x="0" y="0" rx="5" ry="1" width="7" height="20" style="fill:#5b9bd5; stroke:#5b9bd5; stroke-width:0;" /> ' +
+				return '<svg width="7" height="20" class="k-appointment-status">' +
+					'<rect x="0" y="0" rx="5" ry="1" width="7" height="20" style="fill:#5b9bd5; stroke:#5b9bd5; stroke-width:0;" /> ' +
 					+'</svg>';
 			case Zarafa.core.mapi.BusyStatus.TENTATIVE:
-				return '<svg width="7" height="20" class="k-appointment-status">'
-					+ '<defs>'
-					+   '<pattern id="tentative" patternUnits="userSpaceOnUse" width="3" height="1" patternTransform="rotate(30)">'
-					+	'<rect width="1" height="20" fill="#0000FF" style="stroke-width:0;"/>'
-					+   '</pattern>'
-					+ '</defs>'
-					+ '<rect style="fill: url(#tentative);" x="0" y="0" rx="1" ry="1" width="7" height="20" ></rect>'
-					+ '</svg>';
+				return '<svg width="7" height="20" class="k-appointment-status">' +
+					'<defs>'   +
+					'<pattern id="tentative" patternUnits="userSpaceOnUse" width="3" height="1" patternTransform="rotate(30)">'	+
+					'<rect width="1" height="20" fill="#0000FF" style="stroke-width:0;"/>'   +
+					'</pattern>' +
+					'</defs>' +
+					'<rect style="fill: url(#tentative);" x="0" y="0" rx="1" ry="1" width="7" height="20" ></rect>' +
+					'</svg>';
 		}
 	},
 	/**
@@ -193,9 +193,9 @@ Zarafa.calendar.printer.DaysViewRenderer = Ext.extend(Zarafa.calendar.printer.Ab
 					multiTimeFormat = timeFormat;
 				}
 
-				append += '<td width=7 valign="center">' + this.getAppointmentStatus(items[i].get('busystatus')) + '</td>'
-					+ '<td class="nowrap" style="' + this.timeStyle + '">'
-					+ start.formatDefaultTime(multiTimeFormat) + ' - ' + end.formatDefaultTime(multiTimeFormat) + '</td>';
+				append += '<td width=7 valign="center">' + this.getAppointmentStatus(items[i].get('busystatus')) + '</td>' +
+					'<td class="nowrap" style="' + this.timeStyle + '">' +
+					start.formatDefaultTime(multiTimeFormat) + ' - ' + end.formatDefaultTime(multiTimeFormat) + '</td>';
 			}
 
 			// Add string before all day appointment
@@ -203,8 +203,8 @@ Zarafa.calendar.printer.DaysViewRenderer = Ext.extend(Zarafa.calendar.printer.Ab
 			if (allday) {
 				subject = _('All day: ') + subject;
 			}
-			append += '<td class="calendar-item" colspan='+ (allday ? '3' : '2') +'>'
-				+ Ext.util.Format.htmlEncode(subject) + Ext.util.Format.htmlEncode(location) + '<i class="folder-location">'+Ext.util.Format.htmlEncode(folderLocation) + '</i></td></tr>';
+			append += '<td class="calendar-item" colspan='+ (allday ? '3' : '2') +'>' +
+				Ext.util.Format.htmlEncode(subject) + Ext.util.Format.htmlEncode(location) + '<i class="folder-location">'+Ext.util.Format.htmlEncode(folderLocation) + '</i></td></tr>';
 
 			var startday = showStart.getDay();
 			if (startday < offset) {
@@ -241,30 +241,30 @@ Zarafa.calendar.printer.DaysViewRenderer = Ext.extend(Zarafa.calendar.printer.Ab
 		 * Printed by {fullname} at {date}
 		 */
 
-		return '<table class="print-calendar" cellpadding=0 cellspacing=0>\n'
-			+	'<tr style="height:10%;"><td colspan=2>'
-			+		'<table id="top">\n'
-			+			'<tr><td align="center">' +_('An overview of') + ' {fullname} {foldernames}</td>'
-			+			'<td align="center" rowspan="2"valign="top" width="10%"><div id="datepicker_left"></div></td>'
-			+			'<td align="center" rowspan="2" valign="top" width="10%"><div id="datepicker_right"></div></td></tr>\n'
-			+			'<tr><td align="left" valign="top" style="font-size: large;">{startdate:date("' + _("l jS F Y") + '")}</td></tr>\n'
-			+		'</table>\n'
-			+ '</td></tr>\n'
-			+	'<tr style="height:40px;">'
+		return '<table class="print-calendar" cellpadding=0 cellspacing=0>\n'	+
+			'<tr style="height:10%;"><td colspan=2>'		+
+			'<table id="top">\n'			+
+			'<tr><td align="center">' +_('An overview of') + ' {fullname} {foldernames}</td>'			+
+			'<td align="center" rowspan="2"valign="top" width="10%"><div id="datepicker_left"></div></td>'			+
+			'<td align="center" rowspan="2" valign="top" width="10%"><div id="datepicker_right"></div></td></tr>\n'			+
+			'<tr><td align="left" valign="top" style="font-size: large;">{startdate:date("' + _("l jS F Y") + '")}</td></tr>\n'		+
+			'</table>\n' +
+			'</td></tr>\n'	+
+			'<tr style="height:40px;">'		+
 				// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+		'<th class="date-header-center">{date1:date("' + _("l jS F") + '")}</th>'
+			'<th class="date-header-center">{date1:date("' + _("l jS F") + '")}</th>'	+
 				// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+	'</tr>\n'
-			+	'<tr style="height:90%;">'
-			+		'<td valign="top"><table id="date1">{date1_table_data}</table></td>'
-			+	'</tr>\n'
-			+	'</tr>\n</table>\n'
+			'</tr>\n'	+
+			'<tr style="height:90%;">'		+
+			'<td valign="top"><table id="date1">{date1_table_data}</table></td>'	+
+			'</tr>\n'	+
+			'</tr>\n</table>\n' +
 			// Bottom name and print date
-			+ '<table class="bottom">'
-			+		'<tr>'
+			'<table class="bottom">'		+
+			'<tr>'			+
 						// # TRANSLATORS: See http://docs.sencha.com/extjs/3.4.0/#!/api/Date for formatting instructions
-			+			'<td>'+_('Printed by') + ' {fullname} ' + _('at') + ' {currenttime:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'
-			+		'</tr>'
-			+ '</table>';
+			'<td>'+_('Printed by') + ' {fullname} ' + _('at') + ' {currenttime:formatDefaultTimeString("' + _("l jS F Y {0}") + '")}</td>'		+
+			'</tr>' +
+			'</table>';
 	}
 });

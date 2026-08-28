@@ -675,8 +675,8 @@ Zarafa.calendar.ui.CalendarContextMenu = Ext.extend(Zarafa.core.ui.menu.Conditio
 			var responseRecord = mailModel.createRecord();
 
 			// Use the RFC 5322 prefix setting
-			var prefix = container.getSettingsModel().get('zarafa/v1/contexts/mail/use_english_abbreviations') ?
-				'Re' : _('Re');
+			var prefix = container.getSettingsModel().get('zarafa/v1/contexts/mail/use_english_abbreviations')
+				? 'Re' : _('Re');
 			var subject = rec.get('normalized_subject') || rec.get('subject') || '';
 			responseRecord.set('subject', prefix + ': ' + subject);
 

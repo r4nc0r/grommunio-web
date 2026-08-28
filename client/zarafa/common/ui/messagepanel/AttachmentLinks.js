@@ -36,6 +36,9 @@ Zarafa.common.ui.messagepanel.AttachmentLinks = Ext.extend(Ext.DataView, {
 	 * reconstructs the file. The value is a JSON string of the form
 	 * <tt>{name, type, size, data}</tt> where <tt>data</tt> is the base64
 	 * encoded file content.
+	 *
+	 * Must match {@link Zarafa.common.attachment.AttachmentDragDrop#payloadType},
+	 * which reads the payload when the drop lands in grommunio Web itself.
 	 * @property {String}
 	 * @private
 	 */

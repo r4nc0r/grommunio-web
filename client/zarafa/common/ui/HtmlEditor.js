@@ -150,7 +150,22 @@ Zarafa.common.ui.HtmlEditor = Ext.extend(Ext.ux.form.TinyMCETextArea, {
 							return;
 						}
 
+						// Activate the window this editor is rendered in: a drop does
+						// not focus its window, and the FileList below has to be built
+						// with its constructor.
+						var editorWindow = Zarafa.core.BrowserWindowMgr.activateOwnerWindow(self.getEl()) || window;
+
+						// A drag started on an attachment in another grommunio Web tab
+						// or window carries its bytes as a payload and leaves the
+						// FileList empty, so rebuild the files from that payload.
+						var dragDrop = Zarafa.common.attachment.AttachmentDragDrop;
+						var fromPayload = false;
 						var files = dt.files;
+						if ((!files || files.length === 0) && dragDrop.hasPayload(dt)) {
+							files = dragDrop.getFileList(dt, editorWindow);
+							fromPayload = true;
+						}
+
 						if (!files || files.length === 0) {
 							return;
 						}
@@ -161,8 +176,10 @@ Zarafa.common.ui.HtmlEditor = Ext.extend(Ext.ux.form.TinyMCETextArea, {
 						var nonEmbeddable = [];
 						var hasEmbeddable = false;
 						for (var i = 0; i < files.length; i++) {
+							// TinyMCE embeds images from the drop's own FileList, which a
+							// payload drag does not carry, so those are attached as well.
 							var ext = (files[i].name.split('.').pop() || '').toLowerCase();
-							if (imageExts.indexOf(ext) < 0) {
+							if (fromPayload || imageExts.indexOf(ext) < 0) {
 								nonEmbeddable.push(files[i]);
 							} else {
 								hasEmbeddable = true;
@@ -212,15 +229,13 @@ Zarafa.common.ui.HtmlEditor = Ext.extend(Ext.ux.form.TinyMCETextArea, {
 						// so it is uploaded/attached exactly like a drop on the Attachments
 						// field would be.
 						//
-						// The FileList has to be built with the constructor of the window
-						// uploadFiles() will check it against, which is the active browser
-						// window rather than necessarily this one: a dialog opened in its
-						// own window has its own FileList, and an object built here would
-						// fail that instanceof check and be attached as a bare filename.
-						var activeBrowserWindow = Zarafa.core.BrowserWindowMgr.getActive() || window;
+						// It is built with the constructor of editorWindow: a dialog
+						// opened in its own window has its own FileList, and an object
+						// built elsewhere would fail that instanceof check and be
+						// attached as a bare filename.
 						var uploadFileList = nonEmbeddable;
-						if (Ext.isFunction(activeBrowserWindow.DataTransfer)) {
-							var fileListBuilder = new activeBrowserWindow.DataTransfer();
+						if (Ext.isFunction(editorWindow.DataTransfer)) {
+							var fileListBuilder = new editorWindow.DataTransfer();
 							nonEmbeddable.forEach(function(f) {
 								fileListBuilder.items.add(f);
 							});

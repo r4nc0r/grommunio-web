@@ -623,7 +623,7 @@ Zarafa.mail.settings.SettingsOofWidget = Ext.extend(Zarafa.settings.ui.SettingsW
 			}
 		}
 
-		if (true == this.extBodyLoaded) {
+		if (this.extBodyLoaded == true) {
 			this.record.set(this.externalCheckBox.name, this.externalCheckBox.checked);
 			this.record.set(this.contactsOnlyField.name, this.contactsOnlyField.checked);
 		}

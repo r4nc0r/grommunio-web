@@ -1196,7 +1196,7 @@ Zarafa.calendar.dialogs.AppointmentTab = Ext.extend(Ext.form.FormPanel, {
 	onBodyChange: function(field, newValue, oldValue)
 	{
 		var record = this.record;
-		var isHtmlEditor = field.isXType && field.isXType('zarafa.htmleditor')
+		var isHtmlEditor = field.isXType && field.isXType('zarafa.htmleditor');
 
 		record.beginEdit();
 		record.setBody(newValue, isHtmlEditor);

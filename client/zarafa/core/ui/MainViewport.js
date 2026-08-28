@@ -77,20 +77,34 @@ Zarafa.core.ui.MainViewport = Ext.extend(Ext.Viewport, {
 			}, true);
 			skipLink.on('focus', function() {
 				this.setStyle({
-					position: 'fixed', top: '5px', left: '5px',
-					width: 'auto', height: 'auto', clip: 'auto',
-					'white-space': 'normal', overflow: 'visible',
-					padding: '8px 16px', background: '#fff', color: '#1d2939',
-					'font-size': '14px', 'font-weight': '600',
-					'border-radius': '4px', 'box-shadow': '0 2px 8px rgba(0,0,0,0.2)',
+					position: 'fixed',
+					top: '5px',
+					left: '5px',
+					width: 'auto',
+					height: 'auto',
+					clip: 'auto',
+					'white-space': 'normal',
+					overflow: 'visible',
+					padding: '8px 16px',
+					background: '#fff',
+					color: '#1d2939',
+					'font-size': '14px',
+					'font-weight': '600',
+					'border-radius': '4px',
+					'box-shadow': '0 2px 8px rgba(0,0,0,0.2)',
 					margin: '0'
 				});
 			});
 			skipLink.on('blur', function() {
 				this.setStyle({
-					position: 'absolute', width: '1px', height: '1px',
-					clip: 'rect(0,0,0,0)', 'white-space': 'nowrap',
-					overflow: 'hidden', padding: '0', margin: '-1px'
+					position: 'absolute',
+					width: '1px',
+					height: '1px',
+					clip: 'rect(0,0,0,0)',
+					'white-space': 'nowrap',
+					overflow: 'hidden',
+					padding: '0',
+					margin: '-1px'
 				});
 			});
 		}, this, { single: true });

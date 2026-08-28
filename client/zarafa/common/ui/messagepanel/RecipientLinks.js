@@ -217,7 +217,7 @@ Zarafa.common.ui.messagepanel.RecipientLinks = Ext.extend(Ext.DataView, {
 		var records = [];
 
 		for(var i = 0, len = nodes.length; i < len; i++){
-			records[records.length] = this.store.getAt(this.store.findExact('rowid', parseInt(nodes[i].viewIndex)));
+			records[records.length] = this.store.getAt(this.store.findExact('rowid', parseInt(nodes[i].viewIndex, 10)));
 		}
 
 		return records;

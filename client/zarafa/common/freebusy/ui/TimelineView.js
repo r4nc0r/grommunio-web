@@ -999,7 +999,7 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 		var pixelOffsetLeft = this.findBlockPixelOffset(date, true);
 
 		// Make sure the date will be centered in the viewport
-		pixelOffsetLeft = pixelOffsetLeft - (viewportSize.width / 2);
+		pixelOffsetLeft -= (viewportSize.width / 2);
 
 		viewport.scrollTo('left', pixelOffsetLeft);
 	},
@@ -1029,7 +1029,7 @@ Zarafa.common.freebusy.ui.TimelineView = Ext.extend(Ext.BoxComponent,
 					// Run the hour through a formatter
 					label: Date.parseDate(i, 'G').formatDefaultTime(),
 					startDayOffset: i * this.slotDuration,
-					workingHour: (i >= startHour && i < endHour) ? true : false
+					workingHour: (i >= startHour && i < endHour)
 				};
 			}
 		}

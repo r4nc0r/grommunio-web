@@ -500,7 +500,7 @@ Zarafa.common.rules.dialogs.BaseContainer = Ext.extend(Ext.Container, {
                     // And its value is false. So, increase bccLinkFLag value by one.
                     if (sub[0] === Restrictions.RES_PROPERTY &&
                         sub[1][Restrictions.ULPROPTAG] === 'PR_MESSAGE_RECIP_ME') {
-                        var isOlderVersion = versionCompare === -1 ? true : false;
+                        var isOlderVersion = versionCompare === -1;
 
                         if (isOlderVersion && sub[1][Restrictions.VALUE]['PR_MESSAGE_RECIP_ME'] === false) {
                             bccLinkFlag++;

@@ -133,7 +133,7 @@ Zarafa.core.data.JsonReader = Ext.extend(Ext.data.JsonReader, {
     	for(var i = 0; i < len; i++){
 				var f = items[i];
 				var map = (!Ext.isEmpty(f.mapping)) ? f.mapping : f.name;
-				ef.push(this.createAccessor.call(this, map));
+				ef.push(this.createAccessor(map));
 			}
 			this.efCache[key] = ef;
 		}
@@ -214,7 +214,7 @@ Zarafa.core.data.JsonReader = Ext.extend(Ext.data.JsonReader, {
 			for (var i = 0; i < root.length; i++) {
 				var n = root[i];
 
-				var record = undefined;
+				var record;
 				var id = this.getId(n);
 				var data = n.props || n;
 
@@ -244,7 +244,7 @@ Zarafa.core.data.JsonReader = Ext.extend(Ext.data.JsonReader, {
 			for (var i = 0; i < root.length; i++) {
 				var n = root[i];
 
-				var Record = undefined;
+				var Record;
 				if (this.dynamicRecord === true) {
 					Record = Zarafa.core.data.RecordFactory.getRecordClassByRecordData(n.props || n);
 				}

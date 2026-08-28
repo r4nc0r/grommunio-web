@@ -61,7 +61,7 @@ Zarafa.settings.ui.SettingsAccountWidget = Ext.extend(Zarafa.settings.ui.Setting
 		}
 		const jsonThemes = container.getServerConfig().getJsonThemes();
 		for ( var theme in jsonThemes ) {
-			if ( jsonThemes.hasOwnProperty(theme) ) {
+			if ( Object.prototype.hasOwnProperty.call(jsonThemes, theme) ) {
 				items.push([items.length, jsonThemes[theme], theme]);
 			}
 		}
@@ -78,7 +78,7 @@ Zarafa.settings.ui.SettingsAccountWidget = Ext.extend(Zarafa.settings.ui.Setting
 		var iconsetItems = [];
 		const iconsets = container.getServerConfig().getIconsets();
 		for ( var iconset in iconsets ) {
-			if ( iconsets.hasOwnProperty(iconset) ) {
+			if ( Object.prototype.hasOwnProperty.call(iconsets, iconset) ) {
 				iconsetItems.push([iconset, iconsets[iconset]['display-name']]);
 			}
 		}

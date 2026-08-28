@@ -135,7 +135,7 @@ Zarafa.common.plugins.SplitFieldLabeler = Ext.extend(Ext.util.Observable, {
 		var labeledItems = [];
 
 		for (var i = 0; i < labels.length; i++) {
-			var foundItem = undefined;
+			var foundItem;
 			var label = labels[i];
 
 			var findItem = function(item) {

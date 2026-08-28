@@ -44,7 +44,7 @@ Zarafa.common.ui.grid.DateTooltip = Ext.extend(Ext.ToolTip, {
 		var timestamp;
 		tooltip.anchorTarget.getAttribute('class').split(' ').forEach(function(cls){
 			if ( cls.substr(0, 5) === 'k-ts-' ){
-				timestamp = parseInt(cls.substr(5));
+				timestamp = parseInt(cls.substr(5), 10);
 			}
 		});
 

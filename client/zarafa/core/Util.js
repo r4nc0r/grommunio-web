@@ -688,9 +688,9 @@ Zarafa.core.Util =
 	{
 		sizeUnit = sizeUnit.toUpperCase();
 		if (sizeUnit === 'MB') {
-			input = input * Math.pow(1024,2);
+			input *= Math.pow(1024,2);
 		} else if (sizeUnit === 'KB') {
-			input = input * 1024;
+			input *= 1024;
 		}
 		return input;
 	},
@@ -708,9 +708,9 @@ Zarafa.core.Util =
 	{
 		sizeUnit = sizeUnit.toUpperCase();
 		if (sizeUnit === 'MB') {
-			input = input / Math.pow(1024,2);
+			input /= Math.pow(1024,2);
 		} else if (sizeUnit === 'KB') {
-			input = input / 1024;
+			input /= 1024;
 		}
 		return input;
 	},

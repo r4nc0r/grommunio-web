@@ -349,7 +349,7 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 	 */
 	removeTimeStrip: function(name)
 	{
-		for (var i=0, strip; strip=this.timeStrips[i]; i++) {
+		for (var i=0, strip; (strip=this.timeStrips[i]); i++) {
 			if (strip.name==name) {
 				this.timeStrips.splice(i, 1);
 				this.removeChildView(strip, true);
@@ -672,7 +672,7 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 		// Find the largest header height for all the child calendar views
 		var headerHeight = 0;
 
-		for (var i=0, calendar; calendar=this.calendars[i]; i++) {
+		for (var i=0, calendar; (calendar=this.calendars[i]); i++) {
 			headerHeight = Math.max(headerHeight, calendar.getDesiredHeaderHeight());
 		}
 
@@ -842,7 +842,7 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 		this.bottom.setLeftTop(0, bottomTop);
 		this.bottom.setSize(this.container.getWidth(), this.getBorderWidth());
 
-		for (var i=0, timeStrip; timeStrip=this.timeStrips[i]; i++)
+		for (var i=0, timeStrip; (timeStrip=this.timeStrips[i]); i++)
 		{
 			timeStrip.setLeftMargin((this.timeStripWidth + this.timeStripGap) * i - this.timeStripShift);
 			timeStrip.setWidth(this.timeStripWidth);
@@ -885,7 +885,7 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 		}
 
 		// Layout time strip UI elements
-		for (var i=0, timeStrip; timeStrip=this.timeStrips[i]; i++) {
+		for (var i=0, timeStrip; (timeStrip=this.timeStrips[i]); i++) {
 			timeStrip.setVisible(this.showTimeStrips);
 		}
 
@@ -893,7 +893,7 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 		var totalTimeStripsWidth = this.showTimeStrips?(this.timeStrips.length * this.timeStripWidth + (this.timeStrips.length-1) * this.timeStripGap - this.timeStripShift):0;
 		var totalCalendarWidth = this.scrollable.dom.clientWidth - totalTimeStripsWidth - (this.calendars.length - 1) * this.calendarGap;
 		var calendarWidth = totalCalendarWidth/this.calendars.length + this.calendarGap;
-		for (var i=0, calendar; calendar=this.calendars[i]; i++)
+		for (var i=0, calendar; (calendar=this.calendars[i]); i++)
 		{
 			var left = Math.round(calendarWidth * i + totalTimeStripsWidth);
 			var right = Math.round(calendarWidth * (i+1) + totalTimeStripsWidth - this.calendarGap);
@@ -922,7 +922,7 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 	 */
 	getCalendarViewByFolder: function(folder)
 	{
-		for (var i=0, calendar; calendar = this.calendars[i]; i++) {
+		for (var i=0, calendar; (calendar = this.calendars[i]); i++) {
 			if (calendar.containsFolder(folder)) {
 				return calendar;
 			}
@@ -1027,9 +1027,9 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 	{
 		// Go over all the calendar views and prune any IDs that are not in the list.
 		var calendars = this.calendars.clone();
-		for (var i=0, calendar; calendar = calendars[i]; i++) {
+		for (var i=0, calendar; (calendar = calendars[i]); i++) {
 			var calendarFolders = calendar.getFolders().clone();
-			for (var j=0, calendarFolder; calendarFolder=calendarFolders[j]; j++) {
+			for (var j=0, calendarFolder; (calendarFolder=calendarFolders[j]); j++) {
 				if (folders.indexOf(calendarFolder) == -1) {
 					this.model.removeFolderFromGroup(calendarFolder, calendar.groupId);
 					calendar.removeFolder(calendarFolder);
@@ -1138,7 +1138,7 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 		// Run over the list of folders and find for each folder a calendar view that goes with it.
 		// The views are added in sequence to the calendars list and in this way are ordered in the same
 		// way as the folders in the input list. And yeah, I know this is O(n^2), but n is small, so meh:)
-		for (var i=0, folder; folder = folders[i]; i++)
+		for (var i=0, folder; (folder = folders[i]); i++)
 		{
 			var calendarView = this.getCalendarViewByFolder(folder);
 			if (calendarView && calendars.indexOf(calendarView) == -1) {
@@ -1147,7 +1147,7 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 		}
 
 		// Sort the tabs on the calendars.
-		for (var i=0, calendar; calendar=calendars[i]; i++) {
+		for (var i=0, calendar; (calendar=calendars[i]); i++) {
 			calendar.sortFolders(folders);
 		}
 
@@ -1395,7 +1395,7 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 
 		// Move all the appointments from the source calendar view to the target calendar view.
 		var records = sourceCalendar.getAppointmentRecords().clone();
-		for (var i=0, record; record=records[i]; i++) {
+		for (var i=0, record; (record=records[i]); i++) {
 			if (Zarafa.core.EntryId.compareEntryIds(record.get('parent_entryid'), folder.get('entryid'))) {
 				sourceCalendar.removeAppointment(record, false);
 				targetCalendar.addAppointment(record, false);
@@ -1494,7 +1494,7 @@ Zarafa.calendar.ui.CalendarMultiView = Ext.extend(Zarafa.core.ui.View, {
 	{
 		// Find the index of the calendar view that fired the event in the local calendar view list.
 		var calendarIndex = -1;
-		for (var i=0, cal; cal=this.calendars[i]; i++) {
+		for (var i=0, cal; (cal=this.calendars[i]); i++) {
 			if (cal == calendar) {
 				calendarIndex = i;
 			}

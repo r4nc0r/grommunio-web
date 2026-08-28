@@ -204,7 +204,7 @@ Zarafa.calendar.ui.CalendarTabView = Ext.extend(Zarafa.core.ui.View, {
 
 		// Check if we don't want a bigger width because of a min-width set in the css files
 		this.tabContents.dom.style.removeProperty('min-width');
-		var cssMinWidth = parseInt(this.tabContents.getStyle('min-width')) + this.tabContents.getPadding('lr');
+		var cssMinWidth = parseInt(this.tabContents.getStyle('min-width'), 10) + this.tabContents.getPadding('lr');
 
 		return Math.max(desiredWidth, cssMinWidth);
 	},

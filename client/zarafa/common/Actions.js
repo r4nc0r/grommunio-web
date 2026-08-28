@@ -1109,7 +1109,7 @@ Zarafa.common.Actions = {
 	{
 		if (buttonClicked == 'ok') {
 			// Here scope is record so this refers to Appointment Record.
-			var sendUpdateFlag = (radio.id == 'sendResponseOnDelete') ? true : false;
+			var sendUpdateFlag = (radio.id == 'sendResponseOnDelete');
 			this.declineMeeting(sendUpdateFlag);
 		}
 	},
@@ -1278,7 +1278,7 @@ Zarafa.common.Actions = {
 				break;
 			case 'ask':
 				/* falls through*/
-			default:
+			default: {
 				const store = record.getStore();
 				// Ask if a read receipt must be send.
 				Ext.MessageBox.show({
@@ -1303,6 +1303,7 @@ Zarafa.common.Actions = {
 					scope: record
 				});
 				break;
+			}
 			}
 		}
 
@@ -1475,7 +1476,7 @@ Zarafa.common.Actions = {
 	 */
 	isSupportedDocument: function (path)
 	{
-		return path.match(/^.*\.(pdf|od[tps]|docx|xlsx|jpg|jpeg|png|bmp|gif|mp4|mp3|ogg|webm|wav)$/i) ? true : false;
+		return !!path.match(/^.*\.(pdf|od[tps]|docx|xlsx|jpg|jpeg|png|bmp|gif|mp4|mp3|ogg|webm|wav)$/i);
 	},
 
 	/**
@@ -2062,7 +2063,7 @@ Zarafa.common.Actions = {
 			icon: options.icon,
 			body: options.body,
 			requireInteraction: true,
-			silent: !soundDisabled ? false : true
+			silent: !!soundDisabled
 		});
 
 		if (settingsModel.get(baseSettingPath + 'autohide_enable')) {

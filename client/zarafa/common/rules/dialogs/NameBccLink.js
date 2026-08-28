@@ -27,7 +27,7 @@ Zarafa.common.rules.dialogs.NameBccLink = Ext.extend(Zarafa.common.rules.dialogs
     var currCoreVersion = container.getVersion().getZCP();
     var versionCompare = container.versionRecord.versionCompare(currCoreVersion,"8.7.2");
 
-    var recipMeValue = versionCompare === -1 ? false : true;
+    var recipMeValue = versionCompare !== -1;
     var conditionFactory = container.getRulesFactoryByType(Zarafa.common.data.RulesFactoryType.CONDITION);
     var conditionDefinition = conditionFactory.getConditionById(this.conditionFlag);
     return conditionDefinition({value: recipMeValue});

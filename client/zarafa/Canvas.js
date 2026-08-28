@@ -5,7 +5,7 @@
  * Some convenience methods for the default canvas 2D context. These allow of drawing
  * circles, lines, text with auto-wrapping, etc. 
  */
-if (!!document.createElement('canvas').getContext)
+if (document.createElement('canvas').getContext)
 {
 	/**
 	 * Creates a circular path on the canvas.

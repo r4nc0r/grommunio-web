@@ -21,7 +21,7 @@ Zarafa.contact.dialogs.ContactOptionsContentPanel = Ext.extend(Zarafa.core.ui.Re
 			recordComponentPluginConfig: Ext.applyIf(config.recordComponentPluginConfig || {}, {
 				allowWrite: true
 			}),
-			autoSave: config.modal ? false : true,
+			autoSave: !config.modal,
 			width: 360,
 			height: 220,
 			items: [{

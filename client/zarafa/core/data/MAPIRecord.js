@@ -514,7 +514,7 @@ Zarafa.core.data.MAPIRecord = Ext.extend(Ext.data.Record, {
 	isModifiedSinceLastUpdate: function(fieldName)
 	{
 		if (this.trackUpdateModifications === true) {
-			return !!(this.updateModifications && this.updateModifications.hasOwnProperty(fieldName));
+			return !!(this.updateModifications && Object.prototype.hasOwnProperty.call(this.updateModifications, fieldName));
 		} else {
 			return this.isModified(fieldName);
 		}
@@ -531,7 +531,7 @@ Zarafa.core.data.MAPIRecord = Ext.extend(Ext.data.Record, {
 	isSubStoreModifiedSincelastUpdate: function(subStore)
 	{
 		if (this.trackUpdateModifications === true) {
-			return !!(this.updateSubStoreModifications && this.updateSubStoreModifications.hasOwnProperty(subStore));
+			return !!(this.updateSubStoreModifications && Object.prototype.hasOwnProperty.call(this.updateSubStoreModifications, subStore));
 		} else {
 			subStore = this.getSubStore(subStore);
 			return (!Ext.isEmpty(subStore.modified) || !Ext.isEmpty(subStore.removed));

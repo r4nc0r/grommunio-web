@@ -353,7 +353,7 @@ Zarafa.mail.settings.SettingsComposeWidget = Ext.extend(Zarafa.settings.ui.Setti
 			spinnerValue = settingsModel.get('zarafa/v1/contexts/mail/autosave_time', false, true);
 		}
 		else {
-			spinnerValue = spinnerValue * 60;
+			spinnerValue *= 60;
 		}
 		settingsModel.beginEdit();
 		settingsModel.set(this.composerCombo.name, this.composerCombo.getValue() === 'html');

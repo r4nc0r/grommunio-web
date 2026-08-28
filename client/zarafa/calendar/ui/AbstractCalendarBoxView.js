@@ -149,7 +149,7 @@ Zarafa.calendar.ui.AbstractCalendarBoxView = Ext.extend(Zarafa.calendar.ui.Abstr
 		var bodyX = x - this.body.getLeft();
 		var bodyY = y - this.body.getTop();
 
-		for (var i=0, configuration; configuration=this.dayBoxConfigurations[i]; i++) {
+		for (var i=0, configuration; (configuration=this.dayBoxConfigurations[i]); i++) {
 			if (bodyX>configuration.left && bodyX<=configuration.right && bodyY>configuration.top && bodyY<=configuration.bottom)
 			{
 				// Check if the location is in the left or right half of the box. If it's in the right half
@@ -280,7 +280,7 @@ Zarafa.calendar.ui.AbstractCalendarBoxView = Ext.extend(Zarafa.calendar.ui.Abstr
 	findAppointmentsByRange: function(dateRange)
 	{
 		var ret = [];
-		for (var i=0, appointment; appointment=this.appointments[i]; i++) {
+		for (var i=0, appointment; (appointment=this.appointments[i]); i++) {
 			if (dateRange.inside(appointment.getDateRange())) {
 				ret.push(appointment);
 			}
@@ -300,7 +300,7 @@ Zarafa.calendar.ui.AbstractCalendarBoxView = Ext.extend(Zarafa.calendar.ui.Abstr
 	{
 		var ret = 0;
 
-		for (var i=0, appointment; appointment=this.appointments[i]; i++) {
+		for (var i=0, appointment; (appointment=this.appointments[i]); i++) {
 			if (dateRange.overlaps(appointment.getDateRange())) {
 				ret = Math.max(ret, appointment.slot);
 			}

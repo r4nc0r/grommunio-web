@@ -175,7 +175,7 @@ Zarafa.core.data.JsonWriter = Ext.extend(Ext.data.JsonWriter, {
 		var hash = this.toIdHash(record, false);
 
 		// FIXME: How to pass on deleted properties?
-		hash.props = this.toHash.call(this, record);
+		hash.props = this.toHash(record);
 
 		// FIXME: remove identification entryids from props,
 		// in the future Extjs will support the 'config'

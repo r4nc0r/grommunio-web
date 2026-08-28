@@ -58,7 +58,7 @@ Zarafa.common.rules.dialogs.MarkAsReadLink = Ext.extend(Ext.Container,{
    */
   setAction: function(actionFlag, action)
 	{
-		this.isValid = action ? true : false;
+		this.isValid = !!action;
 		this.actionFlag = actionFlag;
 		this.action = action;
 		this.isModified = !Ext.isDefined(action);

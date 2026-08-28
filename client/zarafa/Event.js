@@ -17,7 +17,7 @@ Ext.apply(Ext.EventObjectImpl.prototype, {
 		if (key >= this.NUM_ZERO && key <= this.NUM_NINE) {
 			// These are numkeys and it will have different keyCode than number's
 			// ASCII value so we are mapping these keys to it's original character values.
-			key = key - 48;
+			key -= 48;
 		}
 		return String.fromCharCode(key);
 	}

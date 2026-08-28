@@ -8,13 +8,13 @@
 if (!String.prototype.padEnd) {
   /* jshint freeze: false */
   String.prototype.padEnd = function padEnd(targetLength,padString) {
-    targetLength = targetLength>>0; //floor if number or convert non-number to 0;
+    targetLength >>= 0; //floor if number or convert non-number to 0;
     padString = String(padString || ' ');
     if (this.length > targetLength) {
       return String(this);
     }
     else {
-      targetLength = targetLength-this.length;
+      targetLength -= this.length;
       if (targetLength > padString.length) {
         padString += padString.repeat(targetLength/padString.length); //append to original to ensure we are longer than needed
       }
@@ -43,13 +43,13 @@ if (!String.prototype.startsWith) {
 if (!String.prototype.padStart) {
   /* jshint freeze: false */
   String.prototype.padStart = function padStart(targetLength,padString) {
-    targetLength = targetLength>>0; //floor if number or convert non-number to 0;
+    targetLength >>= 0; //floor if number or convert non-number to 0;
     padString = String(padString || ' ');
     if (this.length > targetLength) {
       return String(this);
     }
     else {
-      targetLength = targetLength-this.length;
+      targetLength -= this.length;
       if (targetLength > padString.length) {
         padString += padString.repeat(targetLength/padString.length); //append to original to ensure we are longer than needed
       }

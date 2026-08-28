@@ -215,13 +215,13 @@ Zarafa.common.rules.dialogs.AtLeatSizeLink = Ext.extend(Zarafa.common.rules.dial
 
     switch (sizeUnit) {
       case Zarafa.common.data.SizeUnits.MB:
-        var maxMB = parseInt(maxNumber / Math.pow(1024,2));
+        var maxMB = parseInt(maxNumber / Math.pow(1024,2), 10);
         if (input > maxMB) {
           return false;
         }
         break;
       case Zarafa.common.data.SizeUnits.KB:
-        var maxKB = parseInt(maxNumber / 1024);
+        var maxKB = parseInt(maxNumber / 1024, 10);
         if (input > maxKB) {
           return false;
         }

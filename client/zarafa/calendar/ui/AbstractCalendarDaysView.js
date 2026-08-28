@@ -575,7 +575,7 @@ Zarafa.calendar.ui.AbstractCalendarDaysView = Ext.extend(Zarafa.calendar.ui.Abst
 		// TODO clean up this code
 		var cluster = [], clusters = [];
 		var clusterDueDate = 0;
-		for (var i=0, appointment; appointment=appointments[i]; i++) {
+		for (var i=0, appointment; (appointment=appointments[i]); i++) {
 			var startDate = appointment.getDateRange().getStartTime();
 			var dueDate = appointment.getAdjustedDateRange().getDueTime();
 

@@ -176,6 +176,7 @@ Zarafa.common.categories.ui.CategoriesContextMenu = Ext.extend(Ext.menu.Menu, {
 				if(!Ext.isEmpty(category.standardIndex) && (category.name === item.plainText)){
 					return category;
 				}
+				return false;
 			});
 
 			if(Ext.isDefined(category) && !category.used) {

@@ -133,6 +133,7 @@ Zarafa.common.dialogs.CustomMessageBox = Ext.extend(Ext.Window, {
 			if (btn.getEl()) {
 				return btn.getEl().hasClass('zarafa-action');
 			}
+			return false;
 		});
 		Ext.applyIf(this, {
 			defaultButton: defaultButton

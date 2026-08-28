@@ -130,7 +130,7 @@ Zarafa.calendar.ui.AppointmentSelectionModel = Ext.extend(Ext.grid.AbstractSelec
 	 */
 	isSelected: function(record)
 	{
-		return (record && this.selections.key(this.selections.getKey(record)) ? true : false);
+		return (!!(record && this.selections.key(this.selections.getKey(record))));
 	},
 
 	/**

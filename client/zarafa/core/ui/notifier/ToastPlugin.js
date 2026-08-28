@@ -333,7 +333,9 @@ Zarafa.core.ui.notifier.ToastPlugin = Ext.extend(Zarafa.core.ui.notifier.NotifyP
 		var ct = this.ensureContainer();
 		ct.appendChild(toast);
 
-		// Force reflow so the enter animation triggers
+		// Force reflow so the enter animation triggers. Reading the property is
+		// the whole point, so the expression has no result to use.
+		// eslint-disable-next-line no-unused-expressions
 		toast.offsetHeight;
 		toast.classList.add('grommunio-toast-visible');
 

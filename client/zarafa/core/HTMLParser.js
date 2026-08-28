@@ -53,7 +53,9 @@ Zarafa.core.HTMLParser = (function() {
 
 		if (!url || url === '#' || url.indexOf('cid:') === 0 || url.indexOf('data:') === 0 ||
 			url.indexOf('blob:') === 0 || url.indexOf('about:') === 0 || url.indexOf('mailto:') === 0 ||
-			url.indexOf('tel:') === 0 || url.indexOf('javascript:') === 0) {
+			url.indexOf('tel:') === 0 ||
+			// eslint-disable-next-line no-script-url -- matched, never navigated to
+			url.indexOf('javascript:') === 0) {
 			return false;
 		}
 

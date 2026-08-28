@@ -297,7 +297,9 @@ Zarafa.core.DarkMode = {
 								if (win && win.document && win.document !== document) {
 									allDocs.push(win.document);
 								}
-							} catch (e) {}
+							} catch (e) {
+								// A window being torn down can refuse document access.
+							}
 						});
 					}
 					for (var k = 0; k < allDocs.length; k++) {

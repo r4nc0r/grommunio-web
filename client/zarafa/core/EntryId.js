@@ -116,7 +116,7 @@ Zarafa.core.EntryId = (function()
 			entryId = entryId.substring(0, entryId.length - this.padding.length);
 
 			this.abFlags = entryId.substr(offset, 8);
-			offset =+ 8;
+			offset += 8;
 
 			this.guid = entryId.substr(offset, 32);
 			offset += 32;
@@ -157,7 +157,7 @@ Zarafa.core.EntryId = (function()
 			entryId = entryId.substring(0, entryId.length - this.padding.length);
 
 			this.abFlags = entryId.substr(offset, 8);
-			offset =+ 8;
+			offset += 8;
 
 			this.guid = entryId.substr(offset, 32);
 			offset += 32;
@@ -216,49 +216,6 @@ Zarafa.core.EntryId = (function()
 
 			// unwrapped entryid is actually an object entryid so decompose it
 			this.unWrappedEntryId = Zarafa.core.EntryId.createEntryIdObj(this.unWrappedEntryId);
-		}
-	});
-
-	// The entryid for addressbook items. Only WrappedABEID is instantiated today;
-	// this layout is kept as the reference for the unwrapped form.
-	// eslint-disable-next-line no-unused-vars
-	var ABEID = Ext.extend(BASE_EID, {
-		abFlags: '',      // BYTE[4],  4 bytes, 8 hex characters
-		guid: '',       // GUID,   16 bytes, 32 hex characters
-		version: '',      // ULONG,   4 bytes, 8 hex characters
-		type: '',       // ULONG,   4 bytes, 8 hex characters
-		id: '',        // ULONG,   4 bytes, 8 hex characters
-		extid: '',       // CHAR,   variable length
-		padding: '',      // TCHAR[3], 4 bytes, 8 hex characters (upto 4 bytes)
-
-		MIN_LENGTH: 64,
-		name: 'ABEID',
-
-		// decompose the entryid and populate all flags of entryid
-		decomposeEntryId: function(entryId)
-		{
-			var offset = 0;
-
-			// First determine padding, and remove if from the entryId
-			this.padding = this.getPadding(entryId);
-			entryId = entryId.substring(0, entryId.length - this.padding.length);
-
-			this.abFlags = entryId.substr(offset, 8);
-			offset =+ 8;
-
-			this.guid = entryId.substr(offset, 32);
-			offset += 32;
-
-			this.version = entryId.substr(offset, 8);
-			offset += 8;
-
-			this.type = entryId.substr(offset, 8);
-			offset += 8;
-
-			this.id = entryId.substr(offset, 8);
-			offset += 8;
-
-			this.extid = entryId.substr(offset);
 		}
 	});
 

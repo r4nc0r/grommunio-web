@@ -4,7 +4,7 @@
 	<info>
 		<version>2.2</version>
 		<name>filesbackendDefault</name>
-		<title>Default backend for Files</title>
+		<title>Files: Default plugin</title>
 		<author>grommunio GmbH</author>
 		<authorURL>https://www.grommunio.com</authorURL>
 		<description>This backend provides the default WebDAV integration for Files</description>

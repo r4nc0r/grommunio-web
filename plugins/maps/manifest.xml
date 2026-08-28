@@ -4,7 +4,7 @@
 	<info>
 		<version>1.1</version>
 		<name>maps</name>
-		<title>Maps Plugin</title>
+		<title>Openstreetmap</title>
 		<author>grommunio GmbH</author>
 		<authorURL>https://www.grommunio.com</authorURL>
 		<description>Shows contact addresses on openstreetmap</description>
@@ -12,6 +12,7 @@
 	<config>
 		<configfile>config.php</configfile>
 	</config>
+	<optional/>
 	<components>
 		<component>
 			<files>

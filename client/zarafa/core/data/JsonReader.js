@@ -214,7 +214,7 @@ Zarafa.core.data.JsonReader = Ext.extend(Ext.data.JsonReader, {
 			for (var i = 0; i < root.length; i++) {
 				var n = root[i];
 
-				var record;
+				var record = undefined;
 				var id = this.getId(n);
 				var data = n.props || n;
 
@@ -244,7 +244,7 @@ Zarafa.core.data.JsonReader = Ext.extend(Ext.data.JsonReader, {
 			for (var i = 0; i < root.length; i++) {
 				var n = root[i];
 
-				var Record;
+				var Record = undefined;
 				if (this.dynamicRecord === true) {
 					Record = Zarafa.core.data.RecordFactory.getRecordClassByRecordData(n.props || n);
 				}

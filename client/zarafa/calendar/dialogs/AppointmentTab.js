@@ -584,12 +584,18 @@ Zarafa.calendar.dialogs.AppointmentTab = Ext.extend(Ext.form.FormPanel, {
 				startFieldConfig: {
 					fieldLabel: _('Time'),
 					labelWidth: 85,
-					cls: 'from-field'
+					cls: 'from-field',
+					timeFieldConfig: {
+						width: 95
+					}
 				},
 				endFieldConfig: {
 					fieldLabel: _('until'),
 					labelWidth: 85,
-					cls: 'to-field'
+					cls: 'to-field',
+					timeFieldConfig: {
+						width: 95
+					}
 				}
 			},{
 				xtype: 'panel',

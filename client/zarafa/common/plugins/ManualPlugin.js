@@ -70,6 +70,13 @@ Zarafa.common.plugins.ManualPlugin = Ext.extend(Zarafa.core.Plugin, {
 		var context = container.getCurrentContext();
 		var shortcut = this.manualShortcuts[context.getName()];
 		var url = container.getServerConfig().getWebappManualUrl();
+		var locale = container.getSettingsModel().get('zarafa/v1/main/language') || 'en_GB';
+		var language = locale.split('.')[0].split('_')[0];
+		// Right now only german is available besides english
+		if (language.toLowerCase() === 'de') {
+			url = url.replace(/\/web\/?$/, '/de/web');
+		}
+		url = url.replace(/\/$/, '');
 
 		if (!Ext.isEmpty(shortcut)) {
 			url += '/' + shortcut;

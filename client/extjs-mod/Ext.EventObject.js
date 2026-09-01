@@ -21,7 +21,10 @@
 	 * We override this function because we want different behavior for the
 	 * metaKey than Ext. Ext sets the ctrlKey to true when the metaKey is
 	 * pressed. On OSX we want the CMD key (metaKey) to act as the ctrlKey
-	 * and the real ctrlKey not. On Windows/Linux we don't want the metaKey to
+	 * and the real ctrlKey not. However Safari/macOS reserve several CMD shortcuts,
+	 * including CMD + R and CMD + M, before a web application can handle them.
+	 * Use the physical Control key in Safari so those application shortcuts
+	 * remain available. On Windows/Linux we don't want the metaKey to
 	 * behave like the ctrlKey.
 	 *
 	 * @param {Event} e The Browser event object
@@ -32,10 +35,15 @@
 	{
 		e = orig_setEvent.call(this, e);
 
-		if ( Ext.isMac && e.ctrlKey && !e.browserEvent.metaKey ) {
-			e.ctrlKey = false;
+		if (Ext.isMac) {
+			if (Ext.isSafari) {
+				e.ctrlKey = e.browserEvent.ctrlKey || false;
+			}
+			else if (e.ctrlKey && !e.browserEvent.metaKey) {
+				e.ctrlKey = false;
+			}
 		}
-		if ( !Ext.isMac ) {
+		if (!Ext.isMac) {
 			e.ctrlKey = e.browserEvent.ctrlKey || false;
 		}
 

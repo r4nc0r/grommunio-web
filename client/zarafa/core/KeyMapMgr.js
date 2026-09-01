@@ -360,7 +360,10 @@ Zarafa.core.KeyMapMgr = Ext.extend(Object, {
 	 * Format a keyboard shortcut hint for display in tooltips.
 	 * Returns an empty string when the shortcut is not active
 	 * under the current keyboard settings. Substitutes Cmd for
-	 * Ctrl on macOS.
+	 * Ctrl on macOS, except in Safari where application shortcuts
+	 * use the physical Control key because Safari and macOS reserve
+	 * several Command-key combinations. Substitutes Alt for Option
+	 * on macOS.
 	 * @param {String} hint Human-readable shortcut (e.g. 'Ctrl + S')
 	 * @param {Boolean} basic True when this is a basic shortcut
 	 * @return {String} Formatted hint like ' (Ctrl + S)' or ''
@@ -375,7 +378,10 @@ Zarafa.core.KeyMapMgr = Ext.extend(Object, {
 			return '';
 		}
 		if (Ext.isMac) {
-			hint = hint.replace(/Ctrl/g, 'Cmd');
+			if (!Ext.isSafari) {
+				hint = hint.replace(/Ctrl/g, 'Cmd');
+			}
+			hint = hint.replace(/Alt/g, 'Option');
 		}
 		return ' (' + hint + ')';
 	}

@@ -172,12 +172,12 @@ Zarafa.settings.ui.SettingsKeyShortcutCategory = Ext.extend(Zarafa.settings.ui.S
 		var keyCombination = [];
 
 		if(keyConfig.ctrl) {
-			// check if we have a mac OS then show CMD instead of CTRL
-			keyCombination.push(Ext.isMac ? 'CMD' : 'CTRL');
+			// Safari reserves several macOS Command shortcuts, so use Control there.
+			keyCombination.push(Ext.isMac && !Ext.isSafari ? 'CMD' : 'CTRL');
 		}
 
 		if(keyConfig.alt) {
-			keyCombination.push('ALT');
+			keyCombination.push(Ext.isMac ? 'OPTION' : 'ALT');
 		}
 
 		if(keyConfig.shift) {

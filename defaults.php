@@ -228,7 +228,7 @@ if (!defined("ENABLE_DIRECT_BOOKING")) {
 /*
  List of languages that should be enabled in the settings
  language drop down. Languages should be specified
- using <languagecode>_<regioncode>[.UTF-8], and separated with
+ using <languagecode>_<regioncode>, and separated with
  semicolon. A list of available languages can be found in
  the manual or by looking at the list of directories in
  /usr/share/grommunio-web/server/language.

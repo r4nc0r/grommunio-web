@@ -90,27 +90,29 @@ class Language {
 	 * nld_NLD
 	 * </code>
 	 *
-	 * Also, the directory names must have a name that is:
-	 * 1. Available to the server's locale system
-	 * 2. In the UTF-8 charset
-	 *
-	 * For example, nl_NL.UTF-8
+	 * Also, the directory names must be XPG locale identifiers without a
+	 * codeset that are available to the server's locale system, for example nl_NL.
 	 */
 	public function loadLanguages() {
 		if ($this->loaded) {
 			return;
 		}
 
-		$languages = explode(";", ENABLED_LANGUAGES);
+		// Older configurations still list the languages with a codeset
+		$languages = [];
+		foreach (explode(";", ENABLED_LANGUAGES) as $language) {
+			$language = new XpgLocale($language);
+			$language->codeset = "";
+			$languages[] = (string) $language;
+		}
 		$dh = opendir(LANGUAGE_DIR);
 		while (($entry = readdir($dh)) !== false) {
-			$langcode = str_ireplace(".UTF-8", "", $entry);
-			if (in_array($langcode, $languages) || in_array($entry, $languages)) {
+			if (in_array($entry, $languages)) {
 				if (is_dir(LANGUAGE_DIR . $entry . "/LC_MESSAGES") && is_file(LANGUAGE_DIR . $entry . "/language.txt")) {
 					$fh = fopen(LANGUAGE_DIR . $entry . "/language.txt", "r");
 					$lang_title = fgets($fh);
 					fclose($fh);
-					$this->languages[$entry] = "{$langcode}: " . trim($lang_title);
+					$this->languages[$entry] = "{$entry}: " . trim($lang_title);
 				}
 			}
 		}
@@ -127,7 +129,7 @@ class Language {
 	 * For setLanguage() to succeed, the language has to have been loaded via loadLanguages() AND
 	 * the gettext system must 'know' the language specified.
 	 *
-	 * @param string $lang Language code (eg nl_NL.UTF-8)
+	 * @param string $lang XPG locale identifier (eg nl_NL)
 	 */
 	public function setLanguage($lang) {
 		if (isset($GLOBALS['translations'])) {
@@ -187,7 +189,35 @@ class Language {
 			return $p;
 		}
 
+		// PR_EC_USER_LANGUAGE may be a bare language code, which has no directory of
+		// its own; prefer the administrator's territory of it, then the usual one.
+		$base = strtolower($p->language);
+		$aliases = ['no' => 'nb', 'in' => 'id', 'iw' => 'he', 'tl' => 'fil'];
+		$base = $aliases[$base] ?? $base;
+		if (!preg_match('/^[a-z]{2,3}$/', $base)) {
+			return false;
+		}
+		$admin = new XpgLocale(LANG);
+		$admin->codeset = "";
+		if (strtolower($admin->language) === $base && is_dir(LANGUAGE_DIR . "/{$admin}")) {
+			return $admin;
+		}
+		$candidates = glob(LANGUAGE_DIR . '/' . $base . '_' . strtoupper($base)) ?: glob(LANGUAGE_DIR . '/' . $base . '_*') ?: [];
+		sort($candidates);
+		if (!empty($candidates)) {
+			return new XpgLocale(basename($candidates[0]));
+		}
+
 		return false;
+	}
+
+	/**
+	 * @param string $lang XPG locale identifier
+	 *
+	 * @return bool true if translations for the language are installed
+	 */
+	public function isLanguage($lang) {
+		return $this->findLanguage($lang) !== false;
 	}
 
 	/**

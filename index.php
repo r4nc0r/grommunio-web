@@ -198,12 +198,12 @@ if ($GLOBALS['mapisession']->isWebappDisableAsFeature()) {
 $Language = new Language();
 
 // Set session settings (language & style)
-foreach ($GLOBALS["settings"]->getSessionSettings($Language) as $key => $value) {
+foreach ($GLOBALS["settings"]->getSessionSettings() as $key => $value) {
 	$_SESSION[$key] = $value;
 }
 
 // Get language from the request, or the session, or the user settings, or the config
-if (isset($_REQUEST["language"]) && $Language->is_language($_REQUEST["language"])) {
+if (isset($_REQUEST["language"]) && $Language->isLanguage($_REQUEST["language"])) {
 	$lang = $_REQUEST["language"];
 	$GLOBALS["settings"]->set("zarafa/v1/main/language", $lang);
 }
@@ -220,6 +220,11 @@ else {
 }
 
 $Language->setLanguage($lang);
+// Store the directory name so a legacy value like de_DE.UTF-8 does not linger
+if ($Language->getSelected() !== null && (string) $Language->getSelected() !== $lang) {
+	$lang = (string) $Language->getSelected();
+	$GLOBALS["settings"]->set("zarafa/v1/main/language", $lang);
+}
 setcookie('lang', (string) $lang, [
 	'expires' => time() + 31536000,
 	'path' => '/',

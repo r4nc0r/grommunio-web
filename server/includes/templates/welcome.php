@@ -22,7 +22,7 @@ $serverConfig = [
 ];
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo substr((string) $Language->getSelected(), 0, 2); ?>">
+<html lang="<?php echo $Language->getSelectedIetf(); ?>">
 
 	<head>
                 <meta name="Generator" content="grommunio-web v<?php echo $loader->getVersion(); ?>">

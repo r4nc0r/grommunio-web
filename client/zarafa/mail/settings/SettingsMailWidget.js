@@ -74,7 +74,7 @@ Zarafa.mail.settings.SettingsMailWidget = Ext.extend(Zarafa.settings.ui.Settings
 			boxLabel: _('Use subject prefixes in accordance with RFC 5256/5322'),
 			hideLabel: true,
 			lazyInit: false,
-			hidden: Zarafa.core.Util.inArray(['en_GB', 'en_GB.UTF-8', 'en_US.UTF-8'], container.getSettingsModel().get('zarafa/v1/main/language'), false, false),
+			hidden: Zarafa.core.Util.inArray(['en_GB', 'en_GB.UTF-8', 'en_US', 'en_US.UTF-8'], container.getSettingsModel().get('zarafa/v1/main/language'), false, false),
 			listeners: {
 				check: this.onCheck,
 				scope: this

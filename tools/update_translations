@@ -21,7 +21,7 @@ create_potfile() {
 
 function update_pos() {
 	# Merge PO files and remove obsolete strings
-	for lang in server/language/*.UTF-8/LC_MESSAGES/grommunio_web.po; do
+	for lang in server/language/*/LC_MESSAGES/grommunio_web.po; do
 		echo $lang
 		msgmerge -N -q --no-wrap $lang $POT_FILE | msgattrib --no-obsolete --no-wrap -o $lang.new && mv $lang.new $lang
 	done
@@ -32,7 +32,7 @@ function new_lang() {
 	pluginname=$2
 
 	# Create the server/language/${lang}/LC_MESSAGES/ directory
-	langdir="server/language/${lang}.UTF-8"
+	langdir="server/language/${lang}"
 	poname='grommunio_web.po'
 	if [ -n "${pluginname}" ]; then
 		langdir=${langdir//server\/}

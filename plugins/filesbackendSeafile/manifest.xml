@@ -4,7 +4,7 @@
 	<info>
 		<version>2.0.69</version>
 		<name>filesbackendSeafile</name>
-		<title>Seafile backend for grommunio Files</title>
+		<title>Files: Seafile Backend</title>
 		<author>grommunio</author>
 		<authorURL>https://www.grommunio.com</authorURL>
 		<description>This backend for Files provides seafile support</description>

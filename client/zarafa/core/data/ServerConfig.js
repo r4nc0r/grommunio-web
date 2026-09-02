@@ -118,6 +118,16 @@ Zarafa.core.data.ServerConfig = Ext.extend(Object, {
 	},
 
 	/**
+	 * @return {Array} Plugins whose client files were not sent because the user
+	 * has them, or a plugin they depend on, disabled. Each entry has the fields
+	 * name, display_name, allow_disable and settings_base.
+	 */
+	getUnloadedPlugins: function()
+	{
+		return this.meta.unloaded_plugins || [];
+	},
+
+	/**
 	 * @return {Boolean} True if Advanced Settings are enabled
 	 */
 	isAdvancedSettingsEnabled: function()

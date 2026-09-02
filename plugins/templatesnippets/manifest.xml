@@ -12,6 +12,7 @@
 	<config>
 		<configfile>config.php</configfile>
 	</config>
+	<optional/>
 	<components>
 		<component>
 			<files>

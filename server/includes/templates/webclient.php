@@ -29,6 +29,7 @@ $serverConfig = array_merge($serverConfig, [
 	'active_iconset' => Iconsets::getActiveIconset(),
 	'iconsets_about' => Iconsets::getAboutTexts(),
 	'version_info' => $GLOBALS['PluginManager']->getPluginsVersion(),
+	'unloaded_plugins' => $GLOBALS['PluginManager']->getUnloadedPluginsInfo(),
 	'is_vcfimport_supported' => function_exists('mapi_vcftomapi'),
 	'is_icsimport_supported' => function_exists('mapi_mapitoical'),
 	'color_schemes' => json_decode(COLOR_SCHEMES),

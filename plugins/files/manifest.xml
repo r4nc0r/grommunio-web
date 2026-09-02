@@ -4,7 +4,7 @@
 	<info>
 		<version>5.0</version>
 		<name>files</name>
-		<title>Files</title>
+		<title>Files Plugin</title>
 		<author>grommunio GmbH</author>
 		<authorURL>http://www.grommunio.com</authorURL>
 		<description>Integrate Files into grommunio web</description>
@@ -12,6 +12,7 @@
 	<config>
 		<configfile>config.php</configfile>
 	</config>
+	<optional/>
 	<components>
 		<component>
 			<files>

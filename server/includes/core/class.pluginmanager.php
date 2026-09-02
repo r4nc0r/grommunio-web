@@ -73,6 +73,13 @@ class PluginManager {
 	public $sessionData;
 
 	/**
+	 * Plugins whose client files are not sent to the current user,
+	 * see getUnloadedPlugins().
+	 * [pluginname] = true.
+	 */
+	private $unloaded;
+
+	/**
 	 * Mapping for the XML 'load' attribute values
 	 * on the <serverfile>, <clientfile> or <resourcefile> element
 	 * to the corresponding define.
@@ -842,8 +849,12 @@ class PluginManager {
 	 */
 	public function getClientFiles($load = LOAD_RELEASE) {
 		$files = [];
+		$unloaded = $this->getUnloadedPlugins();
 
 		foreach ($this->pluginorder as $pluginname) {
+			if (isset($unloaded[$pluginname])) {
+				continue;
+			}
 			$plugin = &$this->plugindata[$pluginname];
 			foreach ($plugin['components'] as &$component) {
 				if (!empty($component['clientfiles'][$load])) {
@@ -915,8 +926,12 @@ class PluginManager {
 	 */
 	public function getResourceFiles($load = LOAD_RELEASE) {
 		$files = [];
+		$unloaded = $this->getUnloadedPlugins();
 
 		foreach ($this->pluginorder as $pluginname) {
+			if (isset($unloaded[$pluginname])) {
+				continue;
+			}
 			$plugin = &$this->plugindata[$pluginname];
 			foreach ($plugin['components'] as &$component) {
 				if (!empty($component['resourcefiles'][$load])) {
@@ -939,6 +954,76 @@ class PluginManager {
 		unset($plugin);
 
 		return $files;
+	}
+
+	/**
+	 * Plugins whose client files are withheld from the current user: optional
+	 * plugins the user has not enabled, and every plugin depending on one of those.
+	 *
+	 * @return array [pluginname] = true
+	 */
+	public function getUnloadedPlugins() {
+		if (isset($this->unloaded)) {
+			return $this->unloaded;
+		}
+
+		$this->unloaded = [];
+		if (!isset($GLOBALS['settings'])) {
+			return $this->unloaded;
+		}
+
+		$alwaysEnabled = explode(';', $this->expandPluginList(ALWAYS_ENABLED_PLUGINS_LIST));
+		foreach ($this->pluginorder as $pluginname) {
+			$settingsname = $this->plugindata[$pluginname]['optional'] ?? null;
+			if ($settingsname === null || in_array($pluginname, $alwaysEnabled, true)) {
+				continue;
+			}
+			if ($GLOBALS['settings']->get('zarafa/v1/plugins/' . $settingsname . '/enable') !== true) {
+				$this->unloaded[$pluginname] = true;
+			}
+		}
+
+		// The order only reflects 'depends', so iterate until stable.
+		do {
+			$changed = false;
+			foreach ($this->pluginorder as $pluginname) {
+				$dependencies = $this->plugindata[$pluginname]['dependencies'];
+				if (isset($this->unloaded[$pluginname]) || !$dependencies) {
+					continue;
+				}
+				foreach (array_merge($dependencies[DEPEND_DEPENDS], $dependencies[DEPEND_REQUIRES]) as $depends) {
+					if (isset($this->unloaded[$depends['plugin']])) {
+						$this->unloaded[$pluginname] = true;
+						$changed = true;
+						break;
+					}
+				}
+			}
+		}
+		while ($changed);
+
+		return $this->unloaded;
+	}
+
+	/**
+	 * Describes the plugins of getUnloadedPlugins() for the plugin list in the
+	 * settings, which otherwise only knows the plugins that registered client side.
+	 *
+	 * @return array
+	 */
+	public function getUnloadedPluginsInfo() {
+		$info = [];
+		foreach (array_keys($this->getUnloadedPlugins()) as $pluginname) {
+			$plugin = $this->plugindata[$pluginname];
+			$info[] = [
+				'name' => $pluginname,
+				'display_name' => _($plugin['title'] ?? $pluginname),
+				'allow_disable' => isset($plugin['optional']),
+				'settings_base' => 'zarafa/v1/plugins/' . ($plugin['optional'] ?? $pluginname),
+			];
+		}
+
+		return $info;
 	}
 
 	/**
@@ -983,6 +1068,8 @@ class PluginManager {
 			'dependencies' => null,
 			'translationsdir' => null,
 			'version' => null,
+			'title' => $dirname,
+			'optional' => null,
 		];
 
 		// Parse all XML data
@@ -1003,6 +1090,9 @@ class PluginManager {
 		}
 		else {
 			dump("[PLUGIN WARNING] Plugin {$dirname} has not specified version information in manifest.xml");
+		}
+		if (isset($data->info->title)) {
+			$plugindata['title'] = (string) $data->info->title;
 		}
 
 		// Parse the <config> element
@@ -1056,6 +1146,11 @@ class PluginManager {
 				];
 			}
 			$plugindata['dependencies'] = $dependencies;
+		}
+
+		// Parse the <optional> element
+		if (isset($data->optional)) {
+			$plugindata['optional'] = ((string) $data->optional['settingsname']) ?: $dirname;
 		}
 
 		// Parse the <translations> element

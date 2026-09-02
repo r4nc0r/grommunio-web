@@ -4,7 +4,7 @@
 	<info>
 		<version>1.0</version>
 		<name>mdm</name>
-		<title>Mobile Device Management</title>
+		<title>Mobile device management</title>
 		<author>grommunio</author>
 		<authorURL>https://grommunio.com</authorURL>
 		<description>Mobile Device Management plugin</description>
@@ -12,6 +12,7 @@
 	<config>
 		<configfile>config.php</configfile>
 	</config>
+	<optional/>
 	<components>
 		<component>
 			<files>

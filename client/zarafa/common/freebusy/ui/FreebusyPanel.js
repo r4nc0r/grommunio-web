@@ -74,6 +74,8 @@ Zarafa.common.freebusy.ui.FreebusyPanel = Ext.extend(Ext.Panel, {
 	// Private
 	// Height of inputfield that will be shown in the {@link Zarafa.common.freebusy.ui.UserlistView}.
 	inputfieldHeight: 20,
+	// Height of the complete input row, including the vertical margins used by the user list.
+	inputfieldRowHeight: 30,
 	/**
 	 * @cfg {Boolean} initialScrollToCurrentDay
 	 * When set to true it will scroll to the current day or the selected period. This is done after
@@ -217,7 +219,7 @@ Zarafa.common.freebusy.ui.FreebusyPanel = Ext.extend(Ext.Panel, {
 			blockStore: this.blockStore,
 			model: this.model,
 			selector: new Zarafa.common.freebusy.data.TimelineSelector(),
-			extraBodyHeight: (this.editable) ? this.inputfieldHeight : 0,
+			extraBodyHeight: (this.editable) ? this.inputfieldRowHeight : 0,
 			// TODO: Make this configurable and toggable
 			hideNonWorkingHours: true,
 			listeners: {
@@ -241,7 +243,7 @@ Zarafa.common.freebusy.ui.FreebusyPanel = Ext.extend(Ext.Panel, {
 			border: false,
 			layout: 'hbox',
 			hidden: (!this.showLegenda),
-			autoHeight: true,
+			height: 36,
 			cls: 'x-freebusy-timeline-container x-freebusy-legenda',
 			items: [{
 				xtype: 'container',
@@ -338,6 +340,8 @@ Zarafa.common.freebusy.ui.FreebusyPanel = Ext.extend(Ext.Panel, {
 	 */
 	onAfterLayout: function(container)
 	{
+		this.initScrollSynchronization();
+
 		// Calculate the desired header size, we have the configured header size, but we need
 		// to subtract any padding/borders and margins which are applied to the header.
 		if (this.userListView) {
@@ -411,7 +415,44 @@ Zarafa.common.freebusy.ui.FreebusyPanel = Ext.extend(Ext.Panel, {
 	 */
 	onTimelineScroll: function(scrollPos)
 	{
-		this.userListView.body.scrollTo('top', scrollPos.top);
+		if (this.userListScrollEl && this.userListScrollEl.dom.scrollTop !== scrollPos.top) {
+			this.userListScrollEl.dom.scrollTop = scrollPos.top;
+		}
+	},
+
+	/**
+	 * Connect the attendee list and timeline after BorderLayout has sized them.
+	 * The listbox is the element whose contents grow as attendees are added, so
+	 * it must also be the element that owns and synchronizes vertical scrolling.
+	 * @private
+	 */
+	initScrollSynchronization: function()
+	{
+		var userList = this.userListView.get(0);
+		if (this.scrollSynchronizationInitialized || !userList.wrapBoxesEl || !this.timelineView.bodyElem) {
+			return;
+		}
+
+		this.scrollSynchronizationInitialized = true;
+		this.userListScrollEl = userList.wrapBoxesEl;
+		this.mon(this.userListScrollEl, 'scroll', this.onUserListScroll, this);
+	},
+
+	/**
+	 * Keep the attendee rows and their freebusy rows aligned when the attendee
+	 * list is scrolled directly.
+	 * @private
+	 */
+	onUserListScroll: function()
+	{
+		if (!this.timelineView.bodyElem) {
+			return;
+		}
+
+		var scrollTop = this.userListScrollEl.dom.scrollTop;
+		if (this.timelineView.bodyElem.dom.scrollTop !== scrollTop) {
+			this.timelineView.bodyElem.dom.scrollTop = scrollTop;
+		}
 	},
 
 	/**

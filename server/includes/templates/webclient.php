@@ -65,7 +65,7 @@ if ($GLOBALS['settings']->get('zarafa/v1/contexts/mail/attachment_reminder_enabl
 }
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $Language->getSelected_ietf(); ?>">
+<html lang="<?php echo $Language->getSelectedIetf(); ?>">
 
 	<head>
 		<meta name="Generator" content="grommunio-web v<?php echo $loader->getVersion(); ?>">
@@ -106,7 +106,8 @@ echo ' ' . $unreadBorders;
 $darkMode = WebAppAuthentication::isAuthenticated() ? $GLOBALS['settings']->get('zarafa/v1/main/dark_mode') : 'light';
 if ($darkMode === 'dark') {
 	echo ' dark-mode';
-} elseif ($darkMode === 'system') {
+}
+elseif ($darkMode === 'system') {
 	echo ' dark-mode-system';
 }
 ?>">

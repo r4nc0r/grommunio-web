@@ -164,12 +164,14 @@ $GLOBALS["operations"] = new Operations();
 // Prefetch hierarchy for inline delivery to the client, eliminating
 // the first AJAX round-trip after page load.
 $prefetchedHierarchy = null;
+
 try {
 	$properties = new Properties();
 	$properties->Init();
 	$listProperties = $properties->getFolderListProperties();
 	$prefetchedHierarchy = $GLOBALS["operations"]->getHierarchyList($listProperties);
-} catch (Exception $e) {
+}
+catch (Exception $e) {
 	// If prefetch fails, client falls back to normal AJAX load
 }
 

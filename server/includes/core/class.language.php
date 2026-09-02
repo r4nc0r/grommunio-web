@@ -1,15 +1,17 @@
 <?php
 
 /**
- * Class for a broken-down representation of an XPG locale identifier.
- * Stolen from /gromox/lib/string.cpp.
+ * Broken-down representation of an XPG locale identifier
+ * (language[_territory][.codeset][@modifier]), after gromox lib/string.cpp.
  */
-class xpg_locale {
-	public string $language = "", $territory = "", $codeset = "", $modifier = "";
+class XpgLocale {
+	public string $language = "";
+	public string $territory = "";
+	public string $codeset = "";
+	public string $modifier = "";
 
-	public function __construct(string $locale)
-	{
-		$pos = strpos($remainder, '@');
+	public function __construct(string $locale) {
+		$pos = strpos($locale, '@');
 		if ($pos !== false) {
 			$this->modifier = substr($locale, $pos + 1);
 			$locale = substr($locale, 0, $pos);
@@ -27,25 +29,28 @@ class xpg_locale {
 		$this->language = $locale;
 	}
 
-	public function __toString(): string
-	{
-		return $this->to_string('_');
+	public function __toString(): string {
+		return $this->toString('_');
 	}
 
 	/**
-	 * @tsep: use special territory separator
+	 * @param string $tsep separator between language and territory
 	 */
-	public function to_string($tsep): string
-	{
+	public function toString($tsep): string {
 		$o = $this->language;
-		if (strlen($o) == 0)
+		if ($o === '') {
 			return $o;
-		if (strlen($this->territory) > 0)
-			$o .= $tsep.$this->territory;
-		if (strlen($this->codeset) > 0)
-			$o .= '.'.$this->codeset;
-		if (strlen($this->modifier) > 0)
-			$o .= '@'.$this->modifier;
+		}
+		if ($this->territory !== '') {
+			$o .= $tsep . $this->territory;
+		}
+		if ($this->codeset !== '') {
+			$o .= '.' . $this->codeset;
+		}
+		if ($this->modifier !== '') {
+			$o .= '@' . $this->modifier;
+		}
+
 		return $o;
 	}
 }
@@ -142,8 +147,9 @@ class Language {
 		$tmp_translations = $this->getTranslations();
 		$translations = [];
 		foreach ($tmp_translations as $program => $resources) {
-			if (substr($program, 0, 1) == '_')
+			if (substr($program, 0, 1) == '_') {
 				continue;
+			}
 			$resourcesCount = count($resources);
 			for ($i = 0; $i < $resourcesCount; ++$i) {
 				$msgid = $resources[$i]['msgid'];
@@ -156,28 +162,30 @@ class Language {
 	}
 
 	/**
-	 * Match a locale identifier request to files on disk.
+	 * Match a locale identifier request to a directory in LANGUAGE_DIR.
 	 *
-	 * @lang: XPG locale identifier ([language[_territory][.codeset][@modifier]])
+	 * @param string $lang XPG locale identifier
 	 *
-	 * Returns the xpg_locale object (which coincides with the directory
-	 * name on disk), or %false if the search did not turn up something.
+	 * @return bool|XpgLocale the locale naming the directory, or false if none matches
 	 */
 	private function findLanguage($lang) {
-		$p = new xpg_locale($lang);
+		$p = new XpgLocale($lang);
 
-		// Directory names are never supposed to contain a codeset fragment
+		// Directory names never contain a codeset
 		$p->codeset = "";
-		if (is_dir(LANGUAGE_DIR."/$p"))
+		if (is_dir(LANGUAGE_DIR . "/{$p}")) {
 			return $p;
+		}
 
 		// Try from most specific to least specific
 		$p->modifier = "";
-		if (is_dir(LANGUAGE_DIR."/$p"))
+		if (is_dir(LANGUAGE_DIR . "/{$p}")) {
 			return $p;
+		}
 		$p->territory = "";
-		if (is_dir(LANGUAGE_DIR."/$p"))
+		if (is_dir(LANGUAGE_DIR . "/{$p}")) {
 			return $p;
+		}
 
 		return false;
 	}
@@ -185,13 +193,11 @@ class Language {
 	/**
 	 * Bind the gettext text domain for the given language.
 	 *
-	 * @lang: an xpg_locale object
-	 *
 	 * The JavaScript client receives its translation table from
-	 * getTranslations(), and those generally only apply to the
-	 * strings for the JS parts. g-web templates, modules and plugins
-	 * can independently output strings, for which we need
-	 * bindtextdomain.
+	 * getTranslations(). Templates, modules and plugins output strings
+	 * through gettext directly, which needs the text domain bound.
+	 *
+	 * @param XpgLocale $lang
 	 */
 	private function bindTextDomain($lang) {
 		if (!function_exists('bindtextdomain') || !defined('LC_MESSAGES')) {
@@ -276,27 +282,25 @@ class Language {
 	}
 
 	/**
-	 * Returns the xpg_locale object of the currently selected language.
+	 * @return null|XpgLocale the selected language, null if none is set
 	 */
 	public function getSelected() {
 		return $this->lang;
 	}
 
 	/**
-	 * Output the selected language, but in RFC 5646 notation
+	 * @return string the selected language in RFC 5646 notation
 	 */
-	public function getSelected_ietf() {
+	public function getSelectedIetf() {
 		$l = clone $this->lang;
-		$l->codeset = $l->modifiers = "";
-		return $l->to_string('-');
+		$l->codeset = $l->modifier = "";
+
+		return $l->toString('-');
 	}
 
 	/**
 	 * Populate the shared memory segment with all translations and yield
-	 * the JSON representation for the currently-selected language.
-	 *
-	 * @selected_lang: an xpg_locale object emitted by findLanguage
-	 *                 (i.e. one that maps to a verified directory)
+	 * the translations of the currently selected language.
 	 */
 	public function getTranslations() {
 		$selected_lang = (string) $this->getSelected();

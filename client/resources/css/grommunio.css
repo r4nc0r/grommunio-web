@@ -3659,8 +3659,10 @@ div.zarafa-contact-cardview-selected {
     border: none;
     font-weight: normal; }
   .zarafa-freebusy-panel .x-freebusy-userlist > .x-panel-bwrap > .x-panel-body {
-    padding: 36px 0 0;
-    border-left: none; }
+    padding: 0;
+    border-left: none;
+    overflow: hidden;
+    position: relative; }
   .zarafa-freebusy-panel .zarafa-freebusy-suggestionlist > .x-panel-bwrap > .x-panel-body {
     border-right: none; }
   .zarafa-freebusy-panel .x-freebusy-userlist-container {
@@ -3668,10 +3670,18 @@ div.zarafa-contact-cardview-selected {
     border: none;
     box-sizing: border-box;
     width: 100% !important;
-    position: relative; }
+    position: absolute;
+    top: 36px;
+    bottom: 0;
+    height: auto !important;
+    overflow: hidden; }
     .zarafa-freebusy-panel .x-freebusy-userlist-container ul {
       position: relative;
-      width: 100%; }
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      overflow-y: auto; }
       .zarafa-freebusy-panel .x-freebusy-userlist-container ul li span.x-freebusy-userrow-remove:after {
         content: " ";
         display: table;

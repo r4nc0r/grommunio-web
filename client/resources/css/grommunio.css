@@ -2400,6 +2400,10 @@ span.preview-header-sender-image {
   background-color: #e4e7ec;
   border-color: #98a2b3; }
 
+.preview-header-attachments .zarafa-attachment-link.x-view-selected {
+  background-color: #d5e8f7;
+  border-color: #0f70bd; }
+
 .preview-header-task .preview-from .task-info-container span {
   min-width: 80px;
   padding-top: 5px;

@@ -3361,6 +3361,11 @@ body.dark-mode .preview-header-attachments .zarafa-attachment-link-over {
 	border-color: var(--dm-border-strong);
 }
 
+body.dark-mode .preview-header-attachments .zarafa-attachment-link.x-view-selected {
+	background-color: var(--dm-selected);
+	border-color: var(--dm-border-strong);
+}
+
 /* Loading mask */
 body.dark-mode .ext-el-mask-msg {
 	border-radius: 8px;

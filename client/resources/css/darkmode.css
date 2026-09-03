@@ -3361,9 +3361,16 @@ body.dark-mode .preview-header-attachments .zarafa-attachment-link-over {
 	border-color: var(--dm-border-strong);
 }
 
-body.dark-mode .preview-header-attachments .zarafa-attachment-link.x-view-selected {
+/*
+ * Both selectors are needed. The rule above for #zarafa-mainpanel carries an
+ * ID, so it beats any number of classes: without the second line here the
+ * selection is invisible in dark mode everywhere the attachment box actually
+ * lives. Measured in the browser, not assumed.
+ */
+body.dark-mode .preview-header-attachments .zarafa-attachment-link.x-view-selected,
+body.dark-mode #zarafa-mainpanel .zarafa-attachment-link.x-view-selected {
 	background-color: var(--dm-selected);
-	border-color: var(--dm-border-strong);
+	border-color: var(--theme-primary-color);
 }
 
 /* Loading mask */
